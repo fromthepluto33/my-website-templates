@@ -19,7 +19,7 @@
 Открыть главную страницу проекта:
 
 ```text
-https://USERNAME.github.io/REPO_NAME/
+https://fromthemoon33.github.io/my-website-templates/
 ```
 
 Открыть отдельные шаблоны:
