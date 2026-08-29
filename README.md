@@ -26,9 +26,9 @@ https://USERNAME.github.io/REPO_NAME/
 
 | Шаблон | Ссылка |
 |---|---|
-| Суши-бар — красный вариант | [Открыть](https://USERNAME.github.io/REPO_NAME/sushi-bar-red/) |
-| Суши-бар — золотой вариант | [Открыть](https://USERNAME.github.io/REPO_NAME/sushi-bar-gold/) |
-| Кондитерская | [Открыть](https://USERNAME.github.io/REPO_NAME/cake-shop/) |
+| Суши-бар — красный вариант | [Открыть](https://fromthepluto33.github.io/my-website-templates/sushi-bar-red/) |
+| Суши-бар — золотой вариант | [Открыть](https://fromthepluto33.github.io/my-website-templates/sushi-bar-gold/) |
+| Кондитерская | [Открыть](https://fromthepluto33.github.io/my-website-templates/cake-shop/) |
 
 Если вариант с папкой не открывается, можно использовать прямую ссылку на `index.html`:
 
