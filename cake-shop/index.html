@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#FFFBF7">
+<title>Кондитерская — авторские торты на заказ в Городе</title>
+<meta name="description" content="Торты на заказ в Городе: свадебные, детские, 3D, муссовые. Авторская работа кондитера Василисы Прекрасной. Закажите торт мечты!">
+<!-- Фавиконка: сохраните вертикальный логотип как img/favicon.ico -->
+<link rel="icon" href="img/favicon.ico" type="image/x-icon">
+<!-- Стили сайта -->
+<link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+<!-- ШАПКА -->
+<header id="header">
+  <div class="container header-inner">
+    <a href="#" class="logo">
+      <img src="img/logo.webp" alt="Кондитерская — Vasilisa Prekrasnaya, торты на заказ в Городе">
+    </a>
+    <nav id="nav" aria-label="Главное меню">
+      <a href="#cats">Каталог</a>
+      <a href="#cakes">Торты</a>
+      <a href="#about">О кондитере</a>
+      <a href="#how">Как заказать</a>
+      <a href="#reviews">Отзывы</a>
+      <a href="#contacts">Контакты</a>
+      <a href="tel:+79999999999" class="nav-phone">+7 (999) 999-99-99</a>
+    </nav>
+    <div class="header-right">
+      <a class="header-phone" href="tel:+79999999999">+7 (999) 999-99-99</a>
+      <button class="btn btn-primary" onclick="openModal()">Заказать торт</button>
+      <button class="burger" aria-label="Открыть меню">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+<main>
+<!-- HERO -->
+<section class="hero">
+  <div class="container hero-inner">
+    <div class="reveal visible">
+      <span class="hero-badge">✦ Авторские торты в Городе</span>
+      <h1>Торт, который делает праздник <em>вкуснее</em></h1>
+      <p>Свадебные, детские, юбилейные и 3D-торты из натуральных ингредиентов. Придумаем вместе — испеку с любовью.</p>
+      <div class="hero-cta">
+        <button class="btn btn-primary" onclick="openModal()">Заказать торт</button>
+        <a class="btn btn-ghost" href="#cats">Выбрать в каталоге</a>
+      </div>
+    </div>
+    <div class="hero-photo reveal visible">
+      <div class="frame"><img src="img/two-tier-wedding-cake.webp" alt="Двухъярусный свадебный торт с живыми цветами"></div>
+      <p class="chip chip-1">9+ лет<small>создаю торты</small></p>
+      <p class="chip chip-2">500+ тортов<small>для ваших праздников</small></p>
+      <p class="chip chip-3">100% натурально<small>без компромиссов</small></p>
+    </div>
+  </div>
+</section>
+<!-- ЛЕНТА ПОВОДОВ -->
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track">
+    <span>Свадьбы ✦ Дни рождения ✦ Юбилеи ✦ Корпоративы ✦ Детские праздники ✦ Именины ✦ Годовщины ✦ Сладкие столы ✦&nbsp;</span>
+    <span>Свадьбы ✦ Дни рождения ✦ Юбилеи ✦ Корпоративы ✦ Детские праздники ✦ Именины ✦ Годовщины ✦ Сладкие столы ✦&nbsp;</span>
+    <span>Свадьбы ✦ Дни рождения ✦ Юбилеи ✦ Корпоративы ✦ Детские праздники ✦ Именины ✦ Годовщины ✦ Сладкие столы ✦&nbsp;</span>
+    <span>Свадьбы ✦ Дни рождения ✦ Юбилеи ✦ Корпоративы ✦ Детские праздники ✦ Именины ✦ Годовщины ✦ Сладкие столы ✦&nbsp;</span>
+  </div>
+</div>
+<!-- КАТЕГОРИИ -->
+<section id="cats">
+  <img class="deco deco-stars dl" src="img/deco-stars.webp" alt="" aria-hidden="true">
+  <img class="deco deco-stars dr" src="img/deco-stars.webp" alt="" aria-hidden="true">
+  <img class="deco deco-stars dm" src="img/deco-stars.webp" alt="" aria-hidden="true">
+  <img class="deco deco-stars dm2" src="img/deco-stars.webp" alt="" aria-hidden="true">
+  <div class="container">
+    <h2 class="reveal">Каталог сладостей</h2>
+    <p class="section-sub reveal">Выберите повод — остальное я возьму на себя</p>
+    <ul class="cats">
+      <li class="cat reveal"><a href="#cakes"><span class="ring"><img loading="lazy" src="img/retro-camera-cake.webp" alt="Торт в виде ретро-фотоаппарата, 3D"></span><p>3D торты</p></a></li>
+      <li class="cat reveal"><a href="#cakes"><span class="ring"><img loading="lazy" src="img/childrens-sweet-table-cupcakes.webp" alt="Детский сладкий стол с капкейками"></span><p>Сладкий стол и капкейки</p></a></li>
+      <li class="cat reveal"><a href="#cakes"><span class="ring"><img loading="lazy" src="img/mousse-cake.webp" alt="Муссовые торты с зеркальной глазурью"></span><p>Муссовые торты и десерты</p></a></li>
+      <li class="cat reveal"><a href="#cakes"><span class="ring"><img loading="lazy" src="img/cake-for-march-8th.webp" alt="Праздничный торт с ягодами"></span><p>Торты к праздникам</p></a></li>
+      <li class="cat reveal"><a href="#cakes"><span class="ring"><img loading="lazy" src="img/corporate-cake.webp" alt="Корпоративный торт с логотипом"></span><p>Корпоративные торты</p></a></li>
+      <li class="cat reveal"><a href="#cakes"><span class="ring"><img loading="lazy" src="img/cake-nautical-decor.webp" alt="Детский торт с морским декором"></span><p>Детские торты</p></a></li>
+      <li class="cat reveal"><a href="#cakes"><span class="ring"><img loading="lazy" src="img/two-tier-wedding-cake.webp" alt="Свадебный двухъярусный торт"></span><p>Свадебные и юбилейные</p></a></li>
+      <li class="cat reveal"><a href="#cakes"><span class="ring"><img loading="lazy" src="img/gingerbread-icing.webp" alt="Имбирные пряники с росписью"></span><p>Пряники</p></a></li>
+      <li class="cat reveal"><a href="#cakes"><span class="ring"><img loading="lazy" src="img/berry-cake.webp" alt="Торт без мастичного покрытия с ягодами"></span><p>Без мастичного покрытия</p></a></li>
+    </ul>
+    <p class="cats-hint reveal">Не нашли свой повод? <a href="#contacts">Придумаю и испеку под вашу историю</a> ✦</p>
+  </div>
+</section>
+<!-- ПОПУЛЯРНЫЕ ТОРТЫ -->
+<section id="cakes" style="background:var(--pink-100)">
+  <div class="container">
+    <h2 class="reveal">Любимые торты гостей</h2>
+    <p class="section-sub reveal">Каждый торт — в единственном экземпляре. Стоимость зависит от веса, начинки и декора — рассчитаем индивидуально</p>
+    <div class="cakes">
+      <article class="cake reveal"><div class="img"><img loading="lazy" src="img/retro-camera-cake.webp" alt="3D торт в виде ретро-фотоаппарата"><span class="tag">3D торты</span></div>
+        <div class="body"><h3>Объёмный торт-сюрприз</h3><p class="desc">Торт любой формы: сердце, замок, хобби — воплощу идею в деталях.</p>
+        <div class="foot"><span class="price">цена по запросу</span><button class="btn btn-primary" onclick="openModal('3D торт')">Рассчитать</button></div></div></article>
+      <article class="cake reveal"><div class="img"><img loading="lazy" src="img/mousse-cake.webp" alt="Муссовый торт с зеркальной глазурью"><span class="tag">Муссовые</span></div>
+        <div class="body"><h3>Муссовый «Ягодный бархат»</h3><p class="desc">Нежный мусс, зеркальная глазурь и свежие ягоды.</p>
+        <div class="foot"><span class="price">цена по запросу</span><button class="btn btn-primary" onclick="openModal('Муссовый торт')">Рассчитать</button></div></div></article>
+      <article class="cake reveal"><div class="img"><img loading="lazy" src="img/cake-nautical-decor.webp" alt="Детский торт с морским декором"><span class="tag">Детские</span></div>
+        <div class="body"><h3>Детский торт мечты</h3><p class="desc">Герои мультфильмов и единороги — восторг гарантирован.</p>
+        <div class="foot"><span class="price">цена по запросу</span><button class="btn btn-primary" onclick="openModal('Детский торт')">Рассчитать</button></div></div></article>
+      <article class="cake reveal"><div class="img"><img loading="lazy" src="img/two-tier-wedding-cake.webp" alt="Свадебный двухъярусный торт с цветами"><span class="tag">Свадебные</span></div>
+        <div class="body"><h3>Свадебный «Белый вальс»</h3><p class="desc">Многоярусная классика с живыми цветами.</p>
+        <div class="foot"><span class="price">цена по запросу</span><button class="btn btn-primary" onclick="openModal('Свадебный торт')">Рассчитать</button></div></div></article>
+      <article class="cake reveal"><div class="img"><img loading="lazy" src="img/gingerbread-icing.webp" alt="Имбирные пряники с глазурью"><span class="tag">Пряники</span></div>
+        <div class="body"><h3>Имбирные пряники с росписью</h3><p class="desc">Подарочные наборы к любому празднику.</p>
+        <div class="foot"><span class="price">цена по запросу</span><button class="btn btn-primary" onclick="openModal('Пряники')">Рассчитать</button></div></div></article>
+      <article class="cake reveal"><div class="img"><img loading="lazy" src="img/berry-cake.webp" alt="Ягодный торт без мастики"><span class="tag">Без мастики</span></div>
+        <div class="body"><h3>Ягодный торт без мастики</h3><p class="desc">Лёгкий крем, много ягод и никакой мастики.</p>
+        <div class="foot"><span class="price">цена по запросу</span><button class="btn btn-primary" onclick="openModal('Торт без мастики')">Рассчитать</button></div></div></article>
+        <article class="cake reveal"><div class="img"><img loading="lazy" src="img/corporate-cake.webp" alt="Корпоративный торт с логотипом"><span class="tag">Корпоративные</span></div>
+          <div class="body"><h3>Корпоративный с логотипом</h3><p class="desc">Брендированный торт к событию компании — стильно и вкусно.</p>
+            <div class="foot"><span class="price">цена по запросу</span><button class="btn btn-primary" onclick="openModal('Корпоративный торт')">Рассчитать</button></div></div></article>
+      <article class="cake cake-ghost reveal">
+        <div class="ghost-body">
+          <span class="ghost-star"><img src="img/badge-star.webp" alt=""></span>
+          <h3>Ваш торт</h3>
+          <p class="desc">Придумаем вместе: от эскиза до праздника — единственный экземпляр для вашей истории.</p>
+          <button class="btn btn-ghost" onclick="openModal('Индивидуальный торт')">Придумать со мной</button>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+<!-- О КОНДИТЕРЕ -->
+<section id="about" class="about">
+  <div class="container">
+    <h2 class="reveal">О кондитере</h2>
+    <p class="section-sub reveal">Немного цифр — и пара слов о себе</p>
+    <ul class="stats reveal">
+      <li class="stat">
+        <span class="stat-ico"><img src="img/icon-whisk.webp" alt=""><span class="badge"><img src="img/badge-star.webp" alt=""></span></span>
+        <span class="stat-txt"><b>9+</b><span>лет опыта</span></span>
+      </li>
+      <li class="stat">
+        <span class="stat-ico"><img src="img/icon-cake.webp" alt=""><span class="badge"><img src="img/badge-star-light.webp" alt=""></span></span>
+        <span class="stat-txt"><b>500+</b><span>созданных тортов</span></span>
+      </li>
+      <li class="stat">
+        <span class="stat-ico"><img src="img/icon-cupcakes.webp" alt=""><span class="badge"><img src="img/badge-star.webp" alt=""></span></span>
+        <span class="stat-txt"><b>9</b><span>категорий сладостей</span></span>
+      </li>
+      <li class="stat">
+        <span class="stat-ico"><img src="img/icon-berry.webp" alt=""><span class="badge"><img src="img/badge-star-light.webp" alt=""></span></span>
+        <span class="stat-txt"><b>100%</b><span>натурально</span></span>
+      </li>
+    </ul>
+    <div class="about-letter reveal">
+    	<div class="about-portrait"><img src="img/vasilisa.webp" alt="Василиса — кондитер"></div>
+    	<div class="about-text">
+        <h2>Меня зовут Василиса, и я пеку счастье</h2>
+         <p class="about-lead">Уже более девяти лет создаю авторские торты для жителей Города. Каждый торт — это маленькая история: я внимательно слушаю ваши пожелания и превращаю их в сладкий шедевр.</p>
+         <p class="about-lead">Работаю только с натуральными ингредиентами, без компромиссов по качеству. Более 500 тортов уже стали украшением свадеб, дней рождений и корпоративов.</p>
+      </div>
+</div>
+</section>
+
+<!-- КАК ЗАКАЗАТЬ -->
+<section id="how">
+  <img class="deco deco-stars dl" src="img/deco-stars.webp" alt="" aria-hidden="true">
+  <img class="deco deco-stars dm2" src="img/deco-stars.webp" alt="" aria-hidden="true">
+  <div class="container">
+    <h2 class="reveal">Рецепт заказа</h2>
+    <p class="section-sub reveal">Четыре шага — и торт у вас на празднике</p>
+    <ol class="steps">
+      <li class="step reveal"><div class="num" aria-hidden="true">1</div><h3>Заявка</h3><p>Оставьте заявку на сайте или напишите в WhatsApp</p></li>
+      <li class="step reveal"><div class="num" aria-hidden="true">2</div><h3>Обсуждение</h3><p>Подберём дизайн, начинку и вес под ваш праздник</p></li>
+      <li class="step reveal"><div class="num" aria-hidden="true">3</div><h3>Приготовление</h3><p>Испеку ваш торт из натуральных ингредиентов к дате</p></li>
+      <li class="step reveal"><div class="num" aria-hidden="true">4</div><h3>Праздник</h3><p>Доставка или самовывоз в Городе — торт у вас</p></li>
+    </ol>
+    <p class="how-note reveal">От заявки до праздника обычно проходит 3–5 дней ✦</p>
+  </div>
+</section>
+<!-- ОТЗЫВЫ -->
+<section id="reviews">
+  <img class="deco deco-cloud" src="img/deco-cloud.webp" alt="" aria-hidden="true">
+  <img class="deco deco-stars dl" src="img/deco-stars.webp" alt="" aria-hidden="true">
+  <img class="deco deco-stars dr" src="img/deco-stars.webp" alt="" aria-hidden="true">
+  <img class="deco deco-stars dm" src="img/deco-stars.webp" alt="" aria-hidden="true">
+  <img class="deco deco-stars dm2" src="img/deco-stars.webp" alt="" aria-hidden="true">
+  <div class="container">
+    <h2 class="reveal">Отзывы гостей</h2>
+    <p class="section-sub reveal">Больше отзывов — на страничках в соцсетях</p>
+    <div class="reviews">
+      <article class="review reveal"><p class="stars" role="img" aria-label="Оценка 5 из 5">★★★★★</p>
+        <blockquote>«Заказывали свадебный торт — гости до сих пор вспоминают! Красивый, нежный и совсем не приторный. Спасибо, Василиса!»</blockquote>
+        <p class="review-author">
+          <span class="ava"><img src="img/icon-user-couple.webp" alt=""></span>
+          <span class="review-who"><b>Анна и Сергей</b><small>свадьба</small></span>
+        </p></article>
+      <article class="review reveal"><p class="stars" role="img" aria-label="Оценка 5 из 5">★★★★★</p>
+        <blockquote>«Торт в виде единорога на день рождения дочки — это было нечто! Ребёнок счастлив, а вкус — выше всяких похвал.»</blockquote>
+        <p class="review-author">
+          <span class="ava"><img src="img/icon-user-mom.webp" alt=""></span>
+          <span class="review-who"><b>Мария</b><small>детский праздник</small></span>
+        </p></article>
+      <article class="review reveal"><p class="stars" role="img" aria-label="Оценка 5 из 5">★★★★★</p>
+        <blockquote>«Заказываем корпоративные торты с логотипом уже третий раз. Всегда вовремя, всегда вкусно и очень красиво.»</blockquote>
+        <p class="review-author">
+          <span class="ava"><img src="img/icon-user-office.webp" alt=""></span>
+          <span class="review-who"><b>Компания «Праздник»</b><small>корпоративный торт</small></span>
+        </p></article>
+    </div>
+  </div>
+</section>
+<!-- CTA -->
+<section id="contacts">
+  <div class="container">
+    <div class="cta-band reveal">
+      <img class="cta-doodle cd-l" src="img/deco-cta-item-cake.webp" alt="" aria-hidden="true">
+      <img class="cta-doodle cd-r" src="img/deco-cta-item-teapot.webp" alt="" aria-hidden="true">
+      <img class="deco deco-stars cl" src="img/deco-stars.webp" alt="" aria-hidden="true">
+      <img class="deco deco-stars cr" src="img/deco-stars.webp" alt="" aria-hidden="true">
+      <h2>Обсудим торт вашей мечты?</h2>
+      <p>Позвоните или напишите — отвечу в течение часа и рассчитаю стоимость</p>
+      <div class="hero-cta" style="justify-content:center">
+        <a class="btn btn-primary" href="tel:+79999999999">📞 +7 (999) 999-99-99</a>
+        <a class="btn btn-ghost" href="https://wa.me/79999999999" target="_blank" rel="noopener">Написать в WhatsApp</a>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+<!-- ФУТЕР -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <h3>Кондитерская · Vasilisa Prekrasnaya</h3>
+        <p>Авторские торты на заказ в Городе. Свадьбы, дни рождения, юбилеи, корпоративы и детские праздники.</p>
+        <div class="socials">
+          <a href="https://vk.com/" target="_blank" rel="noopener" title="ВКонтакте">VK</a>
+          <a href="https://ok.ru/" target="_blank" rel="noopener" title="Одноклассники">OK</a>
+        </div>
+      </div>
+      <div>
+        <h3>Навигация</h3>
+        <nav aria-label="Меню в подвале">
+          <a href="#cats">Каталог</a><a href="#cakes">Торты</a><a href="#about">О кондитере</a><a href="#how">Как заказать</a><a href="#reviews">Отзывы</a>
+        </nav>
+      </div>
+      <div>
+        <h3>Контакты</h3>
+        <address>
+          <a href="tel:+79999999999">+7 (999) 999-99-99</a>
+          <a href="mailto:example@mail.ru">example@mail.ru</a>
+          <p>г. Город</p>
+          <p>Ежедневно с 9:00 до 20:00</p>
+          <p>Доставка и самовывоз по Городу</p>
+          <p>WhatsApp · Viber</p>
+        </address>
+      </div>
+    </div>
+    <p class="copyright">© 2026 Кондитерская — Торты на заказ в Городе</p>
+  </div>
+<div class="footer-scene" aria-hidden="true">
+  <div class="fs-stage">
+    <img class="fs-table" src="img/deco-table.webp" alt="">
+    <img class="fs-whisk" src="img/deco-item-whisk.webp" alt="">
+    <img class="fs-cake" src="img/deco-item-cake.webp" alt="">
+    <img class="fs-cup" src="img/deco-item-cup.webp" alt="">
+    <img class="fs-teapot" src="img/deco-item-teapot.webp" alt="">
+  </div>
+</div>
+</footer>
+<!-- МОДАЛКА ЗАКАЗА -->
+<div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal()" aria-label="Закрыть окно">×</button>
+    <h3 id="modalTitle">Заказать торт</h3>
+    <p>Оставьте заявку — Василиса свяжется с вами и рассчитает стоимость</p>
+    <form id="orderForm">
+      <input type="text" id="fName" placeholder="Ваше имя" aria-label="Ваше имя" autocomplete="name" required>
+      <input type="tel" id="fPhone" placeholder="Телефон" aria-label="Телефон" autocomplete="tel" required>
+      <select id="fType" aria-label="Категория торта">
+        <option>3D торты</option><option>Сладкий стол и капкейки</option><option>Муссовые торты</option>
+        <option>Торты к праздникам</option><option>Корпоративные торты</option><option>Детские торты</option>
+        <option>Свадебные и юбилейные</option><option>Пряники</option><option>Без мастичного покрытия</option>
+      </select>
+      <input type="text" id="fDate" placeholder="Дата праздника" aria-label="Дата праздника">
+      <textarea id="fComment" rows="2" placeholder="Пожелания к торту" aria-label="Пожелания к торту"></textarea>
+      <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center">Отправить в WhatsApp</button>
+    </form>
+  </div>
+</div>
+<button id="toTop" aria-label="Вернуться наверх">↑</button>
+<script src="js/scripts.js"></script>
+</body>
+</html>

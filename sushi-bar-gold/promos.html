@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" href="images/favicon/favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" href="images/favicon/favicon.ico" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Акции и сеты — Суши Бар</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/oswald@5.0.20/400.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/inter@5.0.16/400.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/inter@5.0.16/600.css" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <div id="header-slot"></div>
+  <main class="page">
+    <div class="container">
+      <div class="page__header">
+        <a href="index.html" class="page__back">← К меню</a>
+        <h1 class="page__title">Акции и сеты</h1>
+        <span class="page__kanji">特</span>
+      </div>
+
+      <section class="info-section">
+        <h2 class="info-section__title">Активные акции и промокоды</h2>
+        <div class="promo-cards" id="promoCards"></div>
+      </section>
+
+      <section class="info-section">
+        <h2 class="info-section__title">Блюдо дня</h2>
+        <p class="info-section__note">По промокоду блюдо дня по спеццене — точную цену сообщит оператор. Количество ограничено. Сеты не учитываются при подсчёте суммы.</p>
+        <div class="dish-week" id="dishWeek"></div>
+        <div class="dish-week__note">Не действует в выходные и праздничные дни · Способ доставки: курьер</div>
+      </section>
+    </div>
+  </main>
+  <div id="footer-slot"></div>
+  <div id="layout-slot"></div>
+  <!-- ЯДРО -->
+  <script src="js/core/version.js"></script>
+  <script src="js/core/utils.js"></script>
+  <script src="js/core/data.js"></script>
+  <script src="js/core/site-config.js"></script>
+  <script src="js/core/content.js"></script>
+  <script src="js/core/state.js"></script>
+  <script src="js/core/icons.js"></script>
+  <script src="js/core/catalog.js"></script>
+  <script src="js/core/cart.js"></script>
+  <script src="js/core/wok.js"></script>
+  <script src="js/core/sauce.js"></script>
+  <script src="js/core/checkout.js"></script>
+  <script src="js/core/carousel.js"></script>
+  <script src="js/layout.js"></script>
+  <script src="js/core/backend.js"></script>
+
+  <!-- FEATURES V2 (только для V2+ версий) -->
+  <script src="js/features-v2/search.js"></script>
+  <script src="js/features-v2/order-history.js"></script>
+
+  <!-- FEATURES V3 (только для V3) -->
+  <script src="js/features-v3/reviews.js"></script>
+  <script src="js/features-v3/loyalty.js"></script>
+
+  <script src="js/app.js"></script>
+    <script>
+    const promos = (Content.getPromos && Content.getPromos()) || [];
+    const active = promos.filter(p => p.active);
+    const el = document.getElementById('promoCards');
+    el.innerHTML = active.length ? active.map(p => `
+      <div class="promo-card">
+        <div class="promo-card__eyebrow">Промокод · ${p.type === 'percent' ? p.value + '%' : p.type === 'fixed' ? '−' + p.value + ' ₽' : 'подарок'}</div>
+        <div class="promo-card__title">${p.code}</div>
+        <div class="promo-card__text">${p.description || ''}</div>
+      </div>`).join('') : '<p class="checkout-disclaimer">Сейчас нет активных акций</p>';
+  </script>
+</body>
+</body>
+</html>

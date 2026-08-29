@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" href="images/favicon/favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" href="images/favicon/favicon.ico" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Доставка и оплата — Суши Бар</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/oswald@5.0.20/400.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/inter@5.0.16/400.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/inter@5.0.16/600.css" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <div id="header-slot"></div>
+  <main class="page">
+    <div class="container">
+      <div class="page__header">
+        <a href="index.html" class="page__back">← К меню</a>
+        <h1 class="page__title">Доставка и оплата</h1>
+        <span class="page__kanji">配</span>
+      </div>
+
+      <section class="info-section">
+        <h2 class="info-section__title">Время приёма заказов</h2>
+        <div class="schedule" id="deliverySchedule"></div>
+      </section>
+
+      <section class="info-section">
+        <h2 class="info-section__title">Ключевые условия</h2>
+        <div class="info-cards">
+          <div class="info-card"><div class="info-card__label">Бесплатная доставка</div><div class="info-card__value">от 1 000 ₽</div><div class="info-card__note">по Элисте, иначе 200 ₽</div></div>
+          <div class="info-card"><div class="info-card__label">Среднее время</div><div class="info-card__value">60 мин</div><div class="info-card__note">точное время сообщит оператор</div></div>
+          <div class="info-card"><div class="info-card__label">Минимальный заказ</div><div class="info-card__value">0 ₽</div><div class="info-card__note">без ограничений</div></div>
+        </div>
+      </section>
+
+      <section class="info-section">
+        <h2 class="info-section__title">Зоны доставки и стоимость</h2>
+        <div class="zones-table">
+          <div class="zones-table__header"><span>Зона</span><span>Стоимость</span><span>Бесплатно от</span></div>
+          <div class="zones-table__row zones-table__row--highlight"><span>Элиста</span><span>200 ₽</span><span>от 1 000 ₽</span></div>
+          <div class="zones-table__row"><span>пос. Аршан</span><span>300 ₽</span><span>—</span></div>
+          <div class="zones-table__row"><span>пос. Лола</span><span>450 ₽</span><span>—</span></div>
+          <div class="zones-table__row"><span>пгт. Салын</span><span>300 ₽</span><span>—</span></div>
+          <div class="zones-table__row"><span>с. Троицкое</span><span>350 ₽</span><span>—</span></div>
+        </div>
+      </section>
+
+      <section class="info-section">
+        <h2 class="info-section__title">Способы оплаты</h2>
+        <div class="info-cards">
+          <div class="info-card"><div class="info-card__label">Курьеру</div><div class="info-card__value">💵 / 💳</div><div class="info-card__note">наличными или картой через терминал</div></div>
+          <div class="info-card"><div class="info-card__label">При самовывозе</div><div class="info-card__value">💵 / 💳</div><div class="info-card__note">наличными или картой через терминал</div></div>
+        </div>
+        <p class="info-section__note">Онлайн-оплата на сайте не используется — оплата только при получении заказа.</p>
+      </section>
+    </div>
+  </main>
+  <div id="footer-slot"></div>
+  <div id="layout-slot"></div>
+  <!-- ЯДРО -->
+  <script src="js/core/version.js"></script>
+  <script src="js/core/utils.js"></script>
+  <script src="js/core/data.js"></script>
+  <script src="js/core/site-config.js"></script>
+  <script src="js/core/content.js"></script>
+  <script src="js/core/state.js"></script>
+  <script src="js/core/icons.js"></script>
+  <script src="js/core/catalog.js"></script>
+  <script src="js/core/cart.js"></script>
+  <script src="js/core/wok.js"></script>
+  <script src="js/core/sauce.js"></script>
+  <script src="js/core/checkout.js"></script>
+  <script src="js/core/carousel.js"></script>
+  <script src="js/layout.js"></script>
+  <script src="js/core/backend.js"></script>
+
+  <!-- FEATURES V2 (только для V2+ версий) -->
+  <script src="js/features-v2/search.js"></script>
+  <script src="js/features-v2/order-history.js"></script>
+
+  <!-- FEATURES V3 (только для V3) -->
+  <script src="js/features-v3/reviews.js"></script>
+  <script src="js/features-v3/loyalty.js"></script>
+
+  <script src="js/app.js"></script>
+    <script>
+    const cfg = (Content.getSettings && Content.getSettings()) || window.SITE_CONFIG || {};
+    const schedule = (cfg.schedule && cfg.schedule.delivery) || [];
+    document.getElementById('deliverySchedule').innerHTML =
+      schedule.map(s => `<div class="schedule__row"><span>${s.days}</span><span>${s.time}</span></div>`).join('') +
+      `<div class="schedule__row schedule__row--note"><span>праздничные дни</span><span>по расписанию пт-сб</span></div>`;
+  </script>
+</body>
+</body>
+</html>

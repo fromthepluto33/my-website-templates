@@ -1,0 +1,378 @@
+/* ==========================================================================
+   1. ПОДКЛЮЧЕНИЕ VARIABLE MONTSERRAT (Кириллица и Латиница)
+   ========================================================================== */
+
+/* Обычное начертание (Normal / Прямой) */
+/* montserrat-regular - cyrillic_latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 400;
+  src: url('D:/tortik33.ru/fonts/montserrat-v31-cyrillic_latin-regular.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+/* montserrat-500 - cyrillic_latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 500;
+  src: url('D:/tortik33.ru/fonts/montserrat-v31-cyrillic_latin-500.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+/* montserrat-600 - cyrillic_latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 600;
+  src: url('D:/tortik33.ru/fonts/montserrat-v31-cyrillic_latin-600.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+/* montserrat-700 - cyrillic_latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 700;
+  src: url('D:/tortik33.ru/fonts/montserrat-v31-cyrillic_latin-700.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+/* ==========================================================================
+   2. ПОДКЛЮЧЕНИЕ PHENOMENA
+   ========================================================================== */
+@font-face {
+  font-family: 'Phenomena';
+  font-style: normal;
+  font-weight: 700; /* Black — это самый плотный вес (900) */
+  font-display: swap;
+  src: url('D:/tortik33.ru/fonts/Phenomena-Bold.woff2') format('woff2');
+}
+/* ============ БАЗА ============ */
+:root{
+  --bg:#FFFBF7;
+  --surface:#FFFFFF;
+  --pink-100:#FDEEF3;
+  --pink-200:#F8D8E1;
+  --pink-400:#EBA8BC;
+  --rose:#D67D95;
+  --rose-dark:#C0647E;
+  --caramel:#C99B72;
+  --text:#4B3A41;
+  --muted:#937982;
+  --radius:26px;
+  --shadow:0 18px 45px rgba(214,125,149,.16);
+  --ease:cubic-bezier(.22,.61,.36,1);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Montserrat',sans-serif;
+  background:var(--bg);color:var(--text);
+  overflow-x:hidden;line-height:1.6;
+}
+body.no-scroll{overflow:hidden}
+h1,h2,h3,.display{font-family:'Phenomena','Montserrat',sans-serif;font-weight:400;letter-spacing:.02em}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+ul,ol{list-style:none}
+.container{width:min(1180px,92%);margin:0 auto}
+section{padding:90px 0;position:relative}
+h2{font-size:clamp(28px,4vw,44px);text-align:center;margin-bottom:14px}
+.section-sub{text-align:center;color:var(--muted);max-width:560px;margin:0 auto 52px}
+
+/* Появление при скролле — мягкое */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
+.reveal.visible{opacity:1;transform:none}
+
+/* Кнопки */
+.btn{display:inline-flex;align-items:center;gap:10px;padding:16px 34px;border-radius:60px;
+  font-family:'Montserrat',sans-serif;font-weight:600;font-size:15px;border:none;cursor:pointer;
+  text-decoration:none;
+  transition:background .4s var(--ease),color .4s var(--ease),border-color .4s var(--ease),box-shadow .4s var(--ease)}
+.btn-primary{background:var(--rose);color:#fff;box-shadow:0 12px 28px rgba(214,125,149,.35)}
+.btn-primary:hover{background:var(--rose-dark);box-shadow:0 18px 34px rgba(214,125,149,.45)}
+.btn-ghost{background:transparent;color:var(--rose);border:2px solid var(--pink-400)}
+.btn-ghost:hover{background:var(--rose);border-color:var(--rose);color:#fff;box-shadow:0 12px 28px rgba(214,125,149,.35)}
+
+/* ============ ШАПКА ============ */
+header{position:fixed;top:0;left:0;right:0;z-index:100;padding:14px 0;
+  transition:background .4s var(--ease),box-shadow .4s var(--ease)}
+header.scrolled{background:rgba(255,251,247,.97);box-shadow:0 6px 24px rgba(75,58,65,.08)}
+.header-inner{display:flex;align-items:center;justify-content:space-between;gap:20px;min-height:64px}
+.logo img{height:64px;transition:transform .4s var(--ease)}
+.logo:hover img{transform:scale(1.04)}
+#nav{display:flex;gap:28px}
+#nav a{font-size:14px;font-weight:500;position:relative;padding:6px 0}
+#nav a::after{content:'';position:absolute;left:0;bottom:0;width:0;height:2px;background:var(--rose);border-radius:2px;transition:width .35s var(--ease)}
+#nav a:hover::after{width:100%}
+.header-right{display:flex;align-items:center;gap:18px}
+.header-phone{font-weight:600;font-size:14px;white-space:nowrap}
+.burger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer}
+.burger span{width:26px;height:2px;background:var(--rose);border-radius:2px;transition:.3s}
+.burger.active span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.burger.active span:nth-child(2){opacity:0}
+.burger.active span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.nav-phone{display:none}
+
+/* ============ HERO ============ */
+.hero{padding:170px 0 90px;overflow:hidden}
+.hero::before,.hero::after{content:'';position:absolute;border-radius:50%;filter:blur(70px);opacity:.5;z-index:-1}
+.hero::before{width:480px;height:480px;background:var(--pink-200);top:-120px;right:-140px}
+.hero::after{width:380px;height:380px;background:#FBE8D8;bottom:-100px;left:-120px}
+.hero-inner{display:grid;grid-template-columns:1.05fr .95fr;gap:60px;align-items:center}
+.hero-badge{display:inline-block;background:var(--pink-100);color:var(--rose);padding:8px 20px;border-radius:40px;font-size:13px;font-weight:600;margin-bottom:22px}
+.hero h1{font-size:clamp(38px,5.2vw,62px);line-height:1.08;margin-bottom:22px}
+.hero h1 em{font-style:normal;color:var(--rose)}
+.hero p{color:var(--muted);max-width:460px;margin-bottom:36px;font-size:17px}
+.hero-cta{display:flex;gap:16px;flex-wrap:wrap}
+.hero-photo{position:relative}
+.hero-photo .frame{border-radius:240px 240px 32px 32px;overflow:hidden;box-shadow:var(--shadow);border:10px solid #fff}
+.hero-photo .frame img{width:100%;height:520px;object-fit:cover;animation:breath 9s ease-in-out infinite}
+@keyframes breath{0%,100%{transform:scale(1)}50%{transform:scale(1.05)}}
+.chip{position:absolute;background:#fff;border-radius:18px;padding:12px 20px;box-shadow:var(--shadow);font-size:13px;font-weight:600;animation:float 6s ease-in-out infinite}
+.chip small{display:block;font-weight:400;color:var(--muted)}
+.chip-1{top:8%;left:-8%}
+.chip-2{bottom:14%;right:-6%;animation-delay:1.6s}
+.chip-3{bottom:-4%;left:6%;animation-delay:3s}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
+.sprinkle{position:absolute;border-radius:50%;background:var(--pink-400);opacity:0;z-index:-1;
+  animation:twinkle var(--t,6s) ease-in-out infinite;animation-delay:var(--d,0s)}
+@keyframes twinkle{
+  0%,100%{opacity:0;transform:scale(.4)}
+  50%{opacity:.55;transform:scale(1)}
+}
+@media (prefers-reduced-motion:reduce){.sprinkle{animation:none;opacity:.3}}
+
+/* ============ ЛЕНТА ПОВОДОВ (бесшовная) ============ */
+.marquee{background:var(--pink-100);padding:18px 0;overflow:hidden;transform:rotate(-1.2deg) scale(1.02);position:relative;z-index:2;margin-top:-38px}
+.marquee-track{display:flex;width:max-content;will-change:transform;animation:run 40s linear infinite}
+.marquee-track span{font-family:'Phenomena','Montserrat',sans-serif;font-size:20px;color:var(--rose);white-space:nowrap;padding-right:48px}
+.marquee:hover .marquee-track{animation-play-state:paused}
+@keyframes run{to{transform:translateX(-50%)}}
+@media (prefers-reduced-motion:reduce){.marquee-track{animation:none}}
+
+/* ============ КАТЕГОРИИ ============ */
+.cats{display:flex;flex-wrap:wrap;justify-content:center;gap:34px 26px}
+.cat{text-align:center;width:150px}
+.cat a{display:block}
+.cat .ring{display:block;width:120px;height:120px;border-radius:50%;overflow:hidden;border:6px solid #fff;
+  box-shadow:0 0 0 12px var(--pink-100),0 10px 26px rgba(75,58,65,.12);transition:all .5s var(--ease);margin:0 auto 14px}
+.cat:nth-child(even) .ring{box-shadow:0 0 0 12px #FBE8D8,0 10px 26px rgba(75,58,65,.12)}
+.cat .ring img{width:100%;height:100%;object-fit:cover;transition:transform .8s var(--ease)}
+.cat:hover .ring{transform:translateY(-8px) rotate(3deg);
+  box-shadow:0 0 0 12px var(--pink-200),var(--shadow)}
+.cat:hover .ring img{transform:scale(1.12)}
+.cat p{font-weight:600;font-size:14px;max-width:140px;margin:0 auto}
+.cats-hint{text-align:center;margin-top:46px;color:var(--muted);font-size:14px}
+.cats-hint a{color:var(--rose);font-weight:600;border-bottom:1px dashed var(--pink-400);transition:color .3s}
+.cats-hint a:hover{color:var(--rose-dark)}
+
+/* ============ КАРТОЧКИ ТОРТОВ ============ */
+.cakes{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:30px}
+.cake{background:var(--surface);border-radius:var(--radius);overflow:hidden;box-shadow:0 10px 30px rgba(75,58,65,.08);transition:all .5s var(--ease);display:flex;flex-direction:column}
+.cake:hover{transform:translateY(-10px);box-shadow:var(--shadow)}
+.cake .img{overflow:hidden;aspect-ratio:4/3;position:relative}
+.cake .img img{width:100%;height:100%;object-fit:cover;transition:transform 1.4s var(--ease)}
+.cake:hover .img img{transform:scale(1.08)}
+.cake .tag{position:absolute;top:14px;left:14px;background:rgba(255,255,255,.92);color:var(--rose);font-size:12px;font-weight:600;padding:6px 14px;border-radius:30px}
+.cake .body{padding:22px 22px 26px;display:flex;flex-direction:column;gap:10px;flex:1}
+.cake h3{font-size:21px}
+.cake .desc{font-size:13.5px;color:var(--muted);flex:1}
+.cake .foot{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:6px}
+.price{font-size:13px;font-weight:600;color:var(--caramel)}
+.cake .btn{padding:11px 22px;font-size:13px}
+.cake-ghost{background:transparent;box-shadow:none;border:2px dashed var(--pink-400);min-height:320px;justify-content:center}
+.cake-ghost:hover{transform:translateY(-10px);background:var(--surface);box-shadow:var(--shadow)}
+.ghost-body{padding:30px;text-align:center;display:flex;flex-direction:column;gap:12px;align-items:center}
+.ghost-star{width:56px;height:56px}
+
+/* ============ ШАГИ ============ */
+#how{background:var(--pink-100)}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:36px}
+.step{text-align:center;position:relative}
+.step:not(:last-child)::after{content:'';position:absolute;top:24px;
+  left:calc(50% + 46px);width:calc(100% - 56px);height:4px;
+  background:radial-gradient(circle,var(--pink-400) 1.6px,transparent 2px) left center/14px 4px repeat-x;
+  opacity:.7}
+.step .num{width:auto;height:52px;line-height:1;background:none;margin:0 auto 18px;
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Phenomena','Montserrat',sans-serif;font-size:48px;color:var(--rose);
+  text-decoration:underline wavy var(--pink-400);text-decoration-thickness:2px;text-underline-offset:10px;
+  transition:transform .4s var(--ease),color .4s var(--ease)}
+.step:hover .num{background:none;transform:scale(1.12) rotate(-6deg);color:var(--rose-dark)}
+.step h3{font-size:19px;margin-bottom:8px}
+.step p{font-size:13.5px;color:var(--muted)}
+
+/* ============ О КОНДИТЕРЕ ============ */
+.about .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:30px 26px;margin-bottom:56px}
+.stat{display:flex;align-items:center;gap:16px;justify-content:center}
+.stat-ico{position:relative;flex:none;width:112px;height:112px;border-radius:50%;
+  background:var(--pink-100);display:flex;align-items:center;justify-content:center;
+  transition:transform .4s var(--ease)}
+.stat:hover .stat-ico{transform:scale(1.06) rotate(-3deg)}
+.stat:nth-child(even) .stat-ico{background:#FBE8D8}
+.stat-ico img:first-child{width:84px;height:84px;object-fit:contain}
+.stat-ico .badge{position:absolute;top:-8px;left:-8px;width:46px;height:46px;
+  border-radius:50%;background:var(--pink-400);border:4px solid var(--bg);
+  display:flex;align-items:center;justify-content:center}
+.stat-ico .badge img{width:22px;height:22px;object-fit:contain}
+.stat-txt b{font-family:'Phenomena','Montserrat',sans-serif;font-size:30px;color:var(--rose);display:block;line-height:1.1}
+.stat-txt span{font-size:13px;color:var(--muted)}
+.about h2{margin-bottom:18px}
+.about-lead{text-align:center;color:var(--muted);max-width:640px;margin:0 auto 14px}
+@media(max-width:960px){.about .stats{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){
+  .about .stats{grid-template-columns:1fr}
+  .stat-ico{width:92px;height:92px}
+  .stat-ico img:first-child{width:62px;height:62px}
+  .stat-ico .badge{width:38px;height:38px;border:3px solid var(--bg)}
+}
+.about-letter{display:grid;grid-template-columns:minmax(280px,360px) 1fr;gap:60px;
+  align-items:center;max-width:1040px;margin:0 auto}
+.about-portrait{border-radius:220px 220px 26px 26px;overflow:hidden;
+  border:8px solid #fff;box-shadow:var(--shadow)}
+.about-portrait img{width:100%;height:420px;object-fit:cover;object-position:50% 18%} /*Было height: 440px*/
+.about-text h2{text-align:left;margin-bottom:18px}
+.about-text .about-lead{text-align:left;max-width:none;margin:0 0 14px}
+@media(max-width:960px){
+  .about-letter{grid-template-columns:1fr;gap:36px;max-width:560px}
+  .about-portrait img{height:360px} /*Было height: 380px*/
+  .about-text h2,.about-text .about-lead{text-align:center}
+}
+
+/* ============ ОТЗЫВЫ ============ */
+.reviews{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.review{background:#fff;border-radius:var(--radius);padding:32px 28px;box-shadow:0 10px 30px rgba(75,58,65,.08);transition:all .5s var(--ease);position:relative}
+.review:hover{transform:translateY(-8px) rotate(-.6deg);box-shadow:var(--shadow)}
+.review .stars{color:#E9B872;letter-spacing:3px;margin-bottom:16px}
+.review blockquote{font-size:14px;color:var(--muted);margin-bottom:20px}
+.review b{font-size:14px}
+.review small{display:block;color:var(--rose);font-weight:600;font-size:12px;margin-top:2px}
+.review-author{display:flex;align-items:center;gap:12px}
+.ava{flex:none;width:52px;height:52px;border-radius:50%;background:var(--pink-100);
+  display:flex;align-items:center;justify-content:center;overflow:hidden}
+.ava img{width:40px;height:40px;object-fit:contain}
+.review:nth-child(2) .ava{background:#FBE8D8}
+.review-who b{font-size:14px;display:block}
+.review-who small{display:block;color:var(--rose);font-weight:600;font-size:12px;margin-top:2px}
+
+/* ============ CTA + ФУТЕР ============ */
+.cta-band{background:linear-gradient(120deg,var(--pink-200),var(--pink-100) 60%,#FBE8D8);border-radius:40px;padding:64px 40px;text-align:center;overflow:hidden;position:relative}
+.cta-band h2{margin-bottom:12px}
+.cta-band p{color:var(--muted);margin-bottom:32px}
+.cta-band .deco{display:block;width:88px;opacity:.5}
+.cta-band .cl{left:5%;top:22px;transform:rotate(-10deg)}
+.cta-band .cr{right:6%;bottom:22px;transform:rotate(12deg) scale(.8)}
+footer{padding:56px 0 30px;margin-top:90px;position:relative;overflow:hidden}
+.footer-grid{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:40px;margin-bottom:40px}
+.footer-grid h3{font-family:'Phenomena','Montserrat',sans-serif;font-size:18px;margin-bottom:16px;color:var(--rose)}
+.footer-grid a,.footer-grid p,.footer-grid address{display:block;font-size:14px;color:var(--muted);margin-bottom:10px;transition:color .3s;font-style:normal}
+.footer-grid a:hover{color:var(--rose)}
+.socials{display:flex;gap:12px}
+.socials a{width:44px;height:44px;border-radius:50%;background:var(--pink-100);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:var(--rose);transition:all .4s var(--ease)}
+.socials a:hover{background:var(--rose);color:#fff;transform:translateY(-4px)}
+.copyright{text-align:center;font-size:12.5px;color:var(--muted);padding-top:24px}
+
+/* ============ МОДАЛКА ============ */
+.modal{position:fixed;inset:0;background:rgba(75,58,65,.45);backdrop-filter:blur(6px);z-index:200;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;visibility:hidden;transition:opacity .4s,visibility .4s}
+.modal.open{opacity:1;pointer-events:auto;visibility:visible}
+.modal-box{background:#fff;border-radius:32px;padding:44px 40px;width:min(460px,92%);transform:translateY(30px) scale(.96);transition:transform .5s var(--ease);position:relative}
+.modal.open .modal-box{transform:none}
+.modal-box h3{font-size:26px;margin-bottom:8px}
+.modal-box>p{font-size:13.5px;color:var(--muted);margin-bottom:24px}
+.modal-box input,.modal-box select,.modal-box textarea{width:100%;border:2px solid var(--pink-200);border-radius:16px;padding:13px 18px;font-family:'Montserrat',sans-serif;font-size:14px;margin-bottom:14px;background:var(--bg);transition:border-color .3s;outline:none;color:var(--text)}
+.modal-box input:focus,.modal-box select:focus,.modal-box textarea:focus{border-color:var(--rose)}
+.modal-close{position:absolute;top:18px;right:22px;background:none;border:none;font-size:26px;color:var(--muted);cursor:pointer;transition:color .3s}
+.modal-close:hover{color:var(--rose)}
+
+/* Кнопка наверх */
+#toTop{position:fixed;bottom:28px;right:28px;width:54px;height:54px;border-radius:50%;background:var(--rose);color:#fff;border:none;font-size:20px;cursor:pointer;box-shadow:var(--shadow);opacity:0;pointer-events:none;transition:all .4s var(--ease);z-index:90}
+#toTop.show{opacity:1;pointer-events:auto}
+#toTop:hover{transform:translateY(-5px)}
+
+/* ============ АДАПТИВ ============ */
+@media(max-width:960px){
+  #nav{position:fixed;inset:0;z-index:105;background:var(--bg);flex-direction:column;align-items:center;justify-content:center;gap:34px;transform:translateX(100%);transition:transform .5s var(--ease)}
+  #nav.open{transform:none}
+  #nav a{font-size:20px}
+  .nav-phone{display:block;font-size:20px;font-weight:600;color:var(--rose)}
+  .burger{display:flex;z-index:110}
+  .header-phone{display:none}
+  .hero-inner{grid-template-columns:1fr;gap:44px}
+  .hero-photo .frame img{height:420px}
+  .steps{grid-template-columns:repeat(2,1fr)}
+  .step::after{display:none}
+  .reviews{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr}
+  .footer-grid nav{display:block}
+}
+@media(max-width:560px){
+  .steps{grid-template-columns:1fr}
+  .chip-1{left:0}
+  .header-right .btn{padding:12px 20px;font-size:13px}
+  .hero{padding:130px 0 70px}
+  .hero-photo .frame img{height:340px}
+  .chip{padding:10px 14px;font-size:12px}
+  section{padding:64px 0}
+  .modal-box{padding:34px 24px}
+}
+
+/* ============ ЖИВОСТЬ: пульс CTA ============ */
+@keyframes btn-breath{0%,20%,100%{transform:scale(1)}10%{transform:scale(1.03)}}
+.cta-band .btn-primary{animation:btn-breath 4s var(--ease) infinite}
+@media (prefers-reduced-motion:reduce){.cta-band .btn-primary{animation:none}}
+.cta-doodle{position:absolute;pointer-events:none;mix-blend-mode:multiply;opacity:.35;display:none}
+@media(min-width:960px){.cta-doodle{display:block}}
+.cd-l{left:6%;top:50%;transform:translateY(-50%) rotate(-6deg);width:130px}
+.cd-r{right:6%;top:50%;transform:translateY(-50%) rotate(5deg);width:150px}
+
+/* ============ СЦЕНА В ФУТЕРЕ ============ */
+footer .container{position:relative;z-index:1}
+.footer-scene{position:absolute;left:50%;bottom:-35px;transform:translateX(-50%);
+  width:min(1180px,92%);pointer-events:none;opacity:.15;z-index:0}
+.fs-stage{position:relative}
+.fs-table{width:100%;display:block}
+.fs-stage img:not(.fs-table){position:absolute}
+.fs-whisk{left:8%;bottom:52%;width:12.5%}
+.fs-cake{left:25%;bottom:50%;width:12.5%}
+.fs-cup{left:48%;bottom:48%;width:8.5%}
+.fs-teapot{left:54%;bottom:62%;width:12.5%}
+@media(max-width:960px){
+  .footer-scene{position:relative;left:auto;bottom:auto;transform:none;margin:70px auto -64px;width:100%}
+}
+@media(max-width:560px){
+  .footer-scene{margin-bottom:0;opacity:.7}
+  .fs-cup{display:none}
+}
+@media(max-width:1200px) and (min-width:961px){
+  .footer-scene{bottom:-18px}
+}
+
+/* ============ ДЕКОР ПО БОКАМ ============ */
+.deco{position:absolute;pointer-events:none;mix-blend-mode:multiply;z-index:0;display:none}
+section>.container{position:relative;z-index:1}
+@media(min-width:1200px){.deco{display:block}}
+.deco-cloud{left:50%;top:45%;transform:translate(-50%,-50%);width:min(1500px,96%);opacity:.3}
+#cats .dl{left:4%;top:120px;transform:rotate(-8deg) scale(.8)}
+#cats .dr{right:6%;top:90px;transform:rotate(10deg) scale(.7)}
+#cats .dm{left:6%;bottom:90px;transform:rotate(-12deg) scale(.75)}
+#how .dl{left:5%;top:140px;transform:rotate(7deg) scale(.75)}
+#how .dr{right:5%;top:300px;transform:rotate(-11deg) scale(.85)}
+#reviews .deco-cloud{position:absolute;left:50%;top:64%;transform:translate(-50%,-50%);
+  width:min(1400px,96%);opacity:.35;pointer-events:none;mix-blend-mode:multiply;z-index:0}
+#reviews>.container{position:relative;z-index:1}
+#reviews .dl{left:6%;top:220px;transform:rotate(9deg) scale(.8)}
+#reviews .dr{right:5%;top:110px;transform:rotate(-13deg)}
+#cakes::before,#how::before{
+  content:'';position:absolute;left:0;right:0;top:-12px;height:12px;
+  background:radial-gradient(circle at 12px 12px,var(--pink-100) 11px,transparent 12px);
+  background-size:24px 12px;background-repeat:repeat-x}
+#cakes::after,#how::after{
+  content:'';position:absolute;left:0;right:0;bottom:-12px;height:12px;
+  background:radial-gradient(circle at 12px 0,var(--pink-100) 11px,transparent 12px);
+  background-size:24px 12px;background-repeat:repeat-x}
+.deco-stars{width:130px;opacity:.85}
+#cats .dm2{left:auto;right:7%;bottom:100px;transform:rotate(10deg) scale(.75)}
+#how .dm2{left:auto;right:6%;bottom:90px;transform:rotate(10deg) scale(.8)}
+.how-note{text-align:center;margin-top:52px;color:var(--muted);font-size:14px;font-weight:500}
+#reviews .dm2{right:12%;top:160px;transform:rotate(-9deg) scale(.75)}
+.about-letter{padding:44px 20px}

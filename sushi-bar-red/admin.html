@@ -1,0 +1,955 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" href="images/favicon/favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" href="images/favicon/favicon.ico" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Админ-панель — Суши Бар</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/oswald@5.0.20/400.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/inter@5.0.16/400.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/inter@5.0.16/600.css" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <style>
+    .admin { padding: 32px 16px 80px; max-width: 1080px; margin: 0 auto; }
+    .admin__title { font-family: var(--font-display); text-transform: uppercase; letter-spacing: .1em; font-size: 30px; margin-bottom: 8px; }
+    .admin__sub { color: var(--color-text-muted); font-size: 12px; margin-bottom: 24px; }
+    .admin__login { display: flex; flex-direction: column; gap: 12px; max-width: 340px; }
+    .tabs { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 24px; }
+    .tab { padding: 10px 16px; border: 1px solid var(--color-border); border-radius: 2px; font-family: var(--font-display); text-transform: uppercase; letter-spacing: .12em; font-size: 11px; color: var(--color-text-muted); cursor: pointer; transition: all .2s; background: none; }
+    .tab.is-active { border-color: var(--color-accent); color: var(--color-text); background: rgba(230,57,70,.1); }
+    .panel { background: var(--color-surface); border: 1px solid var(--color-border); border-radius: 2px; padding: 20px; margin-bottom: 16px; }
+    .panel h3 { font-family: var(--font-display); text-transform: uppercase; letter-spacing: .12em; font-size: 14px; margin-bottom: 16px; }
+    .row { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--color-border); flex-wrap: wrap; transition: background .2s; }
+    .row:last-child { border-bottom: none; }
+    .row__name { font-size: 13px; font-weight: 600; }
+    .row__meta { font-size: 11px; color: var(--color-text-muted); }
+    .row__actions { display: flex; gap: 6px; align-items: center; flex-wrap: wrap; }
+    .row.is-dragging { opacity: 0.4; }
+    .row.is-drag-over { background: rgba(230,57,70,.08); border-color: var(--color-accent); }
+    .row[draggable="true"] { cursor: grab; }
+    .row[draggable="true"]:active { cursor: grabbing; }
+    .btn { padding: 8px 12px; border-radius: 2px; font-size: 11px; text-transform: uppercase; letter-spacing: .1em; cursor: pointer; border: 1px solid var(--color-border-soft); background: none; color: var(--color-text-soft); transition: all .2s; }
+    .btn:hover { border-color: var(--color-text); color: var(--color-text); }
+    .btn--accent { background: var(--color-accent); border-color: var(--color-accent); color: #fff; }
+    .btn--accent:hover { background: var(--color-accent-dark); }
+    .btn--danger { color: var(--color-accent); }
+    .btn--icon { padding: 6px 9px; font-size: 13px; line-height: 1; }
+    .badge-btn { padding: 4px 8px; font-size: 10px; border-radius: 2px; border: 1px solid var(--color-border-soft); color: var(--color-text-muted); background: none; cursor: pointer; transition: all .2s; text-transform: uppercase; letter-spacing: .1em; }
+    .badge-btn.is-on { color: #fff; }
+    .badge-btn.badge--hit.is-on { background: #f59e0b; border-color: #f59e0b; }
+    .badge-btn.badge--promo.is-on { background: #22c55e; border-color: #22c55e; }
+    .switch { position: relative; width: 40px; height: 20px; background: var(--color-border-soft); border-radius: 20px; cursor: pointer; transition: background .2s; flex-shrink: 0; }
+    .switch::after { content: ''; position: absolute; top: 2px; left: 2px; width: 16px; height: 16px; background: #fff; border-radius: 50%; transition: left .2s; }
+    .switch.is-on { background: var(--color-accent); }
+    .switch.is-on::after { left: 22px; }
+    .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    @media (max-width: 640px) { .grid2 { grid-template-columns: 1fr; } }
+    .stat-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 12px; margin-bottom: 20px; }
+    .muted { color: var(--color-text-muted); font-size: 11px; }
+    .auth-error { color: var(--color-accent); font-size: 12px; min-height: 16px; }
+    .admin__topbar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; flex-wrap: wrap; gap: 12px; }
+    .img-drop { border: 2px dashed var(--color-border-soft); border-radius: 4px; padding: 24px; text-align: center; cursor: pointer; transition: all .2s; color: var(--color-text-muted); font-size: 12px; }
+    .img-drop:hover, .img-drop.is-over { border-color: var(--color-accent); color: var(--color-text); background: rgba(230,57,70,.05); }
+    .img-drop img { max-height: 120px; border-radius: 4px; margin: 0 auto; }
+    .chart { display: flex; align-items: flex-end; gap: 8px; height: 140px; padding-top: 12px; }
+    .chart__bar { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 6px; }
+    .chart__col { width: 100%; background: var(--color-accent); border-radius: 2px 2px 0 0; min-height: 4px; transition: height .3s; }
+    .chart__label { font-size: 9px; color: var(--color-text-muted); white-space: nowrap; }
+    .chart__value { font-size: 10px; color: var(--color-text); }
+    .category-group { margin-bottom: 20px; border: 1px solid var(--color-border); border-radius: 2px; overflow: hidden; }
+    .category-group__header { padding: 10px 14px; background: rgba(230,57,70,.05); border-bottom: 1px solid var(--color-border); font-family: var(--font-display); text-transform: uppercase; letter-spacing: .12em; font-size: 12px; display: flex; justify-content: space-between; align-items: center; }
+    .category-group__body { padding: 4px 14px; }
+    .dnd-hint { font-size: 11px; color: var(--color-text-muted); margin-bottom: 12px; }
+    .order-details { width: 100%; margin-top: 8px; padding: 10px 12px; background: var(--color-bg); border: 1px solid var(--color-border); border-radius: 2px; font-size: 12px; line-height: 1.6; color: var(--color-text-soft); }
+    .order-details__line { margin-bottom: 2px; }
+  </style>
+</head>
+<body>
+  <div class="admin">
+    <h1 class="admin__title">Админ-панель</h1>
+    <p class="admin__sub">Управляйте сайтом без правки кода. Все изменения сохраняются и отображаются на сайте.</p>
+
+    <div class="admin__login" id="adminLogin">
+      <div class="form-field"><label class="form-field__label" for="loginInput">Логин</label>
+        <input class="form-field__input" id="loginInput" type="text" placeholder="Введите логин" autocomplete="username" /></div>
+      <div class="form-field"><label class="form-field__label" for="passwordInput">Пароль</label>
+        <input class="form-field__input" id="passwordInput" type="password" placeholder="Введите пароль" autocomplete="current-password" /></div>
+      <div class="auth-error" id="authError"></div>
+      <button class="button button--primary" id="adminLoginBtn">Войти</button>
+      <a href="index.html" class="page__back">← Вернуться на сайт</a>
+    </div>
+
+    <div id="adminDashboard" hidden>
+      <div class="admin__topbar">
+        <div class="tabs" id="adminTabs" style="margin-bottom:0">
+          <button class="tab is-active" data-tab="orders">Заказы</button>
+          <button class="tab" data-tab="products">Товары</button>
+          <button class="tab" data-tab="promos">Акции</button>
+          <button class="tab" data-tab="stats">Статистика</button>
+          <button class="tab" data-tab="loyalty">Лояльность</button>
+          <button class="tab" data-tab="reviews">Отзывы</button>
+          <button class="tab" data-tab="settings">Настройки</button>
+          <button class="tab" data-tab="socials">Соцсети</button>
+          <button class="tab" data-tab="slides">Слайдеры</button>
+          <button class="tab" data-tab="security">Безопасность</button>
+        </div>
+        <button class="btn btn--danger" id="logoutBtn">Выйти</button>
+      </div>
+      <div id="tab-orders"></div>
+      <div id="tab-products" hidden></div>
+      <div id="tab-promos" hidden></div>
+      <div id="tab-stats" hidden></div>
+      <div id="tab-loyalty" hidden></div>
+      <div id="tab-reviews" hidden></div>
+      <div id="tab-settings" hidden></div>
+      <div id="tab-socials" hidden></div>
+      <div id="tab-slides" hidden></div>
+      <div id="tab-security" hidden></div>
+    </div>
+  </div>
+
+  <input type="file" id="editPhotoFile" accept="image/*" hidden />
+  <input type="file" id="slideImgFile" accept="image/*" hidden />
+
+  <!-- ЯДРО -->
+  <script src="js/core/version.js"></script>
+  <script src="js/core/utils.js"></script>
+  <script src="js/core/data.js"></script>
+  <script src="js/core/site-config.js"></script>
+  <script src="js/core/content.js"></script>
+  <script src="js/core/icons.js"></script>
+  <script src="js/core/backend.js"></script>
+  <script src="js/core/auth.js"></script>
+
+  <script>
+    /* ================= АВТОРИЗАЦИЯ ================= */
+    async function handleLogin() {
+      const login = $('#loginInput').value.trim();
+      const password = $('#passwordInput').value;
+      const errEl = $('#authError'); errEl.textContent = '';
+      const result = await Auth.login(login, password);
+      if (result.ok) { $('#adminLogin').hidden = true; $('#adminDashboard').hidden = false; renderAll(); }
+      else errEl.textContent = result.error;
+    }
+    $('#adminLoginBtn').addEventListener('click', handleLogin);
+    $('#passwordInput').addEventListener('keydown', (e) => { if (e.key === 'Enter') handleLogin(); });
+    $('#logoutBtn').addEventListener('click', () => { Auth.logout(); location.reload(); });
+
+    (async function bootstrap() {
+      await Auth.ensureCreds();
+      if (Auth.isLoggedIn()) { $('#adminLogin').hidden = true; $('#adminDashboard').hidden = false; renderAll(); }
+    })();
+
+    $('#adminTabs').addEventListener('click', (e) => {
+      const t = e.target.closest('[data-tab]'); if (!t) return;
+      document.querySelectorAll('.tab').forEach(x => x.classList.toggle('is-active', x === t));
+      ['orders','products','promos','stats','loyalty','reviews','settings','socials','slides','security'].forEach(name => {
+        $('#tab-' + name).hidden = name !== t.dataset.tab;
+      });
+      if (t.dataset.tab === 'stats') renderStats();
+      if (t.dataset.tab === 'loyalty') renderLoyalty();
+      if (t.dataset.tab === 'reviews') renderReviewsAdmin();
+    });
+
+    function renderAll() {
+      renderOrders(); renderProducts(); renderPromos(); renderStats(); renderReviewsAdmin(); renderSettings(); renderSocials(); renderSlides(); renderSecurity(); renderLoyalty();
+    }
+
+    /* ================= ЗАКАЗЫ (с составом) ================= */
+    function renderOrders() {
+      const stats = Backend.getStats();
+      const orders = Backend.getOrdersSync();
+      $('#tab-orders').innerHTML = `
+        <div class="stat-cards">
+          <div class="info-card"><div class="info-card__label">Всего</div><div class="info-card__value">${stats.totalOrders}</div></div>
+          <div class="info-card"><div class="info-card__label">Выручка</div><div class="info-card__value" style="font-size:20px">${fmt(stats.totalRevenue)} ₽</div></div>
+          <div class="info-card"><div class="info-card__label">Новых</div><div class="info-card__value">${stats.newOrders}</div></div>
+        </div>
+        <div class="panel"><h3>Последние заказы</h3>
+          ${orders.length ? orders.slice(0, 20).map(o => `
+            <div class="row" style="align-items:flex-start">
+              <div style="flex:1; min-width:200px">
+                <div class="row__name">№${o.number} · ${o.customer.name}</div>
+                <div class="row__meta">${o.customer.phone} · ${fmt(o.calc.total)} ₽ · ${o.paymentLabel || o.paymentMethod}</div>
+              </div>
+              <div class="row__actions">
+                <button class="btn" onclick="toggleOrderDetails('${o.id}')">Состав</button>
+                <select data-order="${o.id}" onchange="changeStatus(this)">
+                  ${Object.entries(Backend.ORDER_STATUSES).map(([k, v]) => `<option value="${k}" ${o.status === k ? 'selected' : ''}>${v.label}</option>`).join('')}
+                </select>
+              </div>
+              <div class="order-details" id="od-${o.id}" hidden>${orderDetailsHtml(o)}</div>
+            </div>`).join('') : '<p class="muted">Заказов пока нет</p>'}
+        </div>`;
+    }
+    function changeStatus(sel) { Backend.updateOrderStatus(sel.dataset.order, sel.value); renderOrders(); renderStats(); }
+
+    function orderDetailsHtml(o) {
+      const items = (o.items || []).map(i => {
+        const mods = (i.mods && i.mods.length) ? ' <span class="muted">(' + i.mods.join(', ') + ')</span>' : '';
+        return `<div class="order-details__line">• ${i.name} ×${i.qty} · ${fmt((i.price || 0) * (i.qty || 1))} ₽${mods}</div>`;
+      }).join('');
+
+      /* Самовывоз — иконка 🏪, курьер — 📍 с адресом */
+      const isPickup = o.deliveryMethod === 'pickup' || (o.customer && o.customer.address === 'Самовывоз');
+      const addr = isPickup
+        ? `<div class="order-details__line">🏪 Самовывоз</div>`
+        : (o.customer && o.customer.address ? `<div class="order-details__line">📍 ${o.customer.address}</div>` : '');
+
+      const comment = o.comment ? `<div class="order-details__line">💬 ${o.comment}</div>` : '';
+      return (items + addr + comment) || '<div class="muted">Нет данных о составе</div>';
+    }
+    function toggleOrderDetails(id) {
+      const el = document.getElementById('od-' + id);
+      if (el) el.hidden = !el.hidden;
+    }
+
+    /* ================= ФОТО ================= */
+    let pendingImage = '';
+    let editingPhotoId = null;
+
+    function handleImageFile(file, callback) {
+      if (!file || !file.type.startsWith('image/')) { alert('Выберите файл изображения'); return; }
+      if (file.size > 2 * 1024 * 1024) {
+        if (!confirm('Файл больше 2 МБ. Хранилище браузера ограничено (~5 МБ). Продолжить?')) return;
+      }
+      const reader = new FileReader();
+      reader.onload = (e) => callback(e.target.result);
+      reader.readAsDataURL(file);
+    }
+    function requestPhoto(id) { editingPhotoId = id; $('#editPhotoFile').click(); }
+    $('#editPhotoFile').addEventListener('change', (e) => {
+      const file = e.target.files[0];
+      if (!file || !editingPhotoId) return;
+      handleImageFile(file, (base64) => { Content.updateProduct(editingPhotoId, { image: base64 }); renderProducts(); alert('Фото обновлено'); });
+      e.target.value = ''; editingPhotoId = null;
+    });
+
+    /* ================= ТОВАРЫ (v6) ================= */
+    let productsFilter = 'all';
+    let productsSearch = '';
+
+    function renderProducts() {
+      const allItems = Content.getAllProducts();
+      const deletedItems = Content.getDeletedProducts();
+      const cats = window.CATEGORIES.filter(c => c.id !== 'fav');
+
+      let items = productsFilter === 'all' ? allItems : allItems.filter(p => p.category === productsFilter);
+      if (productsSearch) {
+        const q = productsSearch.toLowerCase();
+        items = items.filter(p => p.name.toLowerCase().includes(q));
+      }
+
+      const hiddenCount = allItems.filter(p => Content.isHidden(p.id)).length;
+      const grouped = {};
+      items.forEach(p => { (grouped[p.category] = grouped[p.category] || []).push(p); });
+
+      $('#tab-products').innerHTML = `
+        <div class="panel"><h3>Добавить товар</h3>
+          <div class="grid2">
+            <div class="form-field"><label class="form-field__label">Название</label><input class="form-field__input" id="pName" /></div>
+            <div class="form-field"><label class="form-field__label">Категория</label>
+              <select class="form-field__input" id="pCat">${cats.map(c => `<option value="${c.id}">${c.name}</option>`).join('')}</select></div>
+            <div class="form-field"><label class="form-field__label">Цена, ₽</label><input class="form-field__input" id="pPrice" type="number" /></div>
+            <div class="form-field"><label class="form-field__label">Вес</label><input class="form-field__input" id="pWeight" placeholder="250 г" /></div>
+          </div>
+          <div class="form-field"><label class="form-field__label">Состав / описание</label><input class="form-field__input" id="pDesc" /></div>
+          <div class="form-field">
+            <label class="form-field__label">Фото товара</label>
+            <div class="img-drop" id="imgDrop">
+              <div id="imgPreviewWrap" hidden><img id="imgPreview" /></div>
+              <div id="imgDropText">📷 Перетащите изображение сюда или нажмите для выбора</div>
+            </div>
+            <input type="file" id="imgFile" accept="image/*" hidden />
+            <input class="form-field__input" id="pImg" placeholder="…или вставьте ссылку на фото" style="margin-top:8px" oninput="pendingImage=''; hidePreview();" />
+          </div>
+          <button class="btn btn--accent" onclick="addProd()">+ Добавить товар</button>
+        </div>
+
+        <div class="panel">
+          <h3>Товары (${allItems.length} всего, показано ${items.length}, скрыто ${hiddenCount})</h3>
+          <div class="grid2" style="margin-bottom:16px">
+            <div class="form-field">
+              <label class="form-field__label">Фильтр по категории</label>
+              <select class="form-field__input" id="pFilter" onchange="applyFilter(this.value)">
+                <option value="all" ${productsFilter === 'all' ? 'selected' : ''}>Все категории (${allItems.length})</option>
+                ${cats.map(c => {
+                  const count = allItems.filter(p => p.category === c.id).length;
+                  return `<option value="${c.id}" ${productsFilter === c.id ? 'selected' : ''}>${c.name} (${count})</option>`;
+                }).join('')}
+              </select>
+            </div>
+            <div class="form-field">
+              <label class="form-field__label">Поиск по названию</label>
+              <input class="form-field__input" id="pSearch" placeholder="Например, Филадельфия" value="${productsSearch}" oninput="applySearch(this.value)" />
+            </div>
+          </div>
+          <p class="dnd-hint">💡 Перетаскивайте товары мышью для изменения порядка (только внутри одной категории). Метки «Хит» и «Акция» отображаются на карточках сайта.</p>
+
+          ${Object.keys(grouped).length ? cats.filter(c => grouped[c.id]).map(c => {
+            const catItems = grouped[c.id];
+            return `
+              <div class="category-group">
+                <div class="category-group__header">
+                  <span>${c.name} <span class="muted">${c.kanji}</span> — ${catItems.length} поз.</span>
+                </div>
+                <div class="category-group__body">
+                  ${catItems.map((p, idx) => renderProductRow(p, idx, catItems.length, c)).join('')}
+                </div>
+              </div>`;
+          }).join('') : '<p class="muted">Товаров по заданным фильтрам не найдено</p>'}
+        </div>
+
+        <div class="panel"><h3>Удалённые товары (${deletedItems.length})</h3>
+          <p class="muted" style="margin-bottom:12px">Товары можно восстановить или удалить навсегда. Удалённые навсегда исчезают без возможности возврата.</p>
+          ${deletedItems.length ? deletedItems.map(p => `
+            <div class="row" style="opacity:.6">
+              <div><div class="row__name">${p.name}</div><div class="row__meta">${fmt(p.price)} ₽</div></div>
+              <div class="row__actions">
+                <button class="btn btn--accent" onclick="restoreProd('${p.id}')">Восстановить</button>
+                <button class="btn btn--danger" onclick="purgeProd('${p.id}', '${p.name.replace(/'/g, '')}')">Удалить навсегда</button>
+              </div>
+            </div>`).join('') : '<p class="muted">Нет удалённых товаров</p>'}
+        </div>`;
+
+      setupImgDrop();
+      setupDragAndDrop();
+    }
+
+    function renderProductRow(p, idx, total, cat) {
+      const hidden = Content.isHidden(p.id);
+      return `<div class="row" style="${hidden ? 'opacity:.45' : ''}"
+                   draggable="true"
+                   data-pid="${p.id}"
+                   data-cat="${p.category}"
+                   ondragstart="onDragStart(event)"
+                   ondragover="onDragOver(event)"
+                   ondragleave="onDragLeave(event)"
+                   ondrop="onDrop(event)"
+                   ondragend="onDragEnd(event)">
+        <div style="flex:1; min-width:200px">
+          <div class="row__name">${p.name} ${hidden ? '<span class="muted">(скрыт)</span>' : ''} ${p.custom ? '<span class="muted">· свой</span>' : ''}</div>
+          <div class="row__meta">${fmt(p.price)} ₽${p.price33 ? ' / ' + fmt(p.price33) + ' ₽ (33см)' : ''} · ${p.weight || '—'}${p.sauceGroup ? ' · 🥣 соус' : ''}</div>
+        </div>
+        <div class="row__actions">
+          <button class="badge-btn badge--hit ${p.popular ? 'is-on' : ''}" onclick="toggleBadge('${p.id}','popular')" title="Хит продаж">${p.popular ? '★ Хит' : '☆ Хит'}</button>
+          <button class="badge-btn badge--promo ${p.promo ? 'is-on' : ''}" onclick="toggleBadge('${p.id}','promo')" title="Участвует в акции">${p.promo ? '🎁 Акция' : 'Акция'}</button>
+          <button class="btn btn--icon" title="Выше" onclick="moveProd('${p.id}','up')" ${idx === 0 ? 'disabled style="opacity:.3"' : ''}>↑</button>
+          <button class="btn btn--icon" title="Ниже" onclick="moveProd('${p.id}','down'" ${idx === total - 1 ? 'disabled style="opacity:.3"' : ''}>↓</button>
+          <button class="btn" onclick="editPrice('${p.id}')">Цена</button>
+          <button class="btn" onclick="editName('${p.id}')">Имя</button>
+          <button class="btn" onclick="editParams('${p.id}')">Парам.</button>
+          <button class="btn" onclick="requestPhoto('${p.id}')">Фото</button>
+          <div class="switch ${hidden ? '' : 'is-on'}" title="Показывать на сайте" onclick="toggleProd('${p.id}')"></div>
+          <button class="btn btn--danger" onclick="delProd('${p.id}')">Удалить</button>
+        </div>
+      </div>`;
+    }
+
+    /* ---------- Drag-and-drop ---------- */
+    let dragSourceId = null;
+    let dragSourceCat = null;
+
+    function onDragStart(e) {
+      const row = e.currentTarget;
+      dragSourceId = row.dataset.pid;
+      dragSourceCat = row.dataset.cat;
+      row.classList.add('is-dragging');
+      e.dataTransfer.effectAllowed = 'move';
+    }
+    function onDragOver(e) {
+      const row = e.currentTarget;
+      if (row.dataset.cat !== dragSourceCat) { e.dataTransfer.dropEffect = 'none'; return; }
+      e.preventDefault();
+      e.dataTransfer.dropEffect = 'move';
+      row.classList.add('is-drag-over');
+    }
+    function onDragLeave(e) { e.currentTarget.classList.remove('is-drag-over'); }
+    function onDrop(e) {
+      e.preventDefault();
+      const row = e.currentTarget;
+      row.classList.remove('is-drag-over');
+      if (row.dataset.cat !== dragSourceCat) return;
+      const dropId = row.dataset.pid;
+      if (dragSourceId && dropId && dragSourceId !== dropId) {
+        Content.reorderInCategory(dragSourceId, dropId);
+        renderProducts();
+      }
+    }
+    function onDragEnd(e) {
+      e.currentTarget.classList.remove('is-dragging');
+      document.querySelectorAll('.is-drag-over').forEach(r => r.classList.remove('is-drag-over'));
+      dragSourceId = null; dragSourceCat = null;
+    }
+    function setupDragAndDrop() { /* обработчики уже на элементах */ }
+
+    /* ---------- Параметры товара ---------- */
+    function editParams(id) {
+      const item = Content.getAllProducts().find(p => String(p.id) === String(id));
+      if (!item) return;
+
+      const isPizza = item.category === 'pizza';
+      const isSnack = ['Картофель Фри', 'Картофель по-деревенски', 'Наггетсы куриные', 'Креветки в кляре', 'Кольца кальмара'].includes(item.name);
+
+      let msg = `Параметры: «${item.name}»\n\n`;
+      if (isPizza) {
+        msg += 'Введите цену для 33 см (или оставьте пустым, если не пицца 2 размеров):\n';
+        const v = prompt(msg, item.price33 || '');
+        if (v === null) return;
+        Content.updateProduct(id, { price33: v.trim() ? +v : null });
+      } else if (isSnack) {
+        msg += 'Выберите группу соусов:\n1 — для картофеля/наггетсов\n2 — для креветок/кальмаров\n0 — без соусов';
+        const v = prompt(msg, item.sauceGroup === 'potato' ? '1' : (item.sauceGroup === 'shrimp' || item.sauceGroup === 'squid' ? '2' : '0'));
+        if (v === null) return;
+        const group = v === '1' ? 'potato' : (v === '2' ? 'shrimp' : null);
+        Content.updateProduct(id, { sauceGroup: group });
+      } else {
+        alert('Для этого товара дополнительных параметров нет.\nДоступные: цена 33 см (для пиццы) и группа соусов (для закусок).');
+        return;
+      }
+      renderProducts();
+    }
+
+    /* ---------- Базовые операции ---------- */
+    function setupImgDrop() {
+      const drop = $('#imgDrop'); if (!drop) return;
+      drop.addEventListener('click', () => $('#imgFile').click());
+      drop.addEventListener('dragover', (e) => { e.preventDefault(); drop.classList.add('is-over'); });
+      drop.addEventListener('dragleave', () => drop.classList.remove('is-over'));
+      drop.addEventListener('drop', (e) => {
+        e.preventDefault(); drop.classList.remove('is-over');
+        handleImageFile(e.dataTransfer.files[0], (b) => { pendingImage = b; showPreview(b); $('#pImg').value = ''; });
+      });
+      $('#imgFile').addEventListener('change', (e) => {
+        handleImageFile(e.target.files[0], (b) => { pendingImage = b; showPreview(b); $('#pImg').value = ''; });
+      });
+    }
+    function showPreview(src) { $('#imgPreview').src = src; $('#imgPreviewWrap').hidden = false; $('#imgDropText').hidden = true; }
+    function hidePreview() { $('#imgPreviewWrap').hidden = true; $('#imgDropText').hidden = false; }
+
+    function applyFilter(value) { productsFilter = value; renderProducts(); }
+    function applySearch(value) { productsSearch = value; renderProducts(); }
+    function moveProd(id, dir) { Content.moveProduct(id, dir); renderProducts(); }
+    function toggleProd(id) { Content.toggleProduct(id); renderProducts(); }
+    function restoreProd(id) { Content.restoreProduct(id); renderProducts(); }
+    function toggleBadge(id, b) { Content.toggleBadge(id, b); renderProducts(); }
+
+    function addProd() {
+      const name = $('#pName').value.trim();
+      if (!name) return alert('Укажите название');
+      Content.addProduct({
+        name, category: $('#pCat').value, price: +$('#pPrice').value || 0,
+        weight: $('#pWeight').value, description: $('#pDesc').value,
+        image: pendingImage || $('#pImg').value.trim(), popular: false, promo: false,
+      });
+      pendingImage = ''; renderProducts(); alert('Товар добавлен');
+    }
+
+    function editPrice(id) {
+      const item = Content.getAllProducts().find(p => String(p.id) === String(id));
+      const v = prompt('Новая цена, ₽:', item ? item.price : '');
+      if (v !== null && v !== '') { Content.updateProduct(id, { price: +v }); renderProducts(); }
+    }
+    function editName(id) {
+      const item = Content.getAllProducts().find(p => String(p.id) === String(id));
+      const v = prompt('Новое название:', item ? item.name : '');
+      if (v !== null && v.trim() !== '') { Content.updateProduct(id, { name: v.trim() }); renderProducts(); }
+    }
+    function delProd(id) {
+      const item = Content.getAllProducts().find(p => String(p.id) === String(id));
+      if (confirm('Удалить товар «' + (item ? item.name : '') + '»?\n\nЕго можно будет восстановить в блоке «Удалённые товары».')) {
+        Content.deleteProduct(id); renderProducts();
+      }
+    }
+    function purgeProd(id, name) {
+      const typed = prompt('ВНИМАНИЕ: полное удаление без восстановления.\n\nДля подтверждения введите название товара:');
+      if (typed && typed.trim().toLowerCase() === name.toLowerCase()) {
+        if (confirm('Удалить «' + name + '» НАВСЕГДА? Это действие необратимо.')) {
+          Content.purgeProduct(id); renderProducts();
+        }
+      } else if (typed !== null) {
+        alert('Название не совпало. Товар не удалён.');
+      }
+    }
+
+    /* ================= СТАТИСТИКА ================= */
+    function renderStats() {
+      const orders = Backend.getOrdersSync().filter(o => o.status !== 'cancelled');
+      const totalRevenue = orders.reduce((s, o) => s + o.calc.total, 0);
+      const avgCheck = orders.length ? Math.round(totalRevenue / orders.length) : 0;
+
+      const dishCount = {};
+      orders.forEach(o => (o.items || []).forEach(i => { dishCount[i.name] = (dishCount[i.name] || 0) + i.qty; }));
+      const topDishes = Object.entries(dishCount).sort((a, b) => b[1] - a[1]).slice(0, 5);
+      const maxDish = topDishes.length ? topDishes[0][1] : 1;
+
+      const byDay = {};
+      orders.forEach(o => {
+        const d = new Date(o.createdAt).toLocaleDateString('ru-RU', { day: '2-digit', month: '2-digit' });
+        byDay[d] = (byDay[d] || 0) + o.calc.total;
+      });
+      const days = Object.entries(byDay).slice(-7);
+      const maxDay = Math.max(...days.map(d => d[1]), 1);
+
+      $('#tab-stats').innerHTML = `
+        <div class="stat-cards">
+          <div class="info-card"><div class="info-card__label">Заказов</div><div class="info-card__value">${orders.length}</div></div>
+          <div class="info-card"><div class="info-card__label">Выручка</div><div class="info-card__value" style="font-size:20px">${fmt(totalRevenue)} ₽</div></div>
+          <div class="info-card"><div class="info-card__label">Средний чек</div><div class="info-card__value" style="font-size:20px">${fmt(avgCheck)} ₽</div></div>
+        </div>
+        <div class="panel"><h3>Выручка по дням</h3>
+          ${days.length ? `<div class="chart">${days.map(([d, v]) => `
+            <div class="chart__bar"><div class="chart__value">${(v / 1000).toFixed(1)}к</div>
+              <div class="chart__col" style="height:${Math.max(6, Math.round(v / maxDay * 100))}%"></div>
+              <div class="chart__label">${d}</div></div>`).join('')}</div>`
+          : '<p class="muted">Нет данных для графика</p>'}
+        </div>
+        <div class="panel"><h3>Топ-5 популярных блюд</h3>
+          ${topDishes.length ? topDishes.map(([name, qty], i) => `
+            <div class="row"><div><div class="row__name">${i + 1}. ${name}</div><div class="row__meta">заказано ${qty} шт.</div></div>
+              <div style="width:140px;height:8px;background:var(--color-border);border-radius:4px;overflow:hidden">
+                <div style="width:${Math.round(qty / maxDish * 100)}%;height:100%;background:var(--color-accent)"></div>
+              </div></div>`).join('') : '<p class="muted">Нет данных</p>'}
+        </div>`;
+    }
+
+    /* ================= АКЦИИ ================= */
+    function renderPromos() {
+      const promos = Content.getPromos();
+      $('#tab-promos').innerHTML = `
+        <div class="panel"><h3>Добавить акцию</h3>
+          <div class="grid2">
+            <div class="form-field"><label class="form-field__label">Промокод</label><input class="form-field__input" id="aCode" placeholder="НАПРИМЕР10" /></div>
+            <div class="form-field"><label class="form-field__label">Тип</label>
+              <select class="form-field__input" id="aType"><option value="percent">Скидка %</option><option value="fixed">Скидка ₽</option><option value="gift">Подарок</option></select></div>
+            <div class="form-field"><label class="form-field__label">Значение</label><input class="form-field__input" id="aValue" type="number" value="10" /></div>
+            <div class="form-field"><label class="form-field__label">Только самовывоз</label>
+              <select class="form-field__input" id="aPickup"><option value="0">Нет</option><option value="1">Да</option></select></div>
+          </div>
+          <div class="form-field"><label class="form-field__label">Описание</label><input class="form-field__input" id="aDesc" /></div>
+          <button class="btn btn--accent" onclick="addPromoRow()">+ Добавить</button>
+        </div>
+        <div class="panel"><h3>Акции и промокоды</h3>
+          ${promos.map(p => `
+            <div class="row"><div><div class="row__name">${p.code}</div><div class="row__meta">${p.description || ''}</div></div>
+              <div class="row__actions">
+                <div class="switch ${p.active ? 'is-on' : ''}" title="Активна" onclick="togglePromoRow('${p.code}')"></div>
+                <button class="btn btn--danger" onclick="delPromoRow('${p.code}')">Удалить</button>
+              </div></div>`).join('') || '<p class="muted">Акций нет</p>'}
+        </div>`;
+    }
+    function addPromoRow() {
+      const code = $('#aCode').value.trim().toUpperCase(); if (!code) return alert('Укажите промокод');
+      Content.addPromo({ code, type: $('#aType').value, value: +$('#aValue').value || 0, description: $('#aDesc').value, pickupOnly: $('#aPickup').value === '1', active: true });
+      renderPromos(); alert('Акция добавлена');
+    }
+    function togglePromoRow(code) { const p = Content.getPromos().find(x => x.code === code); Content.updatePromo(code, { active: !p.active }); renderPromos(); }
+    function delPromoRow(code) { if (confirm('Удалить акцию?')) { Content.deletePromo(code); renderPromos(); } }
+
+    /* ================= НАСТРОЙКИ ================= */
+function renderSettings() {
+  const s = Content.getSettings(); const c = s.contacts || {};
+  const d = getDeliverySettingsAdmin();
+  $('#tab-settings').innerHTML = `
+    <div class="panel"><h3>Контакты</h3>
+      <div class="grid2">
+        <div class="form-field"><label class="form-field__label">Телефон 1</label><input class="form-field__input" id="sPhone1" value="${(c.phones && c.phones[0] && c.phones[0].number) || ''}" /></div>
+        <div class="form-field"><label class="form-field__label">Телефон 2</label><input class="form-field__input" id="sPhone2" value="${(c.phones && c.phones[1] && c.phones[1].number) || ''}" /></div>
+        <div class="form-field"><label class="form-field__label">Email</label><input class="form-field__input" id="sEmail" value="${c.email || ''}" /></div>
+        <div class="form-field"><label class="form-field__label">Адрес</label><input class="form-field__input" id="sAddress" value="${c.address || ''}" /></div>
+      </div>
+      <div class="form-field"><label class="form-field__label">Юр. информация</label><input class="form-field__input" id="sLegal" value="${c.legal || ''}" /></div>
+      <button class="btn btn--accent" onclick="saveSettingsForm()">Сохранить</button>
+    </div>
+
+    <div class="panel"><h3>Приём заказов</h3>
+      <div class="grid2">
+        <div class="form-field">
+          <label class="form-field__label">Доставка курьером</label>
+          <div class="switch ${d.courier ? 'is-on' : ''}" onclick="toggleDeliverySetting('courier')"></div>
+        </div>
+        <div class="form-field">
+          <label class="form-field__label">Самовывоз</label>
+          <div class="switch ${d.pickup ? 'is-on' : ''}" onclick="toggleDeliverySetting('pickup')"></div>
+        </div>
+        <div class="form-field"><label class="form-field__label">Цена доставки, ₽</label>
+          <input class="form-field__input" id="sDeliveryFee" type="number" value="${d.fee}" /></div>
+        <div class="form-field"><label class="form-field__label">Бесплатная доставка от, ₽</label>
+          <input class="form-field__input" id="sDeliveryFreeFrom" type="number" value="${d.freeFrom}" /></div>
+      </div>
+      <button class="btn btn--accent" onclick="saveDeliverySettings()">Сохранить доставку</button>
+      <p class="muted" style="margin-top:8px">Если включён только один способ — на сайте блок выбора скрывается, и этот способ подставляется автоматически.</p>
+    </div>`;
+}
+
+/* ---------- Настройки доставки (админка) ---------- */
+function getDeliverySettingsAdmin() {
+  const s = Content.getSettings(); const d = s.delivery || {};
+  return { courier: d.courier !== false, pickup: d.pickup !== false, fee: +d.fee || 200, freeFrom: +d.freeFrom || 1000 };
+}
+function toggleDeliverySetting(key) {
+  const cur = getDeliverySettingsAdmin();
+  const next = !cur[key];
+  /* защита: нельзя выключить последний способ */
+  if (!next && !(key === 'courier' ? cur.pickup : cur.courier)) {
+    alert('Должен оставаться включённым хотя бы один способ получения.');
+    return;
+  }
+  const s = JSON.parse(JSON.stringify(Content.getSettings()));
+  s.delivery = Object.assign({}, cur, { [key]: next });
+  Content.saveSettings(s);
+  renderSettings();
+}
+function saveDeliverySettings() {
+  const cur = getDeliverySettingsAdmin();
+  const s = JSON.parse(JSON.stringify(Content.getSettings()));
+  s.delivery = Object.assign({}, cur, {
+    fee: +$('#sDeliveryFee').value || 200,
+    freeFrom: +$('#sDeliveryFreeFrom').value || 1000,
+  });
+  Content.saveSettings(s);
+  alert('Сохранено');
+}
+
+    /* ================= СОЦСЕТИ ================= */
+    function renderSocials() {
+      const s = Content.getSettings(); const socials = s.socials || [];
+      $('#tab-socials').innerHTML = `
+        <div class="panel"><h3>Добавить соцсеть</h3>
+          <div class="grid2">
+            <div class="form-field"><label class="form-field__label">Название</label><input class="form-field__input" id="soName" placeholder="Telegram" /></div>
+            <div class="form-field"><label class="form-field__label">Ссылка</label><input class="form-field__input" id="soUrl" placeholder="https://..." /></div>
+          </div>
+          <div class="form-field"><label class="form-field__label">Иконка</label>
+            <select class="form-field__input" id="soIcon"><option>vk</option><option>telegram</option><option>whatsapp</option><option>instagram</option><option>youtube</option></select></div>
+          <button class="btn btn--accent" onclick="addSocial()">+ Добавить</button>
+          <p class="muted" style="margin-top:8px">На сайте показываются максимум 3 соцсети (первые из списка).</p>
+        </div>
+        <div class="panel"><h3>Кнопки соцсетей</h3>
+          ${socials.map((x, i) => `
+            <div class="row"><div class="row__name">${x.name}</div>
+              <div class="row__actions"><button class="btn btn--danger" onclick="delSocial(${i})">Удалить</button></div></div>`).join('') || '<p class="muted">Нет соцсетей</p>'}
+        </div>`;
+    }
+    function addSocial() {
+      const s = JSON.parse(JSON.stringify(Content.getSettings())); s.socials = s.socials || [];
+      s.socials.push({ id: Date.now(), name: $('#soName').value.trim(), url: $('#soUrl').value.trim(), icon: $('#soIcon').value });
+      Content.saveSettings(s); renderSocials();
+    }
+    function delSocial(i) { const s = JSON.parse(JSON.stringify(Content.getSettings())); s.socials.splice(i, 1); Content.saveSettings(s); renderSocials(); }
+
+    /* ================= СЛАЙДЕРЫ (с drag-n-drop картинок) ================= */
+    let editingSlideIndex = null;
+    let pendingSlideImage = '';
+
+    function renderSlides() {
+      const s = Content.getSettings();
+      const slides = s.heroSlides || [];
+      const cats = window.CATEGORIES.filter(c => c.id !== 'fav');
+      const isEditing = editingSlideIndex !== null;
+
+      $('#tab-slides').innerHTML = `
+        <div class="panel"><h3>${isEditing ? 'Редактировать слайд #' + (editingSlideIndex + 1) : 'Добавить слайд'}</h3>
+          <div class="form-field">
+            <label class="form-field__label">Картинка слайда</label>
+            <div class="img-drop" id="slideImgDrop">
+              <div id="slideImgPreviewWrap" hidden><img id="slideImgPreview" /></div>
+              <div id="slideImgDropText">📷 Перетащите изображение сюда или нажмите для выбора</div>
+            </div>
+            <input class="form-field__input" id="slImg" placeholder="…или вставьте ссылку на фото" style="margin-top:8px" oninput="pendingSlideImage=''; hideSlidePreview();" />
+          </div>
+          <div class="grid2">
+            <div class="form-field"><label class="form-field__label">Подпись</label><input class="form-field__input" id="slLabel" /></div>
+            <div class="form-field"><label class="form-field__label">Заголовок</label><input class="form-field__input" id="slTitle" /></div>
+          </div>
+          <div class="grid2">
+            <div class="form-field">
+              <label class="form-field__label">Действие при клике</label>
+              <select class="form-field__input" id="slAction" onchange="toggleSlideTarget()">
+                <option value="none">Не кликается</option>
+                <option value="category">Перейти в категорию</option>
+                <option value="wok">Открыть WOK</option>
+                <option value="page">Перейти на страницу</option>
+              </select>
+            </div>
+            <div class="form-field" id="slTargetWrap" hidden>
+              <label class="form-field__label">Цель</label>
+              <select class="form-field__input" id="slTargetCat" hidden>
+                ${cats.map(c => `<option value="${c.id}">${c.name}</option>`).join('')}
+              </select>
+              <input class="form-field__input" id="slTargetPage" placeholder="promos.html" hidden />
+            </div>
+          </div>
+          <div class="grid2">
+            <button class="btn btn--accent" onclick="saveSlide()">${isEditing ? 'Сохранить изменения' : '+ Добавить'}</button>
+            ${isEditing ? '<button class="btn" onclick="cancelEditSlide()">Отмена</button>' : ''}
+          </div>
+        </div>
+        <div class="panel"><h3>Слайдеры (${slides.length})</h3>
+          ${slides.map((x, i) => `
+            <div class="row">
+              <div>
+                <div class="row__name">${x.title || ''}</div>
+                <div class="row__meta">${x.label || ''} · ${getSlideActionText(x)}</div>
+              </div>
+              <div class="row__actions">
+                <button class="btn" onclick="editSlide(${i})">Изменить</button>
+                <button class="btn btn--danger" onclick="delSlide(${i})">Удалить</button>
+              </div>
+            </div>`).join('') || '<p class="muted">Нет слайдов</p>'}
+        </div>
+        <div class="panel"><button class="btn btn--danger" onclick="resetAll()">Сбросить все правки</button></div>`;
+
+      setupSlideImgDrop();
+    }
+
+    function setupSlideImgDrop() {
+      const drop = $('#slideImgDrop'); if (!drop) return;
+      drop.addEventListener('click', () => $('#slideImgFile').click());
+      drop.addEventListener('dragover', (e) => { e.preventDefault(); drop.classList.add('is-over'); });
+      drop.addEventListener('dragleave', () => drop.classList.remove('is-over'));
+      drop.addEventListener('drop', (e) => {
+        e.preventDefault(); drop.classList.remove('is-over');
+        handleImageFile(e.dataTransfer.files[0], (b) => { pendingSlideImage = b; showSlidePreview(b); $('#slImg').value = ''; });
+      });
+    }
+    /* Слушатель на постоянный input — вешаем один раз */
+    $('#slideImgFile').addEventListener('change', (e) => {
+      handleImageFile(e.target.files[0], (b) => { pendingSlideImage = b; showSlidePreview(b); $('#slImg').value = ''; });
+      e.target.value = '';
+    });
+    function showSlidePreview(src) { $('#slideImgPreview').src = src; $('#slideImgPreviewWrap').hidden = false; $('#slideImgDropText').hidden = true; }
+    function hideSlidePreview() { $('#slideImgPreviewWrap').hidden = true; $('#slideImgDropText').hidden = false; }
+
+    function getSlideActionText(x) {
+      if (!x.action || x.action === 'none') return 'не кликается';
+      let text = x.action;
+      if (x.action === 'category' && x.target) {
+        const cat = window.CATEGORIES.find(c => c.id === x.target);
+        text += ': ' + (cat ? cat.name : x.target);
+      } else if (x.action === 'page' && x.target) {
+        text += ': ' + x.target;
+      }
+      return text;
+    }
+
+    function toggleSlideTarget() {
+      const action = $('#slAction').value;
+      const wrap = $('#slTargetWrap');
+      const catSel = $('#slTargetCat');
+      const pageInput = $('#slTargetPage');
+      if (action === 'category') { wrap.hidden = false; catSel.hidden = false; pageInput.hidden = true; }
+      else if (action === 'page') { wrap.hidden = false; catSel.hidden = true; pageInput.hidden = false; }
+      else { wrap.hidden = true; catSel.hidden = true; pageInput.hidden = true; }
+    }
+
+    function editSlide(i) {
+      const s = Content.getSettings();
+      const slides = s.heroSlides || [];
+      const slide = slides[i];
+      if (!slide) return;
+      editingSlideIndex = i;
+      renderSlides();
+      $('#slLabel').value = slide.label || '';
+      $('#slTitle').value = slide.title || '';
+      $('#slAction').value = slide.action || 'none';
+      toggleSlideTarget();
+      if (slide.action === 'category') $('#slTargetCat').value = slide.target || '';
+      else if (slide.action === 'page') $('#slTargetPage').value = slide.target || '';
+      if (slide.image && slide.image.startsWith('data:')) {
+        pendingSlideImage = slide.image;
+        showSlidePreview(slide.image);
+        $('#slImg').value = '';
+      } else {
+        $('#slImg').value = slide.image || '';
+      }
+    }
+
+    function cancelEditSlide() {
+      editingSlideIndex = null;
+      pendingSlideImage = '';
+      renderSlides();
+    }
+
+    function saveSlide() {
+      const s = JSON.parse(JSON.stringify(Content.getSettings()));
+      s.heroSlides = s.heroSlides || [];
+      const action = $('#slAction').value;
+      let target = '';
+      if (action === 'category') target = $('#slTargetCat').value;
+      else if (action === 'page') target = $('#slTargetPage').value.trim();
+
+      const slideData = {
+        image: pendingSlideImage || $('#slImg').value.trim(),
+        label: $('#slLabel').value.trim(),
+        title: $('#slTitle').value.trim(),
+        action, target,
+      };
+
+      if (editingSlideIndex !== null) {
+        s.heroSlides[editingSlideIndex] = slideData;
+        editingSlideIndex = null;
+      } else {
+        s.heroSlides.push(slideData);
+      }
+      Content.saveSettings(s);
+      pendingSlideImage = '';
+      renderSlides();
+    }
+
+    function delSlide(i) {
+      if (!confirm('Удалить слайд?')) return;
+      const s = JSON.parse(JSON.stringify(Content.getSettings()));
+      s.heroSlides.splice(i, 1);
+      Content.saveSettings(s);
+      if (editingSlideIndex === i) editingSlideIndex = null;
+      else if (editingSlideIndex !== null && editingSlideIndex > i) editingSlideIndex--;
+      renderSlides();
+    }
+
+    /* ================= БЕЗОПАСНОСТЬ ================= */
+    function renderSecurity() {
+      $('#tab-security').innerHTML = `
+        <div class="panel"><h3>Смена логина и пароля</h3>
+          <div class="form-field"><label class="form-field__label">Текущий пароль</label>
+            <input class="form-field__input" id="secOldPass" type="password" /></div>
+          <div class="grid2">
+            <div class="form-field"><label class="form-field__label">Новый логин</label>
+              <input class="form-field__input" id="secNewLogin" type="text" /></div>
+            <div class="form-field"><label class="form-field__label">Новый пароль</label>
+              <input class="form-field__input" id="secNewPass" type="password" /></div>
+          </div>
+          <div class="auth-error" id="secError"></div>
+          <button class="btn btn--accent" onclick="saveSecurity()">Сохранить изменения</button>
+        </div>`;
+    }
+    async function saveSecurity() {
+      const result = await Auth.changeCredentials($('#secNewLogin').value.trim(), $('#secOldPass').value, $('#secNewPass').value);
+      const errEl = $('#secError'); errEl.textContent = '';
+      if (result.ok) {
+        alert('Изменено'); $('#secOldPass').value = ''; $('#secNewLogin').value = ''; $('#secNewPass').value = '';
+      } else errEl.textContent = result.error;
+    }
+
+    /* ================= ОТЗЫВЫ (админка) ================= */
+    function renderReviewsAdmin() {
+      const reviews = Content.getReviews();
+      const pending = reviews.filter(r => !r.approved).length;
+      const products = Content.getAllProducts();
+      const getProductName = (id) => {
+        const p = products.find(x => String(x.id) === String(id));
+        return p ? p.name : 'Товар #' + id;
+      };
+
+      $('#tab-reviews').innerHTML = `
+        <div class="stat-cards">
+          <div class="info-card"><div class="info-card__label">Всего отзывов</div><div class="info-card__value">${reviews.length}</div></div>
+          <div class="info-card"><div class="info-card__label">На модерации</div><div class="info-card__value" style="color:#f59e0b">${pending}</div></div>
+          <div class="info-card"><div class="info-card__label">Одобрено</div><div class="info-card__value" style="color:#22c55e">${reviews.length - pending}</div></div>
+        </div>
+        <div class="panel"><h3>Все отзывы (${reviews.length})</h3>
+          ${reviews.length ? reviews.map(r => `
+            <div class="row">
+              <div style="flex:1; min-width:200px">
+                <div class="row__name">${escapeHtmlAdmin(r.author)} · <span class="review-item__stars">${'★'.repeat(r.rating)}${'☆'.repeat(5 - r.rating)}</span></div>
+                <div class="row__meta">${getProductName(r.productId)} · ${new Date(r.createdAt).toLocaleDateString('ru-RU')}</div>
+                <div class="muted" style="margin-top:4px; font-size:11px">${escapeHtmlAdmin(r.text)}</div>
+              </div>
+              <div class="row__actions">
+                <span class="review-status ${r.approved ? 'review-status--approved' : 'review-status--pending'}">${r.approved ? 'Опубликован' : 'На модерации'}</span>
+                ${r.approved
+                  ? `<button class="btn" onclick="unapproveReviewAdmin('${r.id}')">Скрыть</button>`
+                  : `<button class="btn btn--accent" onclick="approveReviewAdmin('${r.id}')">Одобрить</button>`}
+                <button class="btn btn--danger" onclick="deleteReviewAdmin('${r.id}')">Удалить</button>
+              </div>
+            </div>`).join('') : '<p class="muted">Отзывов пока нет</p>'}
+        </div>`;
+    }
+
+    function escapeHtmlAdmin(str) {
+      const div = document.createElement('div');
+      div.textContent = str || '';
+      return div.innerHTML;
+    }
+    function approveReviewAdmin(id) { Content.approveReview(id); renderReviewsAdmin(); }
+    function unapproveReviewAdmin(id) { Content.unapproveReview(id); renderReviewsAdmin(); }
+    function deleteReviewAdmin(id) {
+      if (confirm('Удалить отзыв безвозвратно?')) { Content.deleteReview(id); renderReviewsAdmin(); }
+    }
+
+    /* ================= ПРОГРАММА ЛОЯЛЬНОСТИ (админка) ================= */
+    function renderLoyalty() {
+      const settings = Content.getLoyaltySettings();
+      const clients = Content.getLoyaltyClients();
+      const clientList = Object.entries(clients).map(([phone, c]) => ({ phone, ...c }))
+        .sort((a, b) => b.balance - a.balance);
+
+      const totalBonuses = clientList.reduce((s, c) => s + c.balance, 0);
+      const totalEarned = clientList.reduce((s, c) => s + c.totalEarned, 0);
+
+      $('#tab-loyalty').innerHTML = `
+        <div class="panel"><h3>Настройки программы</h3>
+          <div class="grid2">
+            <div class="form-field">
+              <label class="form-field__label">Программа включена</label>
+              <div class="switch ${settings.enabled ? 'is-on' : ''}" id="loyaltyEnabledSwitch" onclick="toggleLoyaltyEnabled()"></div>
+            </div>
+            <div class="form-field">
+              <label class="form-field__label">Начисление, % от заказа</label>
+              <input class="form-field__input" id="loyaltyEarn" type="number" value="${settings.earnPercent}" min="1" max="50" />
+            </div>
+            <div class="form-field">
+              <label class="form-field__label">Лимит списания, % от заказа</label>
+              <input class="form-field__input" id="loyaltyMaxSpend" type="number" value="${settings.maxSpendPercent}" min="1" max="100" />
+            </div>
+          </div>
+          <button class="btn btn--accent" onclick="saveLoyaltySettings()">Сохранить настройки</button>
+        </div>
+
+        <div class="stat-cards">
+          <div class="info-card"><div class="info-card__label">Клиентов</div><div class="info-card__value">${clientList.length}</div></div>
+          <div class="info-card"><div class="info-card__label">Бонусов на балансах</div><div class="info-card__value" style="font-size:20px">${fmt(totalBonuses)}</div></div>
+          <div class="info-card"><div class="info-card__label">Всего начислено</div><div class="info-card__value" style="font-size:20px">${fmt(totalEarned)}</div></div>
+        </div>
+
+        <div class="panel"><h3>Клиенты и балансы</h3>
+          ${clientList.length ? clientList.map(c => `
+            <div class="row">
+              <div>
+                <div class="row__name">+7 ${c.phone.slice(1, 4)} ${c.phone.slice(4, 7)}-${c.phone.slice(7, 9)}-${c.phone.slice(9, 11)}</div>
+                <div class="row__meta">Заказов: ${c.ordersCount} · Начислено: ${fmt(c.totalEarned)} · Списано: ${fmt(c.totalSpent)}</div>
+              </div>
+              <div class="row__actions">
+                <span class="review-status review-status--approved">${fmt(c.balance)} бонусов</span>
+                <button class="btn" onclick="adjustBalance('${c.phone}', 100)">+100</button>
+                <button class="btn" onclick="adjustBalance('${c.phone}', -100)">−100</button>
+              </div>
+            </div>`).join('') : '<p class="muted">Клиентов с бонусами пока нет</p>'}
+        </div>`;
+    }
+
+    function toggleLoyaltyEnabled() {
+      const s = Content.getLoyaltySettings();
+      Content.saveLoyaltySettings({ ...s, enabled: !s.enabled });
+      renderLoyalty();
+    }
+
+    function saveLoyaltySettings() {
+      const s = Content.getLoyaltySettings();
+      Content.saveLoyaltySettings({
+        enabled: s.enabled,
+        earnPercent: Math.max(1, Math.min(50, +$('#loyaltyEarn').value || 5)),
+        maxSpendPercent: Math.max(1, Math.min(100, +$('#loyaltyMaxSpend').value || 30)),
+      });
+      renderLoyalty();
+      alert('Настройки лояльности сохранены');
+    }
+
+    function adjustBalance(phone, delta) {
+      Content.adjustClientBalance(phone, delta);
+      renderLoyalty();
+    }
+  </script>
+</body>
+</html>

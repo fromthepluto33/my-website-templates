@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" href="images/favicon/favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" href="images/favicon/favicon.ico" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Контакты — Суши Бар</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/oswald@5.0.20/400.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/inter@5.0.16/400.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/inter@5.0.16/600.css" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <div id="header-slot"></div>
+  <main class="page">
+    <div class="container">
+      <div class="page__header">
+        <a href="index.html" class="page__back">← К меню</a>
+        <h1 class="page__title">Контакты</h1>
+        <span class="page__kanji">絡</span>
+      </div>
+
+      <div class="contacts-layout">
+        <div class="contacts-info" id="contactsInfo"></div>
+        <div class="contacts-media">
+          <div class="contacts-photo">
+            <img id="cafePhoto" src="images/foto-zala.webp" alt="Зал кафе" loading="lazy" />
+            <div class="contacts-photo__caption">Наш зал</div>
+          </div>
+          <div class="contacts-map">
+            <iframe id="cafeMap" src="" frameborder="0" allowfullscreen="true" title="Яндекс Карта"></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+  <div id="footer-slot"></div>
+  <div id="layout-slot"></div>
+
+  <!-- ЯДРО -->
+  <script src="js/core/version.js"></script>
+  <script src="js/core/utils.js"></script>
+  <script src="js/core/data.js"></script>
+  <script src="js/core/site-config.js"></script>
+  <script src="js/core/content.js"></script>
+  <script src="js/core/state.js"></script>
+  <script src="js/core/icons.js"></script>
+  <script src="js/core/catalog.js"></script>
+  <script src="js/core/cart.js"></script>
+  <script src="js/core/wok.js"></script>
+  <script src="js/core/sauce.js"></script>
+  <script src="js/core/checkout.js"></script>
+  <script src="js/core/carousel.js"></script>
+  <script src="js/layout.js"></script>
+  <script src="js/core/backend.js"></script>
+
+  <!-- FEATURES V2 (только для V2+ версий) -->
+  <script src="js/features-v2/search.js"></script>
+  <script src="js/features-v2/order-history.js"></script>
+
+  <!-- FEATURES V3 (только для V3) -->
+  <script src="js/features-v3/reviews.js"></script>
+  <script src="js/features-v3/loyalty.js"></script>
+
+  <script src="js/app.js"></script>
+  <script>
+    const cfg = (Content.getSettings && Content.getSettings()) || window.SITE_CONFIG || {};
+    const contacts = cfg.contacts || {};
+    const schedule = (cfg.schedule && cfg.schedule.cafe) || [];
+    const socials = (cfg.socials || []).slice(0, 3);
+
+    const PHONE_ICON = '<svg class="icon icon--small icon--accent" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>';
+    const MAIL_ICON = '<svg class="icon icon--small icon--accent" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>';
+
+    document.getElementById('contactsInfo').innerHTML = `
+      <section class="info-section info-section--compact">
+        <h2 class="info-section__title">Кафе «${(cfg.cafe && cfg.cafe.name) || 'Суши Бар'}»</h2>
+        <div class="contacts-address">
+          <svg class="icon icon--accent" viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+          <span>${contacts.address || ''}</span>
+        </div>
+      </section>
+      <section class="info-section info-section--compact">
+        <h2 class="info-section__title">Режим работы кафе</h2>
+        <div class="schedule schedule--compact">
+          ${schedule.map(s => `<div class="schedule__row"><span>${s.days}</span><span>${s.time}</span></div>`).join('')}
+          <div class="schedule__row schedule__row--note"><span>праздничные</span><span>по расписанию пт-сб</span></div>
+        </div>
+      </section>
+      <section class="info-section info-section--compact">
+        <h2 class="info-section__title">Приём заказов доставки</h2>
+        <div class="schedule schedule--compact">
+          ${((cfg.schedule && cfg.schedule.delivery) || []).map(s => `<div class="schedule__row"><span>${s.days}</span><span>${s.time}</span></div>`).join('')}
+        </div>
+      </section>
+      <section class="info-section info-section--compact">
+        <h2 class="info-section__title">Связаться с нами</h2>
+        <div class="contacts-list">
+          ${(contacts.phones || []).map(p => `<a href="${p.href}" class="contacts-list__item">${PHONE_ICON}${p.number}</a>`).join('')}
+          ${contacts.email ? `<a href="mailto:${contacts.email}" class="contacts-list__item">${MAIL_ICON}${contacts.email}</a>` : ''}
+        </div>
+        ${socials.length ? `
+          <div style="display:flex; gap:8px; margin-top:14px">
+            ${socials.map(s => `<a href="${s.url}" target="_blank" rel="noopener" class="social-button" title="${s.name}" aria-label="${s.name}">
+              ${window.SOCIAL_ICON ? window.SOCIAL_ICON(s.icon) : ''}
+            </a>`).join('')}
+          </div>` : ''}
+      </section>
+      <div class="legal-info">
+        <span class="legal-info__label">Юридическая информация</span>
+        <span class="legal-info__text">${contacts.legal || ''}</span>
+      </div>`;
+
+    if (contacts.photo) document.getElementById('cafePhoto').src = contacts.photo;
+    if (contacts.mapQuery) {
+      document.getElementById('cafeMap').src =
+        'https://yandex.ru/map-widget/v1/?text=' + encodeURIComponent(contacts.mapQuery) + '&z=16';
+    }
+  </script>
+</body>
+</html>
