@@ -19,7 +19,7 @@
 Открыть главную страницу проекта:
 
 ```text
-https://fromthemoon33.github.io/my-website-templates/
+https://fromthepluto33.github.io/my-website-templates/
 ```
 
 Открыть отдельные шаблоны:
