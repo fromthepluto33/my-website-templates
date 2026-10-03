@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Торты к праздникам на заказ в Городе — Кондитерская</title>
+    <meta name="description" content="Торты к праздникам на заказ: день рождения, Новый год, 8 марта, 23 февраля, Пасха, годовщина свадьбы. Единственный экземпляр под ваш повод.">
+    <link rel="icon" href="img/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <header id="header">
+        <div class="container header-inner">
+            <a href="index.html" class="logo"><img src="img/logo.webp" alt="Кондитерская — Vasilisa Prekrasnaya"></a>
+            <nav id="nav" aria-label="Главное меню">
+                <a href="index.html#cats">Каталог</a>
+                <a href="index.html#cakes">Торты</a>
+                <a href="index.html#about">О кондитере</a>
+                <a href="index.html#how">Как заказать</a>
+                <a href="index.html#reviews">Отзывы</a>
+                <a href="contacts.html">Контакты</a>
+                <a href="tel:+79999999999" class="nav-phone">+7 (999) 999-99-99</a>
+            </nav>
+            <div class="header-right">
+                <a class="header-phone" href="tel:+79999999999">+7 (999) 999-99-99</a>
+                <button class="cart-btn" onclick="cartToggle(true)" aria-label="Открыть корзину">
+                    <img src="img/icon-cart.webp" alt="">
+                    <span class="cart-badge" id="cartBadge"></span>
+                </button>
+                <button class="btn btn-primary" onclick="openModal()">Заказать торт</button>
+                <button class="burger" aria-label="Открыть меню"><span></span><span></span><span></span></button>
+            </div>
+        </div>
+    </header>
+    <main>
+        <section class="page-head">
+            <img class="deco deco-stars dl" src="img/deco-stars.webp" alt="" aria-hidden="true">
+            <img class="deco deco-stars dr" src="img/deco-stars.webp" alt="" aria-hidden="true">
+            <div class="container">
+                <p class="crumbs"><a href="index.html">Главная</a> ✦ <a href="index.html#cats">Каталог</a> ✦ К праздникам</p>
+                <h1>Торты к праздникам</h1>
+                <p class="page-sub">Новый год, 8 марта, день рождения, Пасха и другие поводы — испеку торт под вашу дату</p>
+            </div>
+        </section>
+        <section class="page-body">
+            <img class="deco deco-stars pb-l" src="img/deco-stars.webp" alt="" aria-hidden="true">
+            <img class="deco deco-stars pb-r" src="img/deco-stars.webp" alt="" aria-hidden="true">
+            <div class="container">
+                <div class="cakes-flex">
+                    <article class="cake reveal">
+                        <div class="img"><img loading="lazy" src="img/prazd-8marta.webp" alt="Торт-цифра 8 с клубникой и розовыми ранункулюсами"><span class="tag">К праздникам</span></div>
+                        <div class="body">
+                            <h3>«Весенний вальс»</h3>
+                            <p class="desc">Открытый торт-цифра «8»: кремовые облачка, свежая клубника, розовые ранункулюсы и пион в крафт-коробке.</p>
+                            <p class="comp"><b>Состав:</b> бисквитная основа, крем-чиз, свежая клубника, ранункулюсы и пионы</p>
+                            <div class="foot"><span class="price">от 3 200 ₽</span><button class="btn btn-primary" onclick="openModal('Торты к праздникам','img/prazd-8marta.webp','«Весенний вальс»')">Рассчитать</button></div>
+                        </div>
+                    </article>
+                    <article class="cake reveal">
+                        <div class="img"><img loading="lazy" src="img/prazd-23fevralya.webp" alt="Синий велюровый торт к 23 февраля с золотыми звёздами"><span class="tag">К праздникам</span></div>
+                        <div class="body">
+                            <h3>«Мужской характер»</h3>
+                            <p class="desc">Глубокий синий велюр с золотыми контурными звёздами, алыми сердцами и топпером «23 февраля».</p>
+                            <p class="comp"><b>Состав:</b> шоколадный бисквит, карамельный мусс, ореховый пралине, велюр</p>
+                            <div class="foot"><span class="price">от 2 800 ₽</span><button class="btn btn-primary" onclick="openModal('Торты к праздникам','img/prazd-23fevralya.webp','«Мужской характер»')">Рассчитать</button></div>
+                        </div>
+                    </article>
+                    <article class="cake reveal">
+                        <div class="img"><img loading="lazy" src="img/prazd-den-materi.webp" alt="Персиковый торт ко Дню матери с кремовыми розами и надписью Маме"><span class="tag">К праздникам</span></div>
+                        <div class="body">
+                            <h3>«Мамин букет»</h3>
+                            <p class="desc">Персиковый крем-чиз с розами-розетками двух оттенков и тёплой надписью «Маме».</p>
+                            <p class="comp"><b>Состав:</b> ванильный бисквит, ягодный мусс, кремовые розетки, пищевые красители</p>
+                            <div class="foot"><span class="price">от 2 900 ₽</span><button class="btn btn-primary" onclick="openModal('Торты к праздникам','img/prazd-den-materi.webp','«Мамин букет»')">Рассчитать</button></div>
+                        </div>
+                    </article>
+                    <article class="cake reveal">
+                        <div class="img"><img loading="lazy" src="img/prazd-9maya.webp" alt="Ретро-торт ко Дню Победы с шоколадными подтёками и звездой"><span class="tag">К праздникам</span></div>
+                        <div class="body">
+                            <h3>«Весна Победы»</h3>
+                            <p class="desc">Ретро в духе советской кондитерской: шоколадные подтёки, оранжевые кремовые цветы, флажки и звезда с надписью.</p>
+                            <p class="comp"><b>Состав:</b> бисквит по ГОСТу, масляный крем, шоколадная глазурь, свежая вишня</p>
+                            <div class="foot"><span class="price">от 3 000 ₽</span><button class="btn btn-primary" onclick="openModal('Торты к праздникам','img/prazd-9maya.webp','«Весна Победы»')">Рассчитать</button></div>
+                        </div>
+                    </article>
+                    <article class="cake reveal">
+                        <div class="img"><img loading="lazy" src="img/prazd-den-rozhdeniya.webp" alt="Белый торт на день рождения с юмористической надписью и дудл-боксером"><span class="tag">К праздникам</span></div>
+                        <div class="body">
+                            <h3>«Отбивайся!»</h3>
+                            <p class="desc">Белый торт с юмористической надписью и дудл-боксером в перчатках — для тех, кто празднует с улыбкой.</p>
+                            <p class="comp"><b>Состав:</b> ванильный бисквит, ягодный мусс, ягодный конфит, крем-чиз, айсинг</p>
+                            <div class="foot"><span class="price">от 2 700 ₽</span><button class="btn btn-primary" onclick="openModal('Торты к праздникам','img/prazd-den-rozhdeniya.webp','«Отбивайся!»')">Рассчитать</button></div>
+                        </div>
+                    </article>
+                    <article class="cake reveal">
+                        <div class="img"><img loading="lazy" src="img/prazd-valentina.webp" alt="Торт ко Дню всех влюблённых с омбре из сердец"><span class="tag">К праздникам</span></div>
+                        <div class="body">
+                            <h3>«Тысяча сердец»</h3>
+                            <p class="desc">Омбре из сердец от насыщенно-алого к нежно-розовому и точечное сердце на макушке.</p>
+                            <p class="comp"><b>Состав:</b> ванильный бисквит, клубничный мусс, клубничный конфит, крем-чиз</p>
+                            <div class="foot"><span class="price">от 2 900 ₽</span><button class="btn btn-primary" onclick="openModal('Торты к праздникам','img/prazd-valentina.webp','«Тысяча сердец»')">Рассчитать</button></div>
+                        </div>
+                    </article>
+                    <article class="cake reveal">
+                        <div class="img"><img loading="lazy" src="img/prazd-znaniy.webp" alt="Торт ко Дню знаний с цветными дудлами как на школьной доске"><span class="tag">К праздникам</span></div>
+                        <div class="body">
+                            <h3>«Школьная доска»</h3>
+                            <p class="desc">Цветные дудлы айсингом — солнце, глобус, примеры, оценки и надпись «С днём знаний».</p>
+                            <p class="comp"><b>Состав:</b> ванильный бисквит, ягодный мусс, крем-чиз, цветной айсинг</p>
+                            <div class="foot"><span class="price">от 2 600 ₽</span><button class="btn btn-primary" onclick="openModal('Торты к праздникам','img/prazd-znaniy.webp','«Школьная доска»')">Рассчитать</button></div>
+                        </div>
+                    </article>
+                    <article class="cake reveal">
+                        <div class="img"><img loading="lazy" src="img/prazd-godovshchina.webp" alt="Торт на годовщину свадьбы с дудл-парой и ягодами"><span class="tag">К праздникам</span></div>
+                        <div class="body">
+                            <h3>«История одной любви»</h3>
+                            <p class="desc">Дудл-пара с поцелуем, ягодные кластеры с розмарином и надпись с датой — личное к годовщине.</p>
+                            <p class="comp"><b>Состав:</b> ванильный бисквит, ванильный мусс, ягодный конфит, крем-чиз, свежие ягоды</p>
+                            <div class="foot"><span class="price">от 3 200 ₽</span><button class="btn btn-primary" onclick="openModal('Торты к праздникам','img/prazd-godovshchina.webp','«История одной любви»')">Рассчитать</button></div>
+                        </div>
+                    </article>
+                    <article class="cake reveal">
+                        <div class="img"><img loading="lazy" src="img/prazd-novyy-god.webp" alt="Новогодний торт-часы с римскими цифрами и красными ягодами"><span class="tag">К праздникам</span></div>
+                        <div class="body">
+                            <h3>«Бой курантов»</h3>
+                            <p class="desc">Торт-часы с римскими цифрами и стрелками у полуночи, кремовые завитки и красные ягоды.</p>
+                            <p class="comp"><b>Состав:</b> ванильный бисквит, мандариновый мусс, мандариновый конфит, крем-чиз, айсинг</p>
+                            <div class="foot"><span class="price">от 2 900 ₽</span><button class="btn btn-primary" onclick="openModal('Торты к праздникам','img/prazd-novyy-god.webp','«Бой курантов»')">Рассчитать</button></div>
+                        </div>
+                    </article>
+                    <article class="cake reveal">
+                        <div class="img"><img loading="lazy" src="img/prazd-pasha.webp" alt="Пасхальный торт-корзинка с краплеными яйцами и гортензией"><span class="tag">К праздникам</span></div>
+                        <div class="body">
+                            <h3>«Пасхальная корзинка»</h3>
+                            <p class="desc">Гнездо из сена, голубые лепестки, сиреневая гортензия и крапленые яички под ручкой-веточкой.</p>
+                            <p class="comp"><b>Состав:</b> ванильный бисквит, творожный мусс, конфит из цукатов, сахарный декор</p>
+                            <div class="foot"><span class="price">от 2 800 ₽</span><button class="btn btn-primary" onclick="openModal('Торты к праздникам','img/prazd-pasha.webp','«Пасхальная корзинка»')">Рассчитать</button></div>
+                        </div>
+                    </article>
+                    <article class="cake reveal">
+                        <div class="img"><img loading="lazy" src="img/prazd-rozhdestvo.webp" alt="Рождественский полуголый торт со снежинками и заиндевевшими ягодами"><span class="tag">К праздникам</span></div>
+                        <div class="body">
+                            <h3>«Рождественский снег»</h3>
+                            <p class="desc">Полуголый торт с кремовыми облачками, заиндевевшими ягодами, серебряными и золотыми снежинками.</p>
+                            <p class="comp"><b>Состав:</b> ванильный бисквит, крем-чиз, замороженные ягоды, декор серебром и золотом</p>
+                            <div class="foot"><span class="price">от 2 900 ₽</span><button class="btn btn-primary" onclick="openModal('Торты к праздникам','img/prazd-rozhdestvo.webp','«Рождественский снег»')">Рассчитать</button></div>
+                        </div>
+                    </article>
+                    <article class="cake reveal">
+                        <div class="img"><img loading="lazy" src="img/prazd-vypusknoy.webp" alt="Торт на выпускной с книгами, конфедераткой и белыми розами"><span class="tag">К праздникам</span></div>
+                        <div class="body">
+                            <h3>«Новая глава»</h3>
+                            <p class="desc">Синие книги с золотыми корешками, конфедератка с кисточкой и белые розы на кремовом полотне.</p>
+                            <p class="comp"><b>Состав:</b> ванильный бисквит, крем-брюле, вишнёвый конфит, мастика, сахарные цветы</p>
+                            <div class="foot"><span class="price">от 2 800 ₽</span><button class="btn btn-primary" onclick="openModal('Торты к праздникам','img/prazd-vypusknoy.webp','«Новая глава»')">Рассчитать</button></div>
+                        </div>
+                    </article>
+                </div>
+                <div class="cat-cta reveal">
+                    <h3>Не нашли свой праздник?</h3>
+                    <p>Придумаю торт под вашу историю — от эскиза до праздника.</p>
+                    <button class="btn btn-primary" onclick="openModal('Торты к праздникам','img/cake-for-march-8th.webp')">Рассчитать стоимость</button>
+                </div>
+            </div>
+        </section>
+    </main>
+    <!-- ФУТЕР -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <h3>Кондитерская · Vasilisa Prekrasnaya</h3>
+                    <p>Авторские торты на заказ в Городе. Свадьбы, дни рождения, юбилеи, корпоративы и детские праздники.</p>
+                    <div class="socials">
+                        <a href="https://vk.com/" target="_blank" rel="noopener" title="ВКонтакте">VK</a>
+                        <a href="https://ok.ru/" target="_blank" rel="noopener" title="Одноклассники">OK</a>
+                    </div>
+                </div>
+                <div>
+                    <h3>Навигация</h3>
+                    <nav aria-label="Меню в подвале">
+                        <a href="index.html#cats">Каталог</a>
+                        <a href="index.html#cakes">Торты</a>
+                        <a href="index.html#about">О кондитере</a>
+                        <a href="index.html#how">Как заказать</a>
+                        <a href="index.html#reviews">Отзывы</a>
+                    </nav>
+                </div>
+                <div>
+                    <h3>Контакты</h3>
+                    <address>
+                        <a href="tel:+79999999999">+7 (999) 999-99-99</a>
+                        <a href="mailto:example@mail.ru">example@mail.ru</a>
+                        <p>г. Город</p>
+                        <p>Ежедневно с 9:00 до 20:00</p>
+                        <p>Доставка и самовывоз по Городу</p>
+                    </address>
+                </div>
+            </div>
+            <p class="copyright">© 2026 Кондитерская — Торты на заказ в Городе</p>
+        </div>
+        <div class="footer-scene" aria-hidden="true">
+            <div class="fs-stage">
+                <img class="fs-table" src="img/deco-table.webp" alt="">
+                <img class="fs-whisk" src="img/deco-item-whisk.webp" alt="">
+                <img class="fs-cake" src="img/deco-item-cake.webp" alt="">
+                <img class="fs-cup" src="img/deco-item-cup.webp" alt="">
+                <img class="fs-teapot" src="img/deco-item-teapot.webp" alt="">
+            </div>
+        </div>
+    </footer>
+    <!-- МОДАЛКА ЗАКАЗА -->
+    <div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+        <div class="modal-box">
+            <button class="modal-close" onclick="closeModal()" aria-label="Закрыть окно">×</button>
+            <h3 id="modalTitle">Заказать торт</h3>
+            <p>Оставьте заявку — Василиса свяжется с вами и рассчитает стоимость</p>
+            <div class="modal-preview"><img id="fPreview" src="img/cake-for-march-8th.webp" alt="Пример торта к праздникам"></div>
+            <form id="orderForm">
+                <input type="text" id="fName" placeholder="Ваше имя" aria-label="Ваше имя" autocomplete="name" required>
+                <input type="tel" id="fPhone" placeholder="+7 (___) ___-__-__" aria-label="Телефон" autocomplete="tel" required>
+                <select id="fType" aria-label="Категория торта">
+                    <option>3D торты</option>
+                    <option>Сладкий стол и капкейки</option>
+                    <option>Муссовые торты</option>
+                    <option selected>Торты к праздникам</option>
+                    <option>Корпоративные торты</option>
+                    <option>Детские торты</option>
+                    <option>Свадебные и юбилейные</option>
+                    <option>Пряники</option>
+                    <option>Без мастичного покрытия</option>
+                </select>
+                <input type="text" id="fDate" placeholder="Дата праздника" aria-label="Дата праздника">
+                <textarea id="fComment" rows="2" placeholder="Пожелания к торту" aria-label="Пожелания к торту"></textarea>
+                <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center">Отправить в ВКонтакте</button>
+            </form>
+        </div>
+    </div>
+    <button id="toTop" aria-label="Вернуться наверх">↑</button>
+    <script src="js/scripts.js"></script>
+</body>
+
+</html>

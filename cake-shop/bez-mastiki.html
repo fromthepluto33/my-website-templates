@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Торты без мастики на заказ в Городе — Кондитерская</title>
+    <meta name="description" content="Авторские торты без мастики на заказ: нежный крем, айсинг, свежие ягоды, шоколад. Вкусно, красиво и безопасно.">
+    <link rel="icon" href="img/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <header id="header">
+        <div class="container header-inner">
+            <a href="index.html" class="logo"><img src="img/logo.webp" alt="Кондитерская — Vasilisa Prekrasnaya"></a>
+            <nav id="nav" aria-label="Главное меню">
+                <a href="index.html#cats">Каталог</a>
+                <a href="index.html#cakes">Торты</a>
+                <a href="index.html#about">О кондитере</a>
+                <a href="index.html#how">Как заказать</a>
+                <a href="index.html#reviews">Отзывы</a>
+                <a href="contacts.html">Контакты</a>
+                <a href="tel:+79999999999" class="nav-phone">+7 (999) 999-99-99</a>
+            </nav>
+            <div class="header-right">
+                <a class="header-phone" href="tel:+79999999999">+7 (999) 999-99-99</a>
+                <button class="cart-btn" onclick="cartToggle(true)" aria-label="Открыть корзину">
+                    <img src="img/icon-cart.webp" alt="">
+                    <span class="cart-badge" id="cartBadge"></span>
+                </button>
+                <button class="btn btn-primary" onclick="openModal()">Заказать торт</button>
+                <button class="burger" aria-label="Открыть меню"><span></span><span></span><span></span></button>
+            </div>
+        </div>
+    </header>
+    <main>
+        <section class="page-head">
+            <img class="deco deco-stars dl" src="img/deco-stars.webp" alt="" aria-hidden="true">
+            <img class="deco deco-stars dr" src="img/deco-stars.webp" alt="" aria-hidden="true">
+            <div class="container">
+                <p class="crumbs"><a href="index.html">Главная</a> ✦ <a href="index.html#cats">Каталог</a> ✦ Без мастики</p>
+                <h1>Торты без мастичного покрытия</h1>
+                <p class="page-sub">Только нежный крем, айсинг, шоколад и свежие ягоды — никакой мастики, только настоящий вкус</p>
+            </div>
+        </section>
+        <section class="page-body">
+            <img class="deco deco-stars pb-l" src="img/deco-stars.webp" alt="" aria-hidden="true">
+            <img class="deco deco-stars pb-r" src="img/deco-stars.webp" alt="" aria-hidden="true">
+            <div class="container">
+                <div class="cakes-flex">
+                    <article class="cake reveal">
+                        <div class="img"><img loading="lazy" src="img/bez-bant.webp" alt="Розовый торт с большим кремовым бантом"><span class="tag">Без мастики</span></div>
+                        <div class="body">
+                            <h3>«Нежный бант»</h3>
+                            <p class="desc">Розовый торт, покрытый гладким кремом, с большим объёмным бантом из взбитого крема и жемчужной посыпкой.</p>
+                            <p class="comp"><b>Состав:</b> ванильный бисквит, клубничный мусс, крем-чиз, пищевые красители</p>
+                            <div class="foot"><span class="price">от 3 200 ₽</span><button class="btn btn-primary" onclick="openModal('Без мастичного покрытия','img/bez-bant.webp','«Нежный бант»')">Рассчитать</button></div>
+                        </div>
+                    </article>
+                    <article class="cake reveal">
+                        <div class="img"><img loading="lazy" src="img/bez-more.webp" alt="Двухъярусный морской торт с кремовыми волнами"><span class="tag">Без мастики</span></div>
+                        <div class="body">
+                            <h3>«Морской бриз»</h3>
+                            <p class="desc">Двухъярусный торт в голубых тонах с кремовыми волнами, шоколадными кораллами и ракушками из белого шоколада.</p>
+                            <p class="comp"><b>Состав:</b> ванильный бисквит, кокосовый мусс, крем-чиз, белый шоколад</p>
+                            <div class="foot"><span class="price">от 4 500 ₽</span><button class="btn btn-primary" onclick="openModal('Без мастичного покрытия','img/bez-more.webp','«Морской бриз»')">Рассчитать</button></div>
+                        </div>
+                    </article>
+                    <article class="cake reveal">
+                        <div class="img"><img loading="lazy" src="img/bez-shoko.webp" alt="Шоколадный drip-торт с подтёками и кусочками шоколада"><span class="tag">Без мастики</span></div>
+                        <div class="body">
+                            <h3>«Шоколадный водопад»</h3>
+                            <p class="desc">Шоколадный торт с тёмными подтёками, горкой из кусочков шоколада, карамелью и золотистой посыпкой.</p>
+                            <p class="comp"><b>Состав:</b> шоколадный бисквит, шоколадный мусс, карамельный конфит, ганаш</p>
+                            <div class="foot"><span class="price">от 3 600 ₽</span><button class="btn btn-primary" onclick="openModal('Без мастичного покрытия','img/bez-shoko.webp','«Шоколадный водопад»')">Рассчитать</button></div>
+                        </div>
+                    </article>
+                    <article class="cake reveal">
+                        <div class="img"><img loading="lazy" src="img/bez-lavanda.webp" alt="Лавандовый торт с венком из свежих ягод и макаронс"><span class="tag">Без мастики</span></div>
+                        <div class="body">
+                            <h3>«Лавандовый венок»</h3>
+                            <p class="desc">Лавандовый торт с гладким кремовым покрытием, украшенный венком из свежей черники, ежевики и розовых макаронс.</p>
+                            <p class="comp"><b>Состав:</b> ванильный бисквит, йогуртовый мусс, ягодный конфит, свежие ягоды</p>
+                            <div class="foot"><span class="price">от 3 800 ₽</span><button class="btn btn-primary" onclick="openModal('Без мастичного покрытия','img/bez-lavanda.webp','«Лавандовый венок»')">Рассчитать</button></div>
+                        </div>
+                    </article>
+                    <article class="cake reveal">
+                        <div class="img"><img loading="lazy" src="img/bez-olen.webp" alt="Торт в виде милого оленёнка из крема и шоколада"><span class="tag">Без мастики</span></div>
+                        <div class="body">
+                            <h3>«Милый оленёнок»</h3>
+                            <p class="desc">Торт в виде мордочки оленёнка: коричневый крем, шоколадные рожки и ушки, закрытые глазки и розовые щёчки.</p>
+                            <p class="comp"><b>Состав:</b> шоколадный бисквит, крем-чиз со сгущёнкой, шоколад, пищевые красители</p>
+                            <div class="foot"><span class="price">от 3 400 ₽</span><button class="btn btn-primary" onclick="openModal('Без мастичного покрытия','img/bez-olen.webp','«Милый оленёнок»')">Рассчитать</button></div>
+                        </div>
+                    </article>
+                    <article class="cake reveal">
+                        <div class="img"><img loading="lazy" src="img/bez-shary.webp" alt="Розовый торт с кремовыми воздушными шарами"><span class="tag">Без мастики</span></div>
+                        <div class="body">
+                            <h3>«Воздушный праздник»</h3>
+                            <p class="desc">Высокий розовый торт с кремовым покрытием, украшенный разноцветными кремовыми шариками на белых ниточках.</p>
+                            <p class="comp"><b>Состав:</b> ванильный бисквит, ягодный мусс, крем-чиз, белый шоколад</p>
+                            <div class="foot"><span class="price">от 4 200 ₽</span><button class="btn btn-primary" onclick="openModal('Без мастичного покрытия','img/bez-shary.webp','«Воздушный праздник»')">Рассчитать</button></div>
+                        </div>
+                    </article>
+                    <article class="cake reveal">
+                        <div class="img"><img loading="lazy" src="img/bez-belye-cvety.webp" alt="Белый торт с россыпью мелких кремовых цветов"><span class="tag">Без мастики</span></div>
+                        <div class="body">
+                            <h3>«Цветочная россыпь»</h3>
+                            <p class="desc">Белый торт с гладким кремом, усыпанный маленькими розовыми и фиолетовыми кремовыми цветочками с жемчужными серединками.</p>
+                            <p class="comp"><b>Состав:</b> ванильный бисквит, ванильный мусс, крем-чиз, пищевые красители</p>
+                            <div class="foot"><span class="price">от 3 000 ₽</span><button class="btn btn-primary" onclick="openModal('Без мастичного покрытия','img/bez-belye-cvety.webp','«Цветочная россыпь»')">Рассчитать</button></div>
+                        </div>
+                    </article>
+                    <article class="cake reveal">
+                        <div class="img"><img loading="lazy" src="img/bez-himiya.webp" alt="Белый торт с рисунками химических формул айсингом"><span class="tag">Без мастики</span></div>
+                        <div class="body">
+                            <h3>«Юный химик»</h3>
+                            <p class="desc">Белый торт, расписанный чёрным айсингом: химические формулы, атомы, молекулы и лабораторные колбы.</p>
+                            <p class="comp"><b>Состав:</b> ванильный бисквит, лимонный мусс, крем-чиз, айсинг (сахарная глазурь)</p>
+                            <div class="foot"><span class="price">от 3 500 ₽</span><button class="btn btn-primary" onclick="openModal('Без мастичного покрытия','img/bez-himiya.webp','«Юный химик»')">Рассчитать</button></div>
+                        </div>
+                    </article>
+                    <article class="cake reveal">
+                        <div class="img"><img loading="lazy" src="img/bez-sinie-cvety.webp" alt="Белый торт с каскадом синих кремовых цветов"><span class="tag">Без мастики</span></div>
+                        <div class="body">
+                            <h3>«Синяя элегия»</h3>
+                            <p class="desc">Белый торт с элегантным каскадом синих и тёмно-синих кремовых цветов, зелёными веточками и золотыми акцентами.</p>
+                            <p class="comp"><b>Состав:</b> ванильный бисквит, черничный мусс, крем-чиз, пищевое золото</p>
+                            <div class="foot"><span class="price">от 4 000 ₽</span><button class="btn btn-primary" onclick="openModal('Без мастичного покрытия','img/bez-sinie-cvety.webp','«Синяя элегия»')">Рассчитать</button></div>
+                        </div>
+                    </article>
+                    <article class="cake reveal">
+                        <div class="img"><img loading="lazy" src="img/bez-goluboy.webp" alt="Голубой торт с крупными кремовыми цветами"><span class="tag">Без мастики</span></div>
+                        <div class="body">
+                            <h3>«Голубая лагуна»</h3>
+                            <p class="desc">Голубой торт с гладким кремом, украшенный крупными голубыми и кремовыми цветами из крема, каскадом спускающимися по боку.</p>
+                            <p class="comp"><b>Состав:</b> ванильный бисквит, крем-брюле, крем-чиз, пищевые красители</p>
+                            <div class="foot"><span class="price">от 3 800 ₽</span><button class="btn btn-primary" onclick="openModal('Без мастичного покрытия','img/bez-goluboy.webp','«Голубая лагуна»')">Рассчитать</button></div>
+                        </div>
+                    </article>
+                    <article class="cake reveal">
+                        <div class="img"><img loading="lazy" src="img/bez-polevye.webp" alt="Лавандовый торт с вертикальными стеблями полевых цветов"><span class="tag">Без мастики</span></div>
+                        <div class="body">
+                            <h3>«Полевой букет»</h3>
+                            <p class="desc">Лавандовый торт с вертикальными стеблями кремовых полевых цветов: розовых, белых и фиолетовых, с лавандовыми колосками.</p>
+                            <p class="comp"><b>Состав:</b> ванильный бисквит, лавандовый мусс, крем-чиз, пищевые красители</p>
+                            <div class="foot"><span class="price">от 3 600 ₽</span><button class="btn btn-primary" onclick="openModal('Без мастичного покрытия','img/bez-polevye.webp','«Полевой букет»')">Рассчитать</button></div>
+                        </div>
+                    </article>
+                    <article class="cake reveal">
+                        <div class="img"><img loading="lazy" src="img/bez-siniy-drip.webp" alt="Синий drip-торт с венком из свежих ягод и печенья"><span class="tag">Без мастики</span></div>
+                        <div class="body">
+                            <h3>«Ягодный микс»</h3>
+                            <p class="desc">Синий торт с белыми шоколадными подтёками, увенчанный венком из свежей черники, ежевики и шоколадного печенья.</p>
+                            <p class="comp"><b>Состав:</b> ванильный бисквит, черничный мусс, крем-чиз, свежие ягоды, белый шоколад</p>
+                            <div class="foot"><span class="price">от 3 900 ₽</span><button class="btn btn-primary" onclick="openModal('Без мастичного покрытия','img/bez-siniy-drip.webp','«Ягодный микс»')">Рассчитать</button></div>
+                        </div>
+                    </article>
+                </div>
+                <div class="cat-cta reveal">
+                    <h3>Желаете торт без мастики?</h3>
+                    <p>Опишите вашу идею — разработаю эскиз, используя только крем, айсинг, шоколад и свежие ягоды.</p>
+                    <button class="btn btn-primary" onclick="openModal('Без мастичного покрытия','img/bez-bant.webp')">Рассчитать стоимость</button>
+                </div>
+            </div>
+        </section>
+    </main>
+    <!-- ФУТЕР -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <h3>Кондитерская · Vasilisa Prekrasnaya</h3>
+                    <p>Авторские торты на заказ в Городе. Свадьбы, дни рождения, юбилеи, корпоративы и детские праздники.</p>
+                    <div class="socials">
+                        <a href="https://vk.com/" target="_blank" rel="noopener" title="ВКонтакте">VK</a>
+                        <a href="https://ok.ru/" target="_blank" rel="noopener" title="Одноклассники">OK</a>
+                    </div>
+                </div>
+                <div>
+                    <h3>Навигация</h3>
+                    <nav aria-label="Меню в подвале">
+                        <a href="index.html#cats">Каталог</a>
+                        <a href="index.html#cakes">Торты</a>
+                        <a href="index.html#about">О кондитере</a>
+                        <a href="index.html#how">Как заказать</a>
+                        <a href="index.html#reviews">Отзывы</a>
+                    </nav>
+                </div>
+                <div>
+                    <h3>Контакты</h3>
+                    <address>
+                        <a href="tel:+79999999999">+7 (999) 999-99-99</a>
+                        <a href="mailto:example@mail.ru">example@mail.ru</a>
+                        <p>г. Город</p>
+                        <p>Ежедневно с 9:00 до 20:00</p>
+                        <p>Доставка и самовывоз по Городу</p>
+                    </address>
+                </div>
+            </div>
+            <p class="copyright">© 2026 Кондитерская — Торты на заказ в Городе</p>
+        </div>
+        <div class="footer-scene" aria-hidden="true">
+            <div class="fs-stage">
+                <img class="fs-table" src="img/deco-table.webp" alt="">
+                <img class="fs-whisk" src="img/deco-item-whisk.webp" alt="">
+                <img class="fs-cake" src="img/deco-item-cake.webp" alt="">
+                <img class="fs-cup" src="img/deco-item-cup.webp" alt="">
+                <img class="fs-teapot" src="img/deco-item-teapot.webp" alt="">
+            </div>
+        </div>
+    </footer>
+    <!-- МОДАЛКА ЗАКАЗА -->
+    <div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+        <div class="modal-box">
+            <button class="modal-close" onclick="closeModal()" aria-label="Закрыть окно">×</button>
+            <h3 id="modalTitle">Заказать торт</h3>
+            <p>Оставьте заявку — Василиса свяжется с вами и рассчитает стоимость</p>
+            <div class="modal-preview"><img id="fPreview" src="img/bez-bant.webp" alt="Пример торта без мастики"></div>
+            <form id="orderForm">
+                <input type="text" id="fName" placeholder="Ваше имя" aria-label="Ваше имя" autocomplete="name" required>
+                <input type="tel" id="fPhone" placeholder="+7 (___) ___-__-__" aria-label="Телефон" autocomplete="tel" required>
+                <select id="fType" aria-label="Категория торта">
+                    <option>3D торты</option>
+                    <option>Сладкий стол и капкейки</option>
+                    <option>Муссовые торты</option>
+                    <option>Торты к праздникам</option>
+                    <option>Корпоративные торты</option>
+                    <option>Детские торты</option>
+                    <option>Свадебные и юбилейные</option>
+                    <option>Пряники</option>
+                    <option selected>Без мастичного покрытия</option>
+                </select>
+                <input type="text" id="fDate" placeholder="Дата праздника" aria-label="Дата праздника">
+                <textarea id="fComment" rows="2" placeholder="Пожелания к торту" aria-label="Пожелания к торту"></textarea>
+                <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center">Отправить в ВКонтакте</button>
+            </form>
+        </div>
+    </div>
+    <button id="toTop" aria-label="Вернуться наверх">↑</button>
+    <script src="js/scripts.js"></script>
+</body>
+
+</html>

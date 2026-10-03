@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Корпоративные торты на заказ в Городе — Кондитерская</title>
+    <meta name="description" content="Корпоративные торты с логотипом на заказ: юбилей компании, открытие, профессиональный праздник. Бренд-стиль в съедобном исполнении.">
+    <link rel="icon" href="img/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <header id="header">
+        <div class="container header-inner">
+            <a href="index.html" class="logo"><img src="img/logo.webp" alt="Кондитерская — Vasilisa Prekrasnaya"></a>
+            <nav id="nav" aria-label="Главное меню">
+                <a href="index.html#cats">Каталог</a>
+                <a href="index.html#cakes">Торты</a>
+                <a href="index.html#about">О кондитере</a>
+                <a href="index.html#how">Как заказать</a>
+                <a href="index.html#reviews">Отзывы</a>
+                <a href="contacts.html">Контакты</a>
+                <a href="tel:+79999999999" class="nav-phone">+7 (999) 999-99-99</a>
+            </nav>
+            <div class="header-right">
+                <a class="header-phone" href="tel:+79999999999">+7 (999) 999-99-99</a>
+                <button class="cart-btn" onclick="cartToggle(true)" aria-label="Открыть корзину">
+                    <img src="img/icon-cart.webp" alt="">
+                    <span class="cart-badge" id="cartBadge"></span>
+                </button>
+                <button class="btn btn-primary" onclick="openModal()">Заказать торт</button>
+                <button class="burger" aria-label="Открыть меню"><span></span><span></span><span></span></button>
+            </div>
+        </div>
+    </header>
+    <main>
+        <section class="page-head">
+            <img class="deco deco-stars dl" src="img/deco-stars.webp" alt="" aria-hidden="true">
+            <img class="deco deco-stars dr" src="img/deco-stars.webp" alt="" aria-hidden="true">
+            <div class="container">
+                <p class="crumbs"><a href="index.html">Главная</a> ✦ <a href="index.html#cats">Каталог</a> ✦ Корпоративные</p>
+                <h1>Корпоративные торты</h1>
+                <p class="page-sub">Логотип, фирменные цвета и характер бренда — торт, который представит вашу компанию на юбилее и празднике</p>
+            </div>
+        </section>
+        <section class="page-body">
+            <img class="deco deco-stars pb-l" src="img/deco-stars.webp" alt="" aria-hidden="true">
+            <img class="deco deco-stars pb-r" src="img/deco-stars.webp" alt="" aria-hidden="true">
+            <div class="container">
+                <div class="cakes-flex">
+                    <article class="cake reveal">
+                        <div class="img"><img loading="lazy" src="img/corp-kvantsoft.webp" alt="Корпоративный торт IT-компании с узором печатной платы"><span class="tag">Корпоративные</span></div>
+                        <div class="body">
+                            <h3>«Код успеха»</h3>
+                            <p class="desc">Тёмно-синяя глазурь с серебряными дорожками «печатной платы» и гексагон-эмблемой — для IT-команды.</p>
+                            <p class="comp"><b>Состав:</b> шоколадный бисквит, карамельный мусс, ореховый пралине, глазурь</p>
+                            <div class="foot"><span class="price">от 3 800 ₽</span><button class="btn btn-primary" onclick="openModal('Корпоративные торты','img/corp-kvantsoft.webp','«Код успеха»')">Рассчитать</button></div>
+                        </div>
+                    </article>
+                    <article class="cake reveal">
+                        <div class="img"><img loading="lazy" src="img/corp-polarwind.webp" alt="Белый корпоративный торт логистической компании с компасом"><span class="tag">Корпоративные</span></div>
+                        <div class="body">
+                            <h3>«Попутный ветер»</h3>
+                            <p class="desc">Белый прямоугольник с синими стрелками-шевронами и настоящим компасом — для логистов.</p>
+                            <p class="comp"><b>Состав:</b> ванильный бисквит, ягодный мусс, ягодный конфит, мастика</p>
+                            <div class="foot"><span class="price">от 3 600 ₽</span><button class="btn btn-primary" onclick="openModal('Корпоративные торты','img/corp-polarwind.webp','«Попутный ветер»')">Рассчитать</button></div>
+                        </div>
+                    </article>
+                    <article class="cake reveal">
+                        <div class="img"><img loading="lazy" src="img/corp-monolith.webp" alt="Графитовый корпоративный торт строительной компании с золотой кладкой"><span class="tag">Корпоративные</span></div>
+                        <div class="body">
+                            <h3>«Фундамент»</h3>
+                            <p class="desc">Графитовый торт с золотой «кирпичной» кладкой и крылатой птицей — для строителей.</p>
+                            <p class="comp"><b>Состав:</b> шоколадный бисквит, вишнёвый мусс, вишнёвый конфит, велюр</p>
+                            <div class="foot"><span class="price">от 3 900 ₽</span><button class="btn btn-primary" onclick="openModal('Корпоративные торты','img/corp-monolith.webp','«Фундамент»')">Рассчитать</button></div>
+                        </div>
+                    </article>
+                    <article class="cake reveal">
+                        <div class="img"><img loading="lazy" src="img/corp-coffein.webp" alt="Кремовый корпоративный торт кофейни с латте-артом и зёрнами"><span class="tag">Корпоративные</span></div>
+                        <div class="body">
+                            <h3>«Кофейная карта»</h3>
+                            <p class="desc">Кремовая шапка с латте-артом, кольцо шоколадных зёрен и эмблема-чашка — на открытие кофейни.</p>
+                            <p class="comp"><b>Состав:</b> ванильный бисквит, кофейный мусс, карамельный конфит, крем-чиз</p>
+                            <div class="foot"><span class="price">от 3 500 ₽</span><button class="btn btn-primary" onclick="openModal('Корпоративные торты','img/corp-coffein.webp','«Кофейная карта»')">Рассчитать</button></div>
+                        </div>
+                    </article>
+                    <article class="cake reveal">
+                        <div class="img"><img loading="lazy" src="img/corp-aurum.webp" alt="Изумрудный велюровый корпоративный торт банка с золотой монетой"><span class="tag">Корпоративные</span></div>
+                        <div class="body">
+                            <h3>«Золотой резерв»</h3>
+                            <p class="desc">Изумрудный велюр с золотой монетой и щитом — статусно для банковского юбилея.</p>
+                            <p class="comp"><b>Состав:</b> ванильный бисквит, крем-брюле, вишнёвый конфит, велюр</p>
+                            <div class="foot"><span class="price">от 4 200 ₽</span><button class="btn btn-primary" onclick="openModal('Корпоративные торты','img/corp-aurum.webp','«Золотой резерв»')">Рассчитать</button></div>
+                        </div>
+                    </article>
+                    <article class="cake reveal">
+                        <div class="img"><img loading="lazy" src="img/corp-vekta.webp" alt="Голубой корпоративный торт авиакомпании с облаками и самолётом"><span class="tag">Корпоративные</span></div>
+                        <div class="body">
+                            <h3>«Высота десять тысяч»</h3>
+                            <p class="desc">Небесно-голубой с кремовыми облаками и серебряным самолётом — для авиации и travel.</p>
+                            <p class="comp"><b>Состав:</b> ванильный бисквит, манго-маракуйя мусс, апельсиновый конфит, крем-чиз</p>
+                            <div class="foot"><span class="price">от 4 000 ₽</span><button class="btn btn-primary" onclick="openModal('Корпоративные торты','img/corp-vekta.webp','«Высота десять тысяч»')">Рассчитать</button></div>
+                        </div>
+                    </article>
+                    <article class="cake reveal">
+                        <div class="img"><img loading="lazy" src="img/corp-atlant.webp" alt="Графитовый корпоративный торт фитнес-клуба с гантелью"><span class="tag">Корпоративные</span></div>
+                        <div class="body">
+                            <h3>«Сила движения»</h3>
+                            <p class="desc">Графитовый куб с алой лентой и гантелью — для фитнес-клуба и турнира.</p>
+                            <p class="comp"><b>Состав:</b> шоколадный бисквит, арахисовый мусс, карамельный конфит, мастика</p>
+                            <div class="foot"><span class="price">от 3 600 ₽</span><button class="btn btn-primary" onclick="openModal('Корпоративные торты','img/corp-atlant.webp','«Сила движения»')">Рассчитать</button></div>
+                        </div>
+                    </article>
+                    <article class="cake reveal">
+                        <div class="img"><img loading="lazy" src="img/corp-motorhaus.webp" alt="Чёрный зеркальный корпоративный торт автодилера с хромированным колесом"><span class="tag">Корпоративные</span></div>
+                        <div class="body">
+                            <h3>«Полный привод»</h3>
+                            <p class="desc">Чёрная зеркальная глазурь с хромированным колесом-эмблемой — для автодилера.</p>
+                            <p class="comp"><b>Состав:</b> шоколадный бисквит, трюфельный мусс, вишнёвый конфит, зеркальная глазурь</p>
+                            <div class="foot"><span class="price">от 4 100 ₽</span><button class="btn btn-primary" onclick="openModal('Корпоративные торты','img/corp-motorhaus.webp','«Полный привод»')">Рассчитать</button></div>
+                        </div>
+                    </article>
+                    <article class="cake reveal">
+                        <div class="img"><img loading="lazy" src="img/corp-gastronom.webp" alt="Бордовый корпоративный торт ресторана с золотыми приборами"><span class="tag">Корпоративные</span></div>
+                        <div class="body">
+                            <h3>«Вкус статуса»</h3>
+                            <p class="desc">Бордовый с кольцом кремовых розеток и золотыми приборами — на юбилей ресторана.</p>
+                            <p class="comp"><b>Состав:</b> ванильный бисквит, ягодный мусс, ягодный конфит, крем-чиз</p>
+                            <div class="foot"><span class="price">от 3 700 ₽</span><button class="btn btn-primary" onclick="openModal('Корпоративные торты','img/corp-gastronom.webp','«Вкус статуса»')">Рассчитать</button></div>
+                        </div>
+                    </article>
+                    <article class="cake reveal">
+                        <div class="img"><img loading="lazy" src="img/corp-piksel.webp" alt="Белый корпоративный торт дизайн-студии с пиксельной мозаикой"><span class="tag">Корпоративные</span></div>
+                        <div class="body">
+                            <h3>«Пиксель к пикселю»</h3>
+                            <p class="desc">Белый с цветной пиксель-мозаикой из глазури и квадратным логотипом — для дизайн-студии.</p>
+                            <p class="comp"><b>Состав:</b> ванильный бисквит, йогуртовый мусс, клубничный конфит, мастика</p>
+                            <div class="foot"><span class="price">от 3 800 ₽</span><button class="btn btn-primary" onclick="openModal('Корпоративные торты','img/corp-piksel.webp','«Пиксель к пикселю»')">Рассчитать</button></div>
+                        </div>
+                    </article>
+                    <article class="cake reveal">
+                        <div class="img"><img loading="lazy" src="img/corp-vektor.webp" alt="Тёмный корпоративный торт энергетической компании с янтарными каплями"><span class="tag">Корпоративные</span></div>
+                        <div class="body">
+                            <h3>«Чёрное золото»</h3>
+                            <p class="desc">Тёмный куб с янтарными «нефтяными» каплями и пламенем — для энергетиков.</p>
+                            <p class="comp"><b>Состав:</b> шоколадный бисквит, карамельный мусс, ореховый пралине, глазурь</p>
+                            <div class="foot"><span class="price">от 4 000 ₽</span><button class="btn btn-primary" onclick="openModal('Корпоративные торты','img/corp-vektor.webp','«Чёрное золото»')">Рассчитать</button></div>
+                        </div>
+                    </article>
+                    <article class="cake reveal">
+                        <div class="img"><img loading="lazy" src="img/corp-mediamax.webp" alt="Белый корпоративный торт медиакомпании с малиновой кнопкой play"><span class="tag">Корпоративные</span></div>
+                        <div class="body">
+                            <h3>«В эфире»</h3>
+                            <p class="desc">Белый с малиновой кнопкой play и ягодной звуковой волной — для медиа и продакшена.</p>
+                            <p class="comp"><b>Состав:</b> ванильный бисквит, малиновый мусс, малиновый конфит, крем-чиз</p>
+                            <div class="foot"><span class="price">от 3 700 ₽</span><button class="btn btn-primary" onclick="openModal('Корпоративные торты','img/corp-mediamax.webp','«В эфире»')">Рассчитать</button></div>
+                        </div>
+                    </article>
+                </div>
+                <div class="cat-cta reveal">
+                    <h3>Нужен ваш логотип?</h3>
+                    <p>Пришлите брендбук — воплощу фирменный стиль в съедобном виде точно в цветах компании.</p>
+                    <button class="btn btn-primary" onclick="openModal('Корпоративные торты','img/corporate-cake.webp')">Рассчитать стоимость</button>
+                </div>
+            </div>
+        </section>
+    </main>
+    <!-- ФУТЕР -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <h3>Кондитерская · Vasilisa Prekrasnaya</h3>
+                    <p>Авторские торты на заказ в Городе. Свадьбы, дни рождения, юбилеи, корпоративы и детские праздники.</p>
+                    <div class="socials">
+                        <a href="https://vk.com/" target="_blank" rel="noopener" title="ВКонтакте">VK</a>
+                        <a href="https://ok.ru/" target="_blank" rel="noopener" title="Одноклассники">OK</a>
+                    </div>
+                </div>
+                <div>
+                    <h3>Навигация</h3>
+                    <nav aria-label="Меню в подвале">
+                        <a href="index.html#cats">Каталог</a>
+                        <a href="index.html#cakes">Торты</a>
+                        <a href="index.html#about">О кондитере</a>
+                        <a href="index.html#how">Как заказать</a>
+                        <a href="index.html#reviews">Отзывы</a>
+                    </nav>
+                </div>
+                <div>
+                    <h3>Контакты</h3>
+                    <address>
+                        <a href="tel:+79999999999">+7 (999) 999-99-99</a>
+                        <a href="mailto:example@mail.ru">example@mail.ru</a>
+                        <p>г. Город</p>
+                        <p>Ежедневно с 9:00 до 20:00</p>
+                        <p>Доставка и самовывоз по Городу</p>
+                    </address>
+                </div>
+            </div>
+            <p class="copyright">© 2026 Кондитерская — Торты на заказ в Городе</p>
+        </div>
+        <div class="footer-scene" aria-hidden="true">
+            <div class="fs-stage">
+                <img class="fs-table" src="img/deco-table.webp" alt="">
+                <img class="fs-whisk" src="img/deco-item-whisk.webp" alt="">
+                <img class="fs-cake" src="img/deco-item-cake.webp" alt="">
+                <img class="fs-cup" src="img/deco-item-cup.webp" alt="">
+                <img class="fs-teapot" src="img/deco-item-teapot.webp" alt="">
+            </div>
+        </div>
+    </footer>
+    <!-- МОДАЛКА ЗАКАЗА -->
+    <div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+        <div class="modal-box">
+            <button class="modal-close" onclick="closeModal()" aria-label="Закрыть окно">×</button>
+            <h3 id="modalTitle">Заказать торт</h3>
+            <p>Оставьте заявку — Василиса свяжется с вами и рассчитает стоимость</p>
+            <div class="modal-preview"><img id="fPreview" src="img/corporate-cake.webp" alt="Пример корпоративного торта"></div>
+            <form id="orderForm">
+                <input type="text" id="fName" placeholder="Ваше имя" aria-label="Ваше имя" autocomplete="name" required>
+                <input type="tel" id="fPhone" placeholder="+7 (___) ___-__-__" aria-label="Телефон" autocomplete="tel" required>
+                <select id="fType" aria-label="Категория торта">
+                    <option>3D торты</option>
+                    <option>Сладкий стол и капкейки</option>
+                    <option>Муссовые торты</option>
+                    <option>Торты к праздникам</option>
+                    <option selected>Корпоративные торты</option>
+                    <option>Детские торты</option>
+                    <option>Свадебные и юбилейные</option>
+                    <option>Пряники</option>
+                    <option>Без мастичного покрытия</option>
+                </select>
+                <input type="text" id="fDate" placeholder="Дата праздника" aria-label="Дата праздника">
+                <textarea id="fComment" rows="2" placeholder="Пожелания к торту" aria-label="Пожелания к торту"></textarea>
+                <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center">Отправить в ВКонтакте</button>
+            </form>
+        </div>
+    </div>
+    <button id="toTop" aria-label="Вернуться наверх">↑</button>
+    <script src="js/scripts.js"></script>
+</body>
+
+</html>

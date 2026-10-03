@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Пряники на заказ в Городе — Кондитерская</title>
+    <meta name="description" content="Имбирные пряники с росписью на заказ: новогодние, подарочные наборы, корпоративные с логотипом. Ручная работа, пищевые красители.">
+    <link rel="icon" href="img/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <header id="header">
+        <div class="container header-inner">
+            <a href="index.html" class="logo"><img src="img/logo.webp" alt="Кондитерская — Vasilisa Prekrasnaya"></a>
+            <nav id="nav" aria-label="Главное меню">
+                <a href="index.html#cats">Каталог</a>
+                <a href="index.html#cakes">Торты</a>
+                <a href="index.html#about">О кондитере</a>
+                <a href="index.html#how">Как заказать</a>
+                <a href="index.html#reviews">Отзывы</a>
+                <a href="contacts.html">Контакты</a>
+                <a href="tel:+79999999999" class="nav-phone">+7 (999) 999-99-99</a>
+            </nav>
+            <div class="header-right">
+                <a class="header-phone" href="tel:+79999999999">+7 (999) 999-99-99</a>
+                <button class="cart-btn" onclick="cartToggle(true)" aria-label="Открыть корзину">
+                    <img src="img/icon-cart.webp" alt="">
+                    <span class="cart-badge" id="cartBadge"></span>
+                </button>
+                <button class="btn btn-primary" onclick="openModal()">Заказать торт</button>
+                <button class="burger" aria-label="Открыть меню"><span></span><span></span><span></span></button>
+            </div>
+        </div>
+    </header>
+    <main>
+        <section class="page-head">
+            <img class="deco deco-stars dl" src="img/deco-stars.webp" alt="" aria-hidden="true">
+            <img class="deco deco-stars dr" src="img/deco-stars.webp" alt="" aria-hidden="true">
+            <div class="container">
+                <p class="crumbs"><a href="index.html">Главная</a> ✦ <a href="index.html#cats">Каталог</a> ✦ Пряники</p>
+                <h1>Пряники</h1>
+                <p class="page-sub">Имбирные пряники с росписью: наборы, подарки, корпоративные с логотипом — всё вручную</p>
+            </div>
+        </section>
+        <section class="page-body">
+            <img class="deco deco-stars pb-l" src="img/deco-stars.webp" alt="" aria-hidden="true">
+            <img class="deco deco-stars pb-r" src="img/deco-stars.webp" alt="" aria-hidden="true">
+            <div class="container">
+                <div class="cakes-flex">
+                    <article class="cake reveal">
+                        <div class="img"><img loading="lazy" src="img/pryan-winter.webp" alt="Зимний набор пряников: снеговик, варежка, шапка, снежинка, мишка и какао"><span class="tag">Пряники</span></div>
+                        <div class="body">
+                            <h3>«Зимние уютности»</h3>
+                            <p class="desc">Снеговик в наушниках, варежка с сердцем, шапка с помпоном, снежинка, белый мишка и чашка какао — пастельная глазурь.</p>
+                            <p class="comp"><b>Состав:</b> имбирное тесто, сахарная глазурь, пищевые красители</p>
+                            <div class="foot"><span class="price">1 200 ₽<small> / набор</small></span><button class="btn btn-primary" data-add="pryan-winter" data-name="Пряники «Зимние уютности», набор 6 шт" data-price="1200" data-img="img/pryan-winter.webp">В корзину</button></div>
+                        </div>
+                    </article>
+                    <article class="cake reveal">
+                        <div class="img"><img loading="lazy" src="img/pryan-santa.webp" alt="Пряники Санта и олени на деревянном круге"><span class="tag">Пряники</span></div>
+                        <div class="body">
+                            <h3>«Санта и олени»</h3>
+                            <p class="desc">Дед Мороз в красном костюме с оленями и снежинками на деревянном круге.</p>
+                            <p class="comp"><b>Состав:</b> имбирное тесто, сахарная глазурь, пищевые красители</p>
+                            <div class="foot"><span class="price">1 400 ₽<small> / набор</small></span><button class="btn btn-primary" data-add="pryan-santa" data-name="Пряники «Санта и олени», набор 8 шт" data-price="1400" data-img="img/pryan-santa.webp">В корзину</button></div>
+                        </div>
+                    </article>
+                    <article class="cake reveal">
+                        <div class="img"><img loading="lazy" src="img/pryan-faces.webp" alt="Новогодние пряники-мордашки на деревянном круге"><span class="tag">Пряники</span></div>
+                        <div class="body">
+                            <h3>«Новогодние мордашки»</h3>
+                            <p class="desc">Животик Санты, лицо снеговика, олень с рожками, кружевной круг и снежинка на тёплом круге.</p>
+                            <p class="comp"><b>Состав:</b> имбирное тесто, сахарная глазурь, пищевые красители</p>
+                            <div class="foot"><span class="price">700 ₽<small> / набор</small></span><button class="btn btn-primary" data-add="pryan-faces" data-name="Пряники «Новогодние мордашки», набор 5 шт" data-price="700" data-img="img/pryan-faces.webp">В корзину</button></div>
+                        </div>
+                    </article>
+                    <article class="cake reveal">
+                        <div class="img"><img loading="lazy" src="img/pryan-box.webp" alt="Подарочный бокс с секциями рождественских пряников"><span class="tag">Пряники</span></div>
+                        <div class="body">
+                            <h3>«Подарочный бокс»</h3>
+                            <p class="desc">Деревянный бокс с секциями: снежинки, Санты, ёлки, кружки какао и подарки.</p>
+                            <p class="comp"><b>Состав:</b> имбирное тесто, сахарная глазурь, пищевые красители</p>
+                            <div class="foot"><span class="price">2 400 ₽<small> / коробка</small></span><button class="btn btn-primary" data-add="pryan-box" data-name="Пряники «Подарочный бокс», 24 шт" data-price="2400" data-img="img/pryan-box.webp">В корзину</button></div>
+                        </div>
+                    </article>
+                    <article class="cake reveal">
+                        <div class="img"><img loading="lazy" src="img/pryan-village.webp" alt="Пряничная деревня: ёлки, домики, человечки и трости"><span class="tag">Пряники</span></div>
+                        <div class="body">
+                            <h3>«Пряничная деревня»</h3>
+                            <p class="desc">Ёлки с жемчужными гирляндами, домики со «снежной» крышей, человечки с бантами и трости.</p>
+                            <p class="comp"><b>Состав:</b> имбирное тесто, сахарная глазурь, пищевые красители</p>
+                            <div class="foot"><span class="price">1 400 ₽<small> / набор</small></span><button class="btn btn-primary" data-add="pryan-village" data-name="Пряники «Пряничная деревня», набор 14 шт" data-price="1400" data-img="img/pryan-village.webp">В корзину</button></div>
+                        </div>
+                    </article>
+                    <article class="cake reveal">
+                        <div class="img"><img loading="lazy" src="img/pryan-plaid.webp" alt="Круглые пряники в глазури шотландская клетка"><span class="tag">Пряники</span></div>
+                        <div class="body">
+                            <h3>«Шотландская клетка»</h3>
+                            <p class="desc">Круглые пряники в глянцевой глазури «тартан» — красно-зелёно-белой.</p>
+                            <p class="comp"><b>Состав:</b> имбирное тесто, глянцевая глазурь, пищевые красители</p>
+                            <div class="foot"><span class="price">800 ₽<small> / набор</small></span><button class="btn btn-primary" data-add="pryan-plaid" data-name="Пряники «Шотландская клетка», набор 6 шт" data-price="800" data-img="img/pryan-plaid.webp">В корзину</button></div>
+                        </div>
+                    </article>
+                    <article class="cake reveal">
+                        <div class="img"><img loading="lazy" src="img/pryan-plate.webp" alt="Праздничная тарелка с яркими рождественскими пряниками"><span class="tag">Пряники</span></div>
+                        <div class="body">
+                            <h3>«Праздничная тарелка»</h3>
+                            <p class="desc">Ёлки, золотые звёзды, деды морозы, человечек, сердца и снежинки в обрамлении ели и гирлянды.</p>
+                            <p class="comp"><b>Состав:</b> имбирное тесто, сахарная глазурь, пищевые красители</p>
+                            <div class="foot"><span class="price">1 800 ₽<small> / набор</small></span><button class="btn btn-primary" data-add="pryan-plate" data-name="Пряники «Праздничная тарелка», набор 18 шт" data-price="1800" data-img="img/pryan-plate.webp">В корзину</button></div>
+                        </div>
+                    </article>
+                    <article class="cake reveal">
+                        <div class="img"><img loading="lazy" src="img/pryan-lace.webp" alt="Классические пряники с белым кружевным узором на тарелке"><span class="tag">Пряники</span></div>
+                        <div class="body">
+                            <h3>«Кружевная классика»</h3>
+                            <p class="desc">Коричневое тесто с белым узорным письмом: ёлки, сердца, варежки и снежинки.</p>
+                            <p class="comp"><b>Состав:</b> имбирное тесто, белая сахарная глазурь (кружево)</p>
+                            <div class="foot"><span class="price">1 200 ₽<small> / набор</small></span><button class="btn btn-primary" data-add="pryan-lace" data-name="Пряники «Кружевная классика», набор 15 шт" data-price="1200" data-img="img/pryan-lace.webp">В корзину</button></div>
+                        </div>
+                    </article>
+                    <article class="cake reveal">
+                        <div class="img"><img loading="lazy" src="img/pryan-stars.webp" alt="Пряничные звёздочки со снежными шапочками и лицами"><span class="tag">Пряники</span></div>
+                        <div class="body">
+                            <h3>«Весёлые звёздочки»</h3>
+                            <p class="desc">Пряничные звёзды с белыми «снежными» шапочками, блестящими глазками и румянцем.</p>
+                            <p class="comp"><b>Состав:</b> имбирное тесто, сахарная глазурь, пищевой блеск</p>
+                            <div class="foot"><span class="price">800 ₽<small> / набор</small></span><button class="btn btn-primary" data-add="pryan-stars" data-name="Пряники «Весёлые звёздочки», набор 8 шт" data-price="800" data-img="img/pryan-stars.webp">В корзину</button></div>
+                        </div>
+                    </article>
+                    <article class="cake reveal">
+                        <div class="img"><img loading="lazy" src="img/pryan-cozy.webp" alt="Голубой зимний набор пряников: снеговик, мишка, снежинки и какао на мраморе"><span class="tag">Пряники</span></div>
+                        <div class="body">
+                            <h3>«Голубая зима»</h3>
+                            <p class="desc">Снеговик в шарфе, белый мишка, снежинки и чашка какао с корицей — в нежной голубой глазури на мраморе.</p>
+                            <p class="comp"><b>Состав:</b> имбирное тесто, сахарная глазурь, пищевые красители</p>
+                            <div class="foot"><span class="price">1 200 ₽<small> / набор</small></span><button class="btn btn-primary" data-add="pryan-cozy" data-name="Пряники «Голубая зима», набор 6 шт" data-price="1200" data-img="img/pryan-cozy.webp">В корзину</button></div>
+                        </div>
+                    </article>
+                    <article class="cake reveal">
+                        <div class="img"><img loading="lazy" src="img/pryan-mix.webp" alt="Новогодний микс пряников флэт-лей на бежевом фоне"><span class="tag">Пряники</span></div>
+                        <div class="body">
+                            <h3>«Новогодний микс»</h3>
+                            <p class="desc">Ёлка, Санта, подарки, сапожок, трости, снежинки и круги с бантом и омелой — классика цвета.</p>
+                            <p class="comp"><b>Состав:</b> имбирное тесто, сахарная глазурь, пищевые красители</p>
+                            <div class="foot"><span class="price">1 200 ₽<small> / набор</small></span><button class="btn btn-primary" data-add="pryan-mix" data-name="Пряники «Новогодний микс», набор 12 шт" data-price="1200" data-img="img/pryan-mix.webp">В корзину</button></div>
+                        </div>
+                    </article>
+                    <article class="cake reveal">
+                        <div class="img"><img loading="lazy" src="img/pryan-jam.webp" alt="Пряничное ассорти с джемом на деревянном круге"><span class="tag">Пряники</span></div>
+                        <div class="body">
+                            <h3>«Ассорти с джемом»</h3>
+                            <p class="desc">Разноформенные пряники со снежинками, ёлками, человечками и чашкой джема на деревянном подносе.</p>
+                            <p class="comp"><b>Состав:</b> имбирное тесто, сахарная глазурь, ягодный джем</p>
+                            <div class="foot"><span class="price">1 600 ₽<small> / набор</small></span><button class="btn btn-primary" data-add="pryan-jam" data-name="Пряники «Ассорти с джемом», набор 12 шт" data-price="1600" data-img="img/pryan-jam.webp">В корзину</button></div>
+                        </div>
+                    </article>
+                </div>
+                <div class="cat-cta reveal">
+                    <h3>Хотите пряники под вашу идею?</h3>
+                    <p>Пришлите эскиз — сделаю партию под ваш праздник или корпоратив.</p>
+                    <button class="btn btn-primary" onclick="openModal('Пряники','img/gingerbread-icing.webp')">Рассчитать стоимость</button>
+                </div>
+            </div>
+        </section>
+    </main>
+    <!-- ФУТЕР -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <h3>Кондитерская · Vasilisa Prekrasnaya</h3>
+                    <p>Авторские торты на заказ в Городе. Свадьбы, дни рождения, юбилеи, корпоративы и детские праздники.</p>
+                    <div class="socials">
+                        <a href="https://vk.com/" target="_blank" rel="noopener" title="ВКонтакте">VK</a>
+                        <a href="https://ok.ru/" target="_blank" rel="noopener" title="Одноклассники">OK</a>
+                    </div>
+                </div>
+                <div>
+                    <h3>Навигация</h3>
+                    <nav aria-label="Меню в подвале">
+                        <a href="index.html#cats">Каталог</a>
+                        <a href="index.html#cakes">Торты</a>
+                        <a href="index.html#about">О кондитере</a>
+                        <a href="index.html#how">Как заказать</a>
+                        <a href="index.html#reviews">Отзывы</a>
+                    </nav>
+                </div>
+                <div>
+                    <h3>Контакты</h3>
+                    <address>
+                        <a href="tel:+79999999999">+7 (999) 999-99-99</a>
+                        <a href="mailto:example@mail.ru">example@mail.ru</a>
+                        <p>г. Город</p>
+                        <p>Ежедневно с 9:00 до 20:00</p>
+                        <p>Доставка и самовывоз по Городу</p>
+                    </address>
+                </div>
+            </div>
+            <p class="copyright">© 2026 Кондитерская — Торты на заказ в Городе</p>
+        </div>
+        <div class="footer-scene" aria-hidden="true">
+            <div class="fs-stage">
+                <img class="fs-table" src="img/deco-table.webp" alt="">
+                <img class="fs-whisk" src="img/deco-item-whisk.webp" alt="">
+                <img class="fs-cake" src="img/deco-item-cake.webp" alt="">
+                <img class="fs-cup" src="img/deco-item-cup.webp" alt="">
+                <img class="fs-teapot" src="img/deco-item-teapot.webp" alt="">
+            </div>
+        </div>
+    </footer>
+    <!-- МОДАЛКА ЗАКАЗА -->
+    <div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+        <div class="modal-box">
+            <button class="modal-close" onclick="closeModal()" aria-label="Закрыть окно">×</button>
+            <h3 id="modalTitle">Заказать торт</h3>
+            <p>Оставьте заявку — Василиса свяжется с вами и рассчитает стоимость</p>
+            <div class="modal-preview"><img id="fPreview" src="img/gingerbread-icing.webp" alt="Пример пряников"></div>
+            <form id="orderForm">
+                <input type="text" id="fName" placeholder="Ваше имя" aria-label="Ваше имя" autocomplete="name" required>
+                <input type="tel" id="fPhone" placeholder="+7 (___) ___-__-__" aria-label="Телефон" autocomplete="tel" required>
+                <select id="fType" aria-label="Категория торта">
+                    <option>3D торты</option>
+                    <option>Сладкий стол и капкейки</option>
+                    <option>Муссовые торты</option>
+                    <option>Торты к праздникам</option>
+                    <option>Корпоративные торты</option>
+                    <option>Детские торты</option>
+                    <option>Свадебные и юбилейные</option>
+                    <option selected>Пряники</option>
+                    <option>Без мастичного покрытия</option>
+                </select>
+                <input type="text" id="fDate" placeholder="Дата праздника" aria-label="Дата праздника">
+                <textarea id="fComment" rows="2" placeholder="Пожелания к торту" aria-label="Пожелания к торту"></textarea>
+                <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center">Отправить в ВКонтакте</button>
+            </form>
+        </div>
+    </div>
+    <button id="toTop" aria-label="Вернуться наверх">↑</button>
+    <script src="js/scripts.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Детские торты на заказ в Городе — Кондитерская</title>
+    <meta name="description" content="Детские торты на заказ: зверята, машинки, космос, сказки. Безопасные красители и начинки без орехов по желанию.">
+    <link rel="icon" href="img/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <header id="header">
+        <div class="container header-inner">
+            <a href="index.html" class="logo"><img src="img/logo.webp" alt="Кондитерская — Vasilisa Prekrasnaya"></a>
+            <nav id="nav" aria-label="Главное меню">
+                <a href="index.html#cats">Каталог</a>
+                <a href="index.html#cakes">Торты</a>
+                <a href="index.html#about">О кондитере</a>
+                <a href="index.html#how">Как заказать</a>
+                <a href="index.html#reviews">Отзывы</a>
+                <a href="contacts.html">Контакты</a>
+                <a href="tel:+79999999999" class="nav-phone">+7 (999) 999-99-99</a>
+            </nav>
+            <div class="header-right">
+                <a class="header-phone" href="tel:+79999999999">+7 (999) 999-99-99</a>
+                <button class="cart-btn" onclick="cartToggle(true)" aria-label="Открыть корзину">
+                    <img src="img/icon-cart.webp" alt="">
+                    <span class="cart-badge" id="cartBadge"></span>
+                </button>
+                <button class="btn btn-primary" onclick="openModal()">Заказать торт</button>
+                <button class="burger" aria-label="Открыть меню"><span></span><span></span><span></span></button>
+            </div>
+        </div>
+    </header>
+    <main>
+        <section class="page-head">
+            <img class="deco deco-stars dl" src="img/deco-stars.webp" alt="" aria-hidden="true">
+            <img class="deco deco-stars dr" src="img/deco-stars.webp" alt="" aria-hidden="true">
+            <div class="container">
+                <p class="crumbs"><a href="index.html">Главная</a> ✦ <a href="index.html#cats">Каталог</a> ✦ Детские</p>
+                <h1>Детские торты</h1>
+                <p class="page-sub">Зверята, машинки, космос и сказки — торты, о которых дети рассказывают друзьям неделю</p>
+            </div>
+        </section>
+        <section class="page-body">
+            <img class="deco deco-stars pb-l" src="img/deco-stars.webp" alt="" aria-hidden="true">
+            <img class="deco deco-stars pb-r" src="img/deco-stars.webp" alt="" aria-hidden="true">
+            <div class="container">
+                <div class="cakes-flex">
+                    <article class="cake reveal">
+                        <div class="img"><img loading="lazy" src="img/det-lion.webp" alt="Детский торт львёнок с оранжевой кремовой гривой"><span class="tag">Детские</span></div>
+                        <div class="body">
+                            <h3>«Львёнок»</h3>
+                            <p class="desc">Кремовая грива-лепестки и добрая мордочка с закрытыми глазками — солнышко для малыша.</p>
+                            <p class="comp"><b>Состав:</b> ванильный бисквит, манго-маракуйя мусс, апельсиновый конфит, крем-чиз</p>
+                            <div class="foot"><span class="price">от 2 800 ₽</span><button class="btn btn-primary" onclick="openModal('Детские торты','img/det-lion.webp','«Львёнок»')">Рассчитать</button></div>
+                        </div>
+                    </article>
+                    <article class="cake reveal">
+                        <div class="img"><img loading="lazy" src="img/det-fox.webp" alt="Мятный детский торт с головой лисёнка и лесным бордюром"><span class="tag">Детские</span></div>
+                        <div class="body">
+                            <h3>«Лисёнок Рыжик»</h3>
+                            <p class="desc">Мятный торт с головой лисёнка, бордюром из листиков и желудей — лесной стиль.</p>
+                            <p class="comp"><b>Состав:</b> ванильный бисквит, йогуртовый мусс, клубничный конфит, крем-чиз</p>
+                            <div class="foot"><span class="price">от 2 900 ₽</span><button class="btn btn-primary" onclick="openModal('Детские торты','img/det-fox.webp','«Лисёнок Рыжик»')">Рассчитать</button></div>
+                        </div>
+                    </article>
+                    <article class="cake reveal">
+                        <div class="img"><img loading="lazy" src="img/det-excavator.webp" alt="Детский торт стройплощадка с жёлтым экскаватором и цифрой возраста"><span class="tag">Детские</span></div>
+                        <div class="body">
+                            <h3>«Стройплощадка»</h3>
+                            <p class="desc">Жёлтый экскаватор, цифра возраста, шоколадная «земля», конусы и каска.</p>
+                            <p class="comp"><b>Состав:</b> ванильный бисквит, шоколадный мусс, вишнёвый конфит, мастика</p>
+                            <div class="foot"><span class="price">от 3 200 ₽</span><button class="btn btn-primary" onclick="openModal('Детские торты','img/det-excavator.webp','«Стройплощадка»')">Рассчитать</button></div>
+                        </div>
+                    </article>
+                    <article class="cake reveal">
+                        <div class="img"><img loading="lazy" src="img/det-hedgehog.webp" alt="Детский торт ёжик с пастельными кремовыми иголками"><span class="tag">Детские</span></div>
+                        <div class="body">
+                            <h3>«Разноцветный ёжик»</h3>
+                            <p class="desc">Пастельные кремовые «иголки» и милая мордочка с бантиком.</p>
+                            <p class="comp"><b>Состав:</b> ванильный бисквит, ягодный мусс, ягодный конфит, крем-чиз</p>
+                            <div class="foot"><span class="price">от 2 900 ₽</span><button class="btn btn-primary" onclick="openModal('Детские торты','img/det-hedgehog.webp','«Разноцветный ёжик»')">Рассчитать</button></div>
+                        </div>
+                    </article>
+                    <article class="cake reveal">
+                        <div class="img"><img loading="lazy" src="img/det-space.webp" alt="Трёхъярусный детский торт космос с планетами и ракетой"><span class="tag">Детские</span></div>
+                        <div class="body">
+                            <h3>«Маленькая вселенная»</h3>
+                            <p class="desc">Три яруса: купол с планетами, омбре с ракетой и серый со звёздами.</p>
+                            <p class="comp"><b>Состав:</b> ванильный бисквит, черничный мусс, черничный конфит, мастика</p>
+                            <div class="foot"><span class="price">от 4 500 ₽</span><button class="btn btn-primary" onclick="openModal('Детские торты','img/det-space.webp','«Маленькая вселенная»')">Рассчитать</button></div>
+                        </div>
+                    </article>
+                    <article class="cake reveal">
+                        <div class="img"><img loading="lazy" src="img/det-turtle.webp" alt="Бирюзовый детский торт с морской черепахой и ракушками"><span class="tag">Детские</span></div>
+                        <div class="body">
+                            <h3>«Морская черепаха»</h3>
+                            <p class="desc">Бирюзовая «вода», сахарная черепаха, ракушки и морские звёзды по кромке.</p>
+                            <p class="comp"><b>Состав:</b> ванильный бисквит, кокосовый мусс, манго-маракуйя конфит, мастика</p>
+                            <div class="foot"><span class="price">от 3 400 ₽</span><button class="btn btn-primary" onclick="openModal('Детские торты','img/det-turtle.webp','«Морская черепаха»')">Рассчитать</button></div>
+                        </div>
+                    </article>
+                    <article class="cake reveal">
+                        <div class="img"><img loading="lazy" src="img/det-panda.webp" alt="Белый детский торт панда с бамбуком и фигуркой панды"><span class="tag">Детские</span></div>
+                        <div class="body">
+                            <h3>«Бамбуковый друг»</h3>
+                            <p class="desc">Мордочка панды на борту, бамбук и фигурка панды с побегом на макушке.</p>
+                            <p class="comp"><b>Состав:</b> ванильный бисквит, крем-брюле, вишнёвый конфит, мастика</p>
+                            <div class="foot"><span class="price">от 3 200 ₽</span><button class="btn btn-primary" onclick="openModal('Детские торты','img/det-panda.webp','«Бамбуковый друг»')">Рассчитать</button></div>
+                        </div>
+                    </article>
+                    <article class="cake reveal">
+                        <div class="img"><img loading="lazy" src="img/det-zheltik.webp" alt="Жёлтый детский торт с забавным персонажем в очках и бананами"><span class="tag">Детские</span></div>
+                        <div class="body">
+                            <h3>«Желтик»</h3>
+                            <p class="desc">Жёлтый персонаж с большими глазами, хохолком и банановыми дольками — весело для любого возраста.</p>
+                            <p class="comp"><b>Состав:</b> ванильный бисквит, банановый мусс, карамельный конфит, мастика</p>
+                            <div class="foot"><span class="price">от 3 000 ₽</span><button class="btn btn-primary" onclick="openModal('Детские торты','img/det-zheltik.webp','«Желтик»')">Рассчитать</button></div>
+                        </div>
+                    </article>
+                    <article class="cake reveal">
+                        <div class="img"><img loading="lazy" src="img/det-bear.webp" alt="Детский торт голова медвежонка с шоколадной шерстью"><span class="tag">Детские</span></div>
+                        <div class="body">
+                            <h3>«Мишка Топтыжка»</h3>
+                            <p class="desc">Торт-голова с шоколадной «шерстью»-звёздочками, розовыми ушками и носом-пуговкой.</p>
+                            <p class="comp"><b>Состав:</b> шоколадный бисквит, крем-чиз со сгущёнкой, вишнёвый конфит, кремовая «шерсть»</p>
+                            <div class="foot"><span class="price">от 2 800 ₽</span><button class="btn btn-primary" onclick="openModal('Детские торты','img/det-bear.webp','«Мишка Топтыжка»')">Рассчитать</button></div>
+                        </div>
+                    </article>
+                    <article class="cake reveal">
+                        <div class="img"><img loading="lazy" src="img/det-racing.webp" alt="Детский торт гонки с огненным кольцом и машинками"><span class="tag">Детские</span></div>
+                        <div class="body">
+                            <h3>«Крутой вираж»</h3>
+                            <p class="desc">Огненное кольцо, машинки, шашечный пояс, цифра и имя именинника на борту.</p>
+                            <p class="comp"><b>Состав:</b> ванильный бисквит, карамельный мусс, ореховый пралине, мастика</p>
+                            <div class="foot"><span class="price">от 3 400 ₽</span><button class="btn btn-primary" onclick="openModal('Детские торты','img/det-racing.webp','«Крутой вираж»')">Рассчитать</button></div>
+                        </div>
+                    </article>
+                    <article class="cake reveal">
+                        <div class="img"><img loading="lazy" src="img/det-ducks.webp" alt="Детский торт пруд с белой уткой и жёлтыми утятами"><span class="tag">Детские</span></div>
+                        <div class="body">
+                            <h3>«Пруд с утятами»</h3>
+                            <p class="desc">Голубая «вода» с волнами, белая утка с утятами, кувшинки и камыши.</p>
+                            <p class="comp"><b>Состав:</b> ванильный бисквит, лимонный мусс, лимонный конфит, крем-чиз</p>
+                            <div class="foot"><span class="price">от 2 900 ₽</span><button class="btn btn-primary" onclick="openModal('Детские торты','img/det-ducks.webp','«Пруд с утятами»')">Рассчитать</button></div>
+                        </div>
+                    </article>
+                    <article class="cake reveal">
+                        <div class="img"><img loading="lazy" src="img/det-brick.webp" alt="Детский торт кубик конструктора мятного цвета с цветным бордюром"><span class="tag">Детские</span></div>
+                        <div class="body">
+                            <h3>«Кубик конструктора»</h3>
+                            <p class="desc">Мятный куб с «пимпочками», конфетти-вкраплениями и цветным бордюром из кирпичиков.</p>
+                            <p class="comp"><b>Состав:</b> ванильный бисквит, ягодный мусс, ягодный конфит, мастика</p>
+                            <div class="foot"><span class="price">от 3 000 ₽</span><button class="btn btn-primary" onclick="openModal('Детские торты','img/det-brick.webp','«Кубик конструктора»')">Рассчитать</button></div>
+                        </div>
+                    </article>
+                </div>
+                <div class="cat-cta reveal">
+                    <h3>Ребёнок мечтает о своём герое?</h3>
+                    <p>Нарисую эскиз по описанию малыша — от динозаврика до единорога с радугой.</p>
+                    <button class="btn btn-primary" onclick="openModal('Детские торты','img/cake-nautical-decor.webp')">Рассчитать стоимость</button>
+                </div>
+            </div>
+        </section>
+    </main>
+    <!-- ФУТЕР -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <h3>Кондитерская · Vasilisa Prekrasnaya</h3>
+                    <p>Авторские торты на заказ в Городе. Свадьбы, дни рождения, юбилеи, корпоративы и детские праздники.</p>
+                    <div class="socials">
+                        <a href="https://vk.com/" target="_blank" rel="noopener" title="ВКонтакте">VK</a>
+                        <a href="https://ok.ru/" target="_blank" rel="noopener" title="Одноклассники">OK</a>
+                    </div>
+                </div>
+                <div>
+                    <h3>Навигация</h3>
+                    <nav aria-label="Меню в подвале">
+                        <a href="index.html#cats">Каталог</a>
+                        <a href="index.html#cakes">Торты</a>
+                        <a href="index.html#about">О кондитере</a>
+                        <a href="index.html#how">Как заказать</a>
+                        <a href="index.html#reviews">Отзывы</a>
+                    </nav>
+                </div>
+                <div>
+                    <h3>Контакты</h3>
+                    <address>
+                        <a href="tel:+79999999999">+7 (999) 999-99-99</a>
+                        <a href="mailto:example@mail.ru">example@mail.ru</a>
+                        <p>г. Город</p>
+                        <p>Ежедневно с 9:00 до 20:00</p>
+                        <p>Доставка и самовывоз по Городу</p>
+                    </address>
+                </div>
+            </div>
+            <p class="copyright">© 2026 Кондитерская — Торты на заказ в Городе</p>
+        </div>
+        <div class="footer-scene" aria-hidden="true">
+            <div class="fs-stage">
+                <img class="fs-table" src="img/deco-table.webp" alt="">
+                <img class="fs-whisk" src="img/deco-item-whisk.webp" alt="">
+                <img class="fs-cake" src="img/deco-item-cake.webp" alt="">
+                <img class="fs-cup" src="img/deco-item-cup.webp" alt="">
+                <img class="fs-teapot" src="img/deco-item-teapot.webp" alt="">
+            </div>
+        </div>
+    </footer>
+    <!-- МОДАЛКА ЗАКАЗА -->
+    <div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+        <div class="modal-box">
+            <button class="modal-close" onclick="closeModal()" aria-label="Закрыть окно">×</button>
+            <h3 id="modalTitle">Заказать торт</h3>
+            <p>Оставьте заявку — Василиса свяжется с вами и рассчитает стоимость</p>
+            <div class="modal-preview"><img id="fPreview" src="img/cake-nautical-decor.webp" alt="Пример детского торта"></div>
+            <form id="orderForm">
+                <input type="text" id="fName" placeholder="Ваше имя" aria-label="Ваше имя" autocomplete="name" required>
+                <input type="tel" id="fPhone" placeholder="+7 (___) ___-__-__" aria-label="Телефон" autocomplete="tel" required>
+                <select id="fType" aria-label="Категория торта">
+                    <option>3D торты</option>
+                    <option>Сладкий стол и капкейки</option>
+                    <option>Муссовые торты</option>
+                    <option>Торты к праздникам</option>
+                    <option>Корпоративные торты</option>
+                    <option selected>Детские торты</option>
+                    <option>Свадебные и юбилейные</option>
+                    <option>Пряники</option>
+                    <option>Без мастичного покрытия</option>
+                </select>
+                <input type="text" id="fDate" placeholder="Дата праздника" aria-label="Дата праздника">
+                <textarea id="fComment" rows="2" placeholder="Пожелания к торту" aria-label="Пожелания к торту"></textarea>
+                <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center">Отправить в ВКонтакте</button>
+            </form>
+        </div>
+    </div>
+    <button id="toTop" aria-label="Вернуться наверх">↑</button>
+    <script src="js/scripts.js"></script>
+</body>
+
+</html>

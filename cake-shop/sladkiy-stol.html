@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Сладкий стол и капкейки на заказ в Городе — Кондитерская</title>
+    <meta name="description" content="Сладкий стол под ключ: капкейки, макаронс, кейк-попсы, эклеры, тарталетки. Оформление и сервировка к вашему празднику.">
+    <link rel="icon" href="img/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <header id="header">
+        <div class="container header-inner">
+            <a href="index.html" class="logo"><img src="img/logo.webp" alt="Кондитерская — Vasilisa Prekrasnaya"></a>
+            <nav id="nav" aria-label="Главное меню">
+                <a href="index.html#cats">Каталог</a>
+                <a href="index.html#cakes">Торты</a>
+                <a href="index.html#about">О кондитере</a>
+                <a href="index.html#how">Как заказать</a>
+                <a href="index.html#reviews">Отзывы</a>
+                <a href="contacts.html">Контакты</a>
+                <a href="tel:+79999999999" class="nav-phone">+7 (999) 999-99-99</a>
+            </nav>
+            <div class="header-right">
+                <a class="header-phone" href="tel:+79999999999">+7 (999) 999-99-99</a>
+                <button class="cart-btn" onclick="cartToggle(true)" aria-label="Открыть корзину">
+                    <img src="img/icon-cart.webp" alt="">
+                    <span class="cart-badge" id="cartBadge"></span>
+                </button>
+                <button class="btn btn-primary" onclick="openModal()">Заказать торт</button>
+                <button class="burger" aria-label="Открыть меню"><span></span><span></span><span></span></button>
+            </div>
+        </div>
+    </header>
+    <main>
+        <section class="page-head">
+            <img class="deco deco-stars dl" src="img/deco-stars.webp" alt="" aria-hidden="true">
+            <img class="deco deco-stars dr" src="img/deco-stars.webp" alt="" aria-hidden="true">
+            <div class="container">
+                <p class="crumbs"><a href="index.html">Главная</a> ✦ <a href="index.html#cats">Каталог</a> ✦ Сладкий стол</p>
+                <h1>Сладкий стол и капкейки</h1>
+                <p class="page-sub">Капкейки, десерты и сервировка под ключ для вашего праздника</p>
+            </div>
+        </section>
+        <section class="page-body">
+            <img class="deco deco-stars pb-l" src="img/deco-stars.webp" alt="" aria-hidden="true">
+            <img class="deco deco-stars pb-r" src="img/deco-stars.webp" alt="" aria-hidden="true">
+            <div class="container">
+                <div class="cakes-flex">
+                    <article class="cake reveal">
+                        <div class="img"><img loading="lazy" src="img/slad-cake-pops.webp" alt="Букет кейк-попсов в глазури с сердечками"><span class="tag">Сладкий стол</span></div>
+                        <div class="body">
+                            <h3>Кейк-попсы «Букет»</h3>
+                            <p class="desc">8 попсов в глазури трёх цветов — со шпинклями, сердечками и белым дрипом — в кружке с бумажной стружкой.</p>
+                            <p class="comp"><b>Состав:</b> бисквитная крошка, крем-чиз, шоколадная глазурь, посыпка</p>
+                            <div class="foot"><span class="price">1 400 ₽<small> / набор</small></span><button class="btn btn-primary" data-add="slad-cake-pops" data-name="Кейк-попсы «Букет», набор 8 шт" data-price="1400" data-img="img/slad-cake-pops.webp">В корзину</button></div>
+                        </div>
+                    </article>
+                    <article class="cake reveal">
+                        <div class="img"><img loading="lazy" src="img/slad-cookies.webp" alt="Ассорти домашнего печенья с джемом и шоколадом"><span class="tag">Сладкий стол</span></div>
+                        <div class="body">
+                            <h3>Домашнее печенье «Ассорти»</h3>
+                            <p class="desc">Американское с шоколадной каплей, линцер с джемом, вензеля и полосатые в белой глазури.</p>
+                            <p class="comp"><b>Состав:</b> сливочное тесто, шоколадные капли, ягодный джем, какао</p>
+                            <div class="foot"><span class="price">1 200 ₽<small> / 500 г</small></span><button class="btn btn-primary" data-add="slad-cookies" data-name="Домашнее печенье «Ассорти», 500 г" data-price="1200" data-img="img/slad-cookies.webp">В корзину</button></div>
+                        </div>
+                    </article>
+                    <article class="cake reveal">
+                        <div class="img"><img loading="lazy" src="img/slad-animal-pops.webp" alt="Маршмеллоу-попсы в форме щенков и зверят"><span class="tag">Сладкий стол</span></div>
+                        <div class="body">
+                            <h3>Маршмеллоу-попсы «Щенки»</h3>
+                            <p class="desc">8 глазурованных попсов-зверят: щенки, котята, овечка и медвежонок.</p>
+                            <p class="comp"><b>Состав:</b> маршмеллоу, шоколадная глазурь, детали из мастики</p>
+                            <div class="foot"><span class="price">1 800 ₽<small> / набор</small></span><button class="btn btn-primary" data-add="slad-animal-pops" data-name="Маршмеллоу-попсы «Щенки», набор 8 шт" data-price="1800" data-img="img/slad-animal-pops.webp">В корзину</button></div>
+                        </div>
+                    </article>
+                    <article class="cake reveal">
+                        <div class="img"><img loading="lazy" src="img/slad-choco-box.webp" alt="Коробка с ягодами в бельгийском шоколаде"><span class="tag">Сладкий стол</span></div>
+                        <div class="body">
+                            <h3>Коробка «Ягоды в шоколаде»</h3>
+                            <p class="desc">Круглая бокс-коробка с 6 секциями: клубника в шоколаде, свежая малина и черника, мини-попсы с золотом.</p>
+                            <p class="comp"><b>Состав:</b> свежие ягоды, бельгийский шоколад, пищевое золото</p>
+                            <div class="foot"><span class="price">2 900 ₽<small> / набор</small></span><button class="btn btn-primary" data-add="slad-choco-box" data-name="Коробка «Ягоды в шоколаде»" data-price="2900" data-img="img/slad-choco-box.webp">В корзину</button></div>
+                        </div>
+                    </article>
+                    <article class="cake reveal">
+                        <div class="img"><img loading="lazy" src="img/slad-mini-tarts.webp" alt="Мини-тарты с разными начинками и свежими ягодами"><span class="tag">Сладкий стол</span></div>
+                        <div class="body">
+                            <h3>Мини-тарты с ягодами</h3>
+                            <p class="desc">15 тарталеток с разными начинками — шоколадная, фисташковая, лимонная, ягодная — со свежими ягодами и мятой.</p>
+                            <p class="comp"><b>Состав:</b> песочное тесто, ганаши и курды, свежие ягоды, мята</p>
+                            <div class="foot"><span class="price">2 700 ₽<small> / набор</small></span><button class="btn btn-primary" data-add="slad-mini-tarts" data-name="Мини-тарты с ягодами, набор 15 шт" data-price="2700" data-img="img/slad-mini-tarts.webp">В корзину</button></div>
+                        </div>
+                    </article>
+                    <article class="cake reveal">
+                        <div class="img"><img loading="lazy" src="img/slad-meringue.webp" alt="Меренговые тыковки персикового цвета с зелёными листиками"><span class="tag">Сладкий стол</span></div>
+                        <div class="body">
+                            <h3>Меренги «Тыковки»</h3>
+                            <p class="desc">Персиковые меренговые тыковки с зелёными листиками — лёгкие, как облако.</p>
+                            <p class="comp"><b>Состав:</b> яичный белок, сахар, персиковое пюре, красители</p>
+                            <div class="foot"><span class="price">900 ₽<small> / набор</small></span><button class="btn btn-primary" data-add="slad-meringue" data-name="Меренги «Тыковки», набор 12 шт" data-price="900" data-img="img/slad-meringue.webp">В корзину</button></div>
+                        </div>
+                    </article>
+                    <article class="cake reveal">
+                        <div class="img"><img loading="lazy" src="img/slad-macarons-chicks.webp" alt="Жёлтые макаронс с мордочками цыплят"><span class="tag">Сладкий стол</span></div>
+                        <div class="body">
+                            <h3>Макаронс «Цыплята»</h3>
+                            <p class="desc">Жёлтые макаронс с мордочками цыплят и ванильным ганашем — хит весеннего сезона.</p>
+                            <p class="comp"><b>Состав:</b> миндальная мука, ванильный ганаш, цветной декор</p>
+                            <div class="foot"><span class="price">1 600 ₽<small> / набор</small></span><button class="btn btn-primary" data-add="slad-macarons-chicks" data-name="Макаронс «Цыплята», набор 12 шт" data-price="1600" data-img="img/slad-macarons-chicks.webp">В корзину</button></div>
+                        </div>
+                    </article>
+                    <article class="cake reveal">
+                        <div class="img"><img loading="lazy" src="img/slad-monsters.webp" alt="Маршмеллоу-попсы монстрики в яркой глазури"><span class="tag">Сладкий стол</span></div>
+                        <div class="body">
+                            <h3>Маршмеллоу-попсы «Монстрики»</h3>
+                            <p class="desc">Маршмеллоу на палочках в яркой глазури с глазками, улыбками и шляпами.</p>
+                            <p class="comp"><b>Состав:</b> маршмеллоу, шоколадная глазурь, посыпка и мастика</p>
+                            <div class="foot"><span class="price">1 500 ₽<small> / набор</small></span><button class="btn btn-primary" data-add="slad-monsters" data-name="Маршмеллоу-попсы «Монстрики», набор 12 шт" data-price="1500" data-img="img/slad-monsters.webp">В корзину</button></div>
+                        </div>
+                    </article>
+                    <article class="cake reveal">
+                        <div class="img"><img loading="lazy" src="img/slad-donuts-animals.webp" alt="Донаты в глазури в форме зверят на деревянном блюде"><span class="tag">Сладкий стол</span></div>
+                        <div class="body">
+                            <h3>Донаты «Зверята»</h3>
+                            <p class="desc">Печёные донаты в глазури: корова, овечка, цыплёнок, заяц и курочка.</p>
+                            <p class="comp"><b>Состав:</b> творожное тесто, белая шоколадная глазурь, конфетные детали</p>
+                            <div class="foot"><span class="price">1 400 ₽<small> / набор</small></span><button class="btn btn-primary" data-add="slad-donuts-animals" data-name="Донаты «Зверята», набор 5 шт" data-price="1400" data-img="img/slad-donuts-animals.webp">В корзину</button></div>
+                        </div>
+                    </article>
+                    <article class="cake reveal">
+                        <div class="img"><img loading="lazy" src="img/slad-profiteroles.webp" alt="Карамельные профитроли-башенки с кремом и орехом"><span class="tag">Сладкий стол</span></div>
+                        <div class="body">
+                            <h3>Профитроли «Карамельные башенки»</h3>
+                            <p class="desc">Заварные башенки с карамельной глазурью, кремом, грецким орехом и шоколадной палочкой.</p>
+                            <p class="comp"><b>Состав:</b> заварное тесто, карамельный ганаш, крем, грецкий орех</p>
+                            <div class="foot"><span class="price">2 400 ₽<small> / набор</small></span><button class="btn btn-primary" data-add="slad-profiteroles" data-name="Профитроли «Карамельные башенки», набор 12 шт" data-price="2400" data-img="img/slad-profiteroles.webp">В корзину</button></div>
+                        </div>
+                    </article>
+                    <article class="cake reveal">
+                        <div class="img"><img loading="lazy" src="img/slad-marshmint.webp" alt="Квадратный маршмеллоу в шоколаде с мятной крошкой"><span class="tag">Сладкий стол</span></div>
+                        <div class="body">
+                            <h3>Маршмеллоу «Мятный»</h3>
+                            <p class="desc">Квадратный домашний маршмеллоу в шоколадной глазури с мятной крошкой.</p>
+                            <p class="comp"><b>Состав:</b> домашний маршмеллоу, шоколадная глазурь, мятная крошка</p>
+                            <div class="foot"><span class="price">1 100 ₽<small> / набор</small></span><button class="btn btn-primary" data-add="slad-marshmint" data-name="Маршмеллоу «Мятный», набор 6 шт" data-price="1100" data-img="img/slad-marshmint.webp">В корзину</button></div>
+                        </div>
+                    </article>
+                    <article class="cake reveal">
+                        <div class="img"><img loading="lazy" src="img/slad-cupcakes-pink.webp" alt="Капкейки с мятным кремом и плиткой розового шоколада"><span class="tag">Сладкий стол</span></div>
+                        <div class="body">
+                            <h3>Капкейки «Розовый шоколад»</h3>
+                            <p class="desc">Капкейки с мятным и розовым крем-чизом, плиткой розового шоколада и попкорном.</p>
+                            <p class="comp"><b>Состав:</b> ванильный капкейк, крем-чиз, розовый шоколад, попкорн</p>
+                            <div class="foot"><span class="price">2 400 ₽<small> / набор</small></span><button class="btn btn-primary" data-add="slad-cupcakes-pink" data-name="Капкейки «Розовый шоколад», набор 8 шт" data-price="2400" data-img="img/slad-cupcakes-pink.webp">В корзину</button></div>
+                        </div>
+                    </article>
+                </div>
+                <div class="cat-cta reveal">
+                    <h3>Не нашли нужный?</h3>
+                    <p>Придумаю уникальный десерт под вашу историю — от эскиза до праздника.</p>
+                    <button class="btn btn-primary" onclick="openModal('Сладкий стол и капкейки','img/childrens-sweet-table-cupcakes.webp')">Рассчитать стоимость</button>
+                </div>
+            </div>
+        </section>
+    </main>
+    <!-- ФУТЕР -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <h3>Кондитерская · Vasilisa Prekrasnaya</h3>
+                    <p>Авторские торты на заказ в Городе. Свадьбы, дни рождения, юбилеи, корпоративы и детские праздники.</p>
+                    <div class="socials">
+                        <a href="https://vk.com/" target="_blank" rel="noopener" title="ВКонтакте">VK</a>
+                        <a href="https://ok.ru/" target="_blank" rel="noopener" title="Одноклассники">OK</a>
+                    </div>
+                </div>
+                <div>
+                    <h3>Навигация</h3>
+                    <nav aria-label="Меню в подвале">
+                        <a href="index.html#cats">Каталог</a>
+                        <a href="index.html#cakes">Торты</a>
+                        <a href="index.html#about">О кондитере</a>
+                        <a href="index.html#how">Как заказать</a>
+                        <a href="index.html#reviews">Отзывы</a>
+                    </nav>
+                </div>
+                <div>
+                    <h3>Контакты</h3>
+                    <address>
+                        <a href="tel:+79999999999">+7 (999) 999-99-99</a>
+                        <a href="mailto:example@mail.ru">example@mail.ru</a>
+                        <p>г. Город</p>
+                        <p>Ежедневно с 9:00 до 20:00</p>
+                        <p>Доставка и самовывоз по Городу</p>
+                    </address>
+                </div>
+            </div>
+            <p class="copyright">© 2026 Кондитерская — Торты на заказ в Городе</p>
+        </div>
+        <div class="footer-scene" aria-hidden="true">
+            <div class="fs-stage">
+                <img class="fs-table" src="img/deco-table.webp" alt="">
+                <img class="fs-whisk" src="img/deco-item-whisk.webp" alt="">
+                <img class="fs-cake" src="img/deco-item-cake.webp" alt="">
+                <img class="fs-cup" src="img/deco-item-cup.webp" alt="">
+                <img class="fs-teapot" src="img/deco-item-teapot.webp" alt="">
+            </div>
+        </div>
+    </footer>
+    <!-- МОДАЛКА ЗАКАЗА -->
+    <div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+        <div class="modal-box">
+            <button class="modal-close" onclick="closeModal()" aria-label="Закрыть окно">×</button>
+            <h3 id="modalTitle">Заказать торт</h3>
+            <p>Оставьте заявку — Василиса свяжется с вами и рассчитает стоимость</p>
+            <div class="modal-preview"><img id="fPreview" src="img/childrens-sweet-table-cupcakes.webp" alt="Пример сладкого стола"></div>
+            <form id="orderForm">
+                <input type="text" id="fName" placeholder="Ваше имя" aria-label="Ваше имя" autocomplete="name" required>
+                <input type="tel" id="fPhone" placeholder="+7 (___) ___-__-__" aria-label="Телефон" autocomplete="tel" required>
+                <select id="fType" aria-label="Категория торта">
+                    <option>3D торты</option>
+                    <option selected>Сладкий стол и капкейки</option>
+                    <option>Муссовые торты</option>
+                    <option>Торты к праздникам</option>
+                    <option>Корпоративные торты</option>
+                    <option>Детские торты</option>
+                    <option>Свадебные и юбилейные</option>
+                    <option>Пряники</option>
+                    <option>Без мастичного покрытия</option>
+                </select>
+                <input type="text" id="fDate" placeholder="Дата праздника" aria-label="Дата праздника">
+                <textarea id="fComment" rows="2" placeholder="Пожелания к торту" aria-label="Пожелания к торту"></textarea>
+                <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center">Отправить в ВКонтакте</button>
+            </form>
+        </div>
+    </div>
+    <button id="toTop" aria-label="Вернуться наверх">↑</button>
+    <script src="js/scripts.js"></script>
+</body>
+
+</html>

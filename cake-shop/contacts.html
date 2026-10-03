@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#FFFBF7">
+    <title>Кондитерская — авторские торты на заказ в Городе</title>
+    <meta name="description" content="Торты на заказ в Городе: свадебные, детские, 3D, муссовые. Авторская работа кондитера Василисы Прекрасной. Закажите торт мечты!">
+    <!-- Фавиконка: сохраните вертикальный логотип как img/favicon.ico -->
+    <link rel="icon" href="img/favicon.ico" type="image/x-icon">
+    <!-- Стили сайта -->
+    <link href="css/style.css" rel="stylesheet">
+</head>
+
+<body>
+    <!-- ШАПКА -->
+    <header id="header">
+        <div class="container header-inner">
+            <a href="index.html" class="logo">
+                <img src="img/logo.webp" alt="Кондитерская — Vasilisa Prekrasnaya, торты на заказ в Городе">
+            </a>
+            <nav id="nav" aria-label="Главное меню">
+                <a href="index.html#cats">Каталог</a>
+                <a href="index.html#cakes">Торты</a>
+                <a href="index.html#about">О кондитере</a>
+                <a href="index.html#how">Как заказать</a>
+                <a href="index.html#reviews">Отзывы</a>
+                <a href="contacts.html">Контакты</a>
+                <a href="tel:+79999999999" class="nav-phone">+7 (999) 999-99-99</a>
+            </nav>
+            <div class="header-right">
+                <a class="header-phone" href="tel:+79999999999">+7 (999) 999-99-99</a>
+                <button class="cart-btn" onclick="cartToggle(true)" aria-label="Открыть корзину">
+                    <img src="img/icon-cart.webp" alt="">
+                    <span class="cart-badge" id="cartBadge"></span>
+                </button>
+                <button class="btn btn-primary" onclick="openModal()">Заказать торт</button>
+                <button class="burger" aria-label="Открыть меню">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+    <main>
+        <section class="page-head">
+            <img class="deco deco-stars dl" src="img/deco-stars.webp" alt="" aria-hidden="true">
+            <img class="deco deco-stars dr" src="img/deco-stars.webp" alt="" aria-hidden="true">
+            <div class="container">
+                <p class="crumbs"><a href="index.html">Главная</a> ✦ Контакты</p>
+                <h1>Контакты</h1>
+                <p class="page-sub">Позвоните, напишите или приходите — я всегда на связи и отвечу в течение часа</p>
+            </div>
+        </section>
+        <section class="page-body">
+            <div class="container">
+                <div class="contacts-grid">
+                    <div class="ccard reveal"><img src="img/icon-phone.webp" alt="">
+                        <div><b>Телефон</b><a href="tel:+79999999999">+7 (999) 999-99-99</a></div>
+                    </div>
+                    <div class="ccard reveal"><img src="img/icon-chat.webp" alt="">
+                        <div><b>ВКонтакте · ОК</b><a href="https://vk.ru/" target="_blank" rel="noopener">Написать в ВКонтакте</a></div>
+                    </div>
+                    <div class="ccard reveal"><img src="img/icon-mail.webp" alt="">
+                        <div><b>Почта</b><a href="mailto:example@mail.ru">example@mail.ru</a></div>
+                    </div>
+                    <div class="ccard reveal"><img src="img/icon-home.webp" alt="">
+                        <div><b>Адрес</b><span>г. Город, самовывоз по договорённости</span></div>
+                    </div>
+                    <div class="ccard reveal"><img src="img/icon-clock.webp" alt="">
+                        <div><b>Режим работы</b><span>Ежедневно с 9:00 до 20:00</span></div>
+                    </div>
+                    <div class="ccard reveal"><img src="img/icon-delivery.webp" alt="">
+                        <div><b>Доставка</b><span>По Городу, точно к дате праздника</span></div>
+                    </div>
+                </div>
+                <div class="map-card reveal">
+                    <img src="img/map-city.webp" alt="Декоративная карта Города">
+                    <p class="chip map-chip">✦ Здесь пекут счастье</p>
+                </div>
+                <div class="cat-cta cat-cta-col reveal">
+                    <h3>Обсудим торт вашей мечты?</h3>
+                    <p>Рассчитаю стоимость и подскажу начинку под ваш повод — бесплатно.</p>
+                    <div class="hero-cta">
+                        <a class="btn btn-primary" href="tel:+79999999999">📞 Позвонить</a>
+                        <a class="btn btn-ghost" href="https://vk.ru/" target="_blank" rel="noopener">Написать в ВКонтакте</a>
+                    </div>
+                </div>
+        </section>
+    </main>
+    <!-- ФУТЕР -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <h3>Кондитерская · Vasilisa Prekrasnaya</h3>
+                    <p>Авторские торты на заказ в Городе. Свадьбы, дни рождения, юбилеи, корпоративы и детские праздники.</p>
+                    <div class="socials">
+                        <a href="https://vk.com/" target="_blank" rel="noopener" title="ВКонтакте">VK</a>
+                        <a href="https://ok.ru/" target="_blank" rel="noopener" title="Одноклассники">OK</a>
+                    </div>
+                </div>
+                <div>
+                    <h3>Навигация</h3>
+                    <nav aria-label="Меню в подвале">
+                        <a href="index.html#cats">Каталог</a>
+                        <a href="index.html#cakes">Торты</a>
+                        <a href="index.html#about">О кондитере</a>
+                        <a href="index.html#how">Как заказать</a>
+                        <a href="index.html#reviews">Отзывы</a>
+                    </nav>
+                </div>
+                <div>
+                    <h3>Контакты</h3>
+                    <address>
+                        <a href="tel:+79999999999">+7 (999) 999-99-99</a>
+                        <a href="mailto:example@mail.ru">example@mail.ru</a>
+                        <p>г. Город</p>
+                        <p>Ежедневно с 9:00 до 20:00</p>
+                        <p>Доставка и самовывоз по Городу</p>
+                    </address>
+                </div>
+            </div>
+            <p class="copyright">© 2026 Кондитерская — Торты на заказ в Городе</p>
+        </div>
+        <div class="footer-scene" aria-hidden="true">
+            <div class="fs-stage">
+                <img class="fs-table" src="img/deco-table.webp" alt="">
+                <img class="fs-whisk" src="img/deco-item-whisk.webp" alt="">
+                <img class="fs-cake" src="img/deco-item-cake.webp" alt="">
+                <img class="fs-cup" src="img/deco-item-cup.webp" alt="">
+                <img class="fs-teapot" src="img/deco-item-teapot.webp" alt="">
+            </div>
+        </div>
+    </footer>
+    <!-- МОДАЛКА ЗАКАЗА -->
+    <div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+        <div class="modal-box">
+            <button class="modal-close" onclick="closeModal()" aria-label="Закрыть окно">×</button>
+            <h3 id="modalTitle">Заказать торт</h3>
+            <p>Оставьте заявку — Василиса свяжется с вами и рассчитает стоимость</p>
+            <div class="modal-preview">
+                <img id="fPreview" src="img/retro-camera-cake.webp" alt="Пример торта выбранной категории">
+            </div>
+            <form id="orderForm">
+                <input type="text" id="fName" placeholder="Ваше имя" aria-label="Ваше имя" autocomplete="name" required>
+                <input type="tel" id="fPhone" placeholder="+7 (___) ___-__-__" aria-label="Телефон" autocomplete="tel" required>
+                <select id="fType" aria-label="Категория торта">
+                    <option selected>3D торты</option>
+                    <option>Сладкий стол и капкейки</option>
+                    <option>Муссовые торты</option>
+                    <option>Торты к праздникам</option>
+                    <option>Корпоративные торты</option>
+                    <option>Детские торты</option>
+                    <option>Свадебные и юбилейные</option>
+                    <option>Пряники</option>
+                    <option>Без мастичного покрытия</option>
+                </select>
+                <input type="text" id="fDate" placeholder="Дата праздника" aria-label="Дата праздника">
+                <textarea id="fComment" rows="2" placeholder="Пожелания к торту" aria-label="Пожелания к торту"></textarea>
+                <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center">Отправить в ВКонтакте</button>
+            </form>
+        </div>
+    </div>
+    <button id="toTop" aria-label="Вернуться наверх">↑</button>
+    <script src="js/scripts.js"></script>
+</body>
+
+</html>

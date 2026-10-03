@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Муссовые торты и десерты на заказ в Городе — Кондитерская</title>
+    <meta name="description" content="Муссовые торты и десерты на заказ: зеркальная глазурь, нежный мусс, свежие ягоды. Единственный экземпляр под ваш праздник.">
+    <link rel="icon" href="img/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header id="header">
+        <div class="container header-inner">
+            <a href="index.html" class="logo"><img src="img/logo.webp" alt="Кондитерская — Vasilisa Prekrasnaya"></a>
+            <nav id="nav" aria-label="Главное меню">
+                <a href="index.html#cats">Каталог</a>
+                <a href="index.html#cakes">Торты</a>
+                <a href="index.html#about">О кондитере</a>
+                <a href="index.html#how">Как заказать</a>
+                <a href="index.html#reviews">Отзывы</a>
+                <a href="contacts.html">Контакты</a>
+                <a href="tel:+79999999999" class="nav-phone">+7 (999) 999-99-99</a>
+            </nav>
+            <div class="header-right">
+                <a class="header-phone" href="tel:+79999999999">+7 (999) 999-99-99</a>
+                <button class="cart-btn" onclick="cartToggle(true)" aria-label="Открыть корзину">
+                    <img src="img/icon-cart.webp" alt="">
+                    <span class="cart-badge" id="cartBadge"></span>
+                </button>
+                <button class="btn btn-primary" onclick="openModal()">Заказать торт</button>
+                <button class="burger" aria-label="Открыть меню"><span></span><span></span><span></span></button>
+            </div>
+        </div>
+    </header>
+    <main>
+        <section class="page-head">
+            <img class="deco deco-stars dl" src="img/deco-stars.webp" alt="" aria-hidden="true">
+            <img class="deco deco-stars dr" src="img/deco-stars.webp" alt="" aria-hidden="true">
+            <div class="container">
+                <p class="crumbs"><a href="index.html">Главная</a> ✦ <a href="index.html#cats">Каталог</a> ✦ Муссовые</p>
+                <h1>Муссовые торты и десерты</h1>
+                <p class="page-sub">Нежный мусс, зеркальная глазурь и свежие ягоды — каждый десерт в единственном экземпляре</p>
+            </div>
+        </section>
+        <section class="page-body">
+            <img class="deco deco-stars pb-l" src="img/deco-stars.webp" alt="" aria-hidden="true">
+            <img class="deco deco-stars pb-r" src="img/deco-stars.webp" alt="" aria-hidden="true">
+            <div class="container">
+                <div class="cakes-flex">
+                    <article class="cake reveal">
+                        <div class="img"><img loading="lazy" src="img/mousse-cake.webp" alt="Муссовый торт с зеркальной глазурью и ягодами"><span class="tag">Муссовые</span></div>
+                        <div class="body">
+                            <h3>«Ягодный бархат»</h3>
+                            <p class="desc">Нежный мусс, зеркальная глазурь и свежие ягоды.</p>
+                            <p class="comp"><b>Состав:</b> ванильный бисквит, вишнёвый мусс, ягодный конфит, зеркальная глазурь</p>
+                            <div class="foot"><span class="price">от 2 600 ₽</span><button class="btn btn-primary" onclick="openModal('Муссовые торты','img/mousse-cake.webp','«Ягодный бархат»')">Рассчитать</button></div>
+                        </div>
+                    </article>
+                    <article class="cake reveal">
+                        <div class="img"><img loading="lazy" src="img/ruby-in-the-snow.webp" alt="Рубин на снегу"><span class="tag">Муссовые</span></div>
+                        <div class="body">
+                            <h3>«Рубин на снегу»</h3>
+                            <p class="desc">Белоснежная зеркальная глазурь с алыми анемоновыми цветами.</p>
+                            <p class="comp"><b>Состав:</b> ванильный бисквит, сливочный ванильный мусс, вишнёвый конфит, белая зеркальная глазурь</p>
+                            <div class="foot"><span class="price">от 3 200 ₽</span><button class="btn btn-primary" onclick="openModal('Муссовые торты','img/ruby-in-the-snow.webp','«Рубин на снегу»')">Рассчитать</button></div>
+                        </div>
+                    </article>
+                    <article class="cake reveal">
+                        <div class="img"><img loading="lazy" src="img/polar-night.webp" alt="Полярная ночь"><span class="tag">Муссовые</span></div>
+                        <div class="body">
+                            <h3>«Полярная ночь»</h3>
+                            <p class="desc">Глубокий сине-бирюзовый глянец с кружевной «морозной» волной и снежинками.</p>
+                            <p class="comp"><b>Состав:</b> ванильный бисквит, кокосовый мусс, черничный конфит, синяя зеркальная глазурь</p>
+                            <div class="foot"><span class="price">от 3 000 ₽</span><button class="btn btn-primary" onclick="openModal('Муссовые торты','img/polar-night.webp','«Полярная ночь»')">Рассчитать</button></div>
+                        </div>
+                    </article>
+                    <article class="cake reveal">
+                        <div class="img"><img loading="lazy" src="img/powdery-viola.webp" alt="Пудровая виола"><span class="tag">Муссовые</span></div>
+                        <div class="body">
+                            <h3>«Пудровая виола»</h3>
+                            <p class="desc">Нежно-розовый торт с кольцом из глазурных линий и фиалками-анютиными глазками.</p>
+                            <p class="comp"><b>Состав:</b> ванильный бисквит, йогуртовый мусс, клубничный конфит, розовая зеркальная глазурь</p>
+                            <div class="foot"><span class="price">от 2 900 ₽</span><button class="btn btn-primary" onclick="openModal('Муссовые торты','img/powdery-viola.webp','«Пудровая виола»')">Рассчитать</button></div>
+                        </div>
+                    </article>
+                    <article class="cake reveal">
+                        <div class="img"><img loading="lazy" src="img/blueberry-galaxy.webp" alt="Черничная галактика"><span class="tag">Муссовые</span></div>
+                        <div class="body">
+                            <h3>«Черничная галактика»</h3>
+                            <p class="desc">Овальный торт с «космической» глазурью и ягодами.</p>
+                            <p class="comp"><b>Состав:</b> шоколадный бисквит, черничный мусс, конфит из чёрной смородины, зеркальная глазурь</p>
+                            <div class="foot"><span class="price">от 3 600 ₽</span><button class="btn btn-primary" onclick="openModal('Муссовые торты','img/blueberry-galaxy.webp','«Черничная галактика»')">Рассчитать</button></div>
+                        </div>
+                    </article>
+                    <article class="cake reveal">
+                        <div class="img"><img loading="lazy" src="img/burgundy-velvet.webp" alt="Бургундский бархат"><span class="tag">Муссовые</span></div>
+                        <div class="body">
+                            <h3>«Бургундский бархат»</h3>
+                            <p class="desc">Муссовый торт с бархатным велюровым покрытием цвета бордо в форме мягко завязанного мешочка-банта, с акцентами из пищевого золота.</p>
+                            <p class="comp"><b>Состав:</b> шоколадный бисквит, вишнёвый мусс, вишнёвый конфит, бархатное покрытие велюр</p>
+                            <div class="foot"><span class="price">от 3 300 ₽</span><button class="btn btn-primary" onclick="openModal('Муссовые торты','img/burgundy-velvet.webp','«Бургундский бархат»')">Рассчитать</button></div>
+                        </div>
+                    </article>
+                    <article class="cake reveal">
+                        <div class="img"><img loading="lazy" src="img/truffle-velvet.webp" alt="Трюфельный бархат"><span class="tag">Муссовые</span></div>
+                        <div class="body">
+                            <h3>«Трюфельный бархат»</h3>
+                            <p class="desc">Шоколадный муссовый торт, полностью опушённый какао, с белыми кремовыми «лепестками» и вишнями.</p>
+                            <p class="comp"><b>Состав:</b> шоколадный бисквит, шоколадный мусс, вишнёвый конфит, какао-напыление</p>
+                            <div class="foot"><span class="price">от 2 700 ₽</span><button class="btn btn-primary" onclick="openModal('Муссовые торты','img/truffle-velvet.webp','«Трюфельный бархат»')">Рассчитать</button></div>
+                        </div>
+                    </article>
+                    <article class="cake reveal">
+                        <div class="img"><img loading="lazy" src="img/chocolata-wave.webp" alt="Шоколадная волна"><span class="tag">Муссовые</span></div>
+                        <div class="body">
+                            <h3>«Шоколадная волна»</h3>
+                            <p class="desc">Торт с рельефным волнистым какао-узором, вишнями, кремовыми розетками и карамелизированными яблочными дольками.</p>
+                            <p class="comp"><b>Состав:</b> шоколадный бисквит, шоколадный мусс, вишнёвый конфит, фактурное какао-покрытие</p>
+                            <div class="foot"><span class="price">от 3 100 ₽</span><button class="btn btn-primary" onclick="openModal('Муссовые торты','img/chocolata-wave.webp','«Шоколадная волна»')">Рассчитать</button></div>
+                        </div>
+                    </article>
+                    <article class="cake reveal">
+                        <div class="img"><img loading="lazy" src="img/raspberry-heart.webp" alt="Малиновое сердце"><span class="tag">Муссовые</span></div>
+                        <div class="body">
+                            <h3>«Малиновое сердце»</h3>
+                            <p class="desc">Алая зеркальная глазурь с глянцевыми муссовыми сердцами, свежей малиной и белым шоколадным бордюром.</p>
+                            <p class="comp"><b>Состав:</b> ванильный бисквит, малиновый мусс, малиновый конфит, красная зеркальная глазурь</p>
+                            <div class="foot"><span class="price">от 3 400 ₽</span><button class="btn btn-primary" onclick="openModal('Муссовые торты','img/raspberry-heart.webp','«Малиновое сердце»')">Рассчитать</button></div>
+                        </div>
+                    </article>
+                    <article class="cake reveal">
+                        <div class="img"><img loading="lazy" src="img/cherry-dawn.webp" alt="Вишнёвый рассвет"><span class="tag">Муссовые</span></div>
+                        <div class="body">
+                            <h3>«Вишнёвый рассвет»</h3>
+                            <p class="desc">Двухфактурный торт: белый велюр + красная зеркальная глазурь, вишни, листья и фисташковая крошка по границе половин.</p>
+                            <p class="comp"><b>Состав:</b> миндальный бисквит, ванильный мусс, вишнёвый конфит, красная зеркальная глазурь, белый велюр</p>
+                            <div class="foot"><span class="price">от 3 200 ₽</span><button class="btn btn-primary" onclick="openModal('Муссовые торты','img/cherry-dawn.webp','«Вишнёвый рассвет»')">Рассчитать</button></div>
+                        </div>
+                    </article>
+                    <article class="cake reveal">
+                        <div class="img"><img loading="lazy" src="img/strawberry-ice-cream.webp" alt="Клубничный пломбир"><span class="tag">Муссовые</span></div>
+                        <div class="body">
+                            <h3>«Клубничный пломбир»</h3>
+                            <p class="desc">Трёхслойный торт - красный глянец, розовый мусс, сливочный слой, бисквит со свежей клубникой.</p>
+                            <p class="comp"><b>Состав:</b> ванильный бисквит, сливочный мусс пломбир, клубничный мусс, клубничная глазурь</p>
+                            <div class="foot"><span class="price">от 2 600 ₽</span><button class="btn btn-primary" onclick="openModal('Муссовые торты','img/strawberry-ice-cream.webp','«Клубничный пломбир»')">Рассчитать</button></div>
+                        </div>
+                    </article>
+                    <article class="cake reveal">
+                        <div class="img"><img loading="lazy" src="img/malachite.webp" alt="Малахит"><span class="tag">Муссовые</span></div>
+                        <div class="body">
+                            <h3>«Малахит»</h3>
+                            <p class="desc">Слоёный муссовый торт с бархатным зелёным напылением матча: зелёный муссовый слой, белая ванильная середина и крошка-основа, кусочек отставлен в сторону, чтобы показать слои.</p>
+                            <p class="comp"><b>Состав:</b> бисквитная крошка матча, ванильный мусс, мусс матча, бархатное напыление матча</p>
+                            <div class="foot"><span class="price">от 3 000 ₽</span><button class="btn btn-primary" onclick="openModal('Муссовые торты','img/malachite.webp','«Малахит»')">Рассчитать</button></div>
+                        </div>
+                    </article>
+                </div>
+                <div class="cat-cta reveal">
+                    <h3>Не нашли нужный?</h3>
+                    <p>Придумаю уникальный десерт под вашу историю — от эскиза до праздника.</p>
+                    <button class="btn btn-primary" onclick="openModal('Муссовые торты','img/mousse-cake.webp')">Рассчитать стоимость</button>
+                </div>
+            </div>
+        </section>
+    </main>
+    <!-- ФУТЕР -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <h3>Кондитерская · Vasilisa Prekrasnaya</h3>
+                    <p>Авторские торты на заказ в Городе. Свадьбы, дни рождения, юбилеи, корпоративы и детские праздники.</p>
+                    <div class="socials">
+                        <a href="https://vk.com/" target="_blank" rel="noopener" title="ВКонтакте">VK</a>
+                        <a href="https://ok.ru/" target="_blank" rel="noopener" title="Одноклассники">OK</a>
+                    </div>
+                </div>
+                <div>
+                  <h3>Навигация</h3>
+                  <nav aria-label="Меню в подвале">
+                    <a href="index.html#cats">Каталог</a>
+                    <a href="index.html#cakes">Торты</a>
+                    <a href="index.html#about">О кондитере</a>
+                    <a href="index.html#how">Как заказать</a>
+                    <a href="index.html#reviews">Отзывы</a>
+                  </nav>
+                </div>
+                <div>
+                    <h3>Контакты</h3>
+                    <address>
+                        <a href="tel:+79999999999">+7 (999) 999-99-99</a>
+                        <a href="mailto:example@mail.ru">example@mail.ru</a>
+                        <p>г. Город</p>
+                        <p>Ежедневно с 9:00 до 20:00</p>
+                        <p>Доставка и самовывоз по Городу</p>
+                    </address>
+                </div>
+            </div>
+            <p class="copyright">© 2026 Кондитерская — Торты на заказ в Городе</p>
+        </div>
+        <div class="footer-scene" aria-hidden="true">
+            <div class="fs-stage">
+                <img class="fs-table" src="img/deco-table.webp" alt="">
+                <img class="fs-whisk" src="img/deco-item-whisk.webp" alt="">
+                <img class="fs-cake" src="img/deco-item-cake.webp" alt="">
+                <img class="fs-cup" src="img/deco-item-cup.webp" alt="">
+                <img class="fs-teapot" src="img/deco-item-teapot.webp" alt="">
+            </div>
+        </div>
+    </footer>
+    <!-- МОДАЛКА ЗАКАЗА -->
+    <div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+        <div class="modal-box">
+            <button class="modal-close" onclick="closeModal()" aria-label="Закрыть окно">×</button>
+            <h3 id="modalTitle">Заказать торт</h3>
+            <p>Оставьте заявку — Василиса свяжется с вами и рассчитает стоимость</p>
+            <div class="modal-preview"><img id="fPreview" src="img/mousse-cake.webp" alt="Пример торта выбранной категории"></div>
+            <form id="orderForm">
+                <input type="text" id="fName" placeholder="Ваше имя" aria-label="Ваше имя" autocomplete="name" required>
+                <input type="tel" id="fPhone" placeholder="+7 (___) ___-__-__" aria-label="Телефон" autocomplete="tel" required>
+                <select id="fType" aria-label="Категория торта">
+                    <option>3D торты</option>
+                    <option>Сладкий стол и капкейки</option>
+                    <option selected>Муссовые торты</option>
+                    <option>Торты к праздникам</option>
+                    <option>Корпоративные торты</option>
+                    <option>Детские торты</option>
+                    <option>Свадебные и юбилейные</option>
+                    <option>Пряники</option>
+                    <option>Без мастичного покрытия</option>
+                </select>
+                <input type="text" id="fDate" placeholder="Дата праздника" aria-label="Дата праздника">
+                <textarea id="fComment" rows="2" placeholder="Пожелания к торту" aria-label="Пожелания к торту"></textarea>
+                <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center">Отправить в ВКонтакте</button>
+            </form>
+        </div>
+    </div>
+    <button id="toTop" aria-label="Вернуться наверх">↑</button>
+    <script src="js/scripts.js"></script>
+</body>
+
+</html>

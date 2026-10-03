@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Свадебные и юбилейные торты на заказ в Городе — Кондитерская</title>
+    <meta name="description" content="Свадебные и юбилейные торты на заказ: классика, каскады роз, зимние пейзажи, фигурки пары. Эскиз по истории вашей пары.">
+    <link rel="icon" href="img/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <header id="header">
+        <div class="container header-inner">
+            <a href="index.html" class="logo"><img src="img/logo.webp" alt="Кондитерская — Vasilisa Prekrasnaya"></a>
+            <nav id="nav" aria-label="Главное меню">
+                <a href="index.html#cats">Каталог</a>
+                <a href="index.html#cakes">Торты</a>
+                <a href="index.html#about">О кондитере</a>
+                <a href="index.html#how">Как заказать</a>
+                <a href="index.html#reviews">Отзывы</a>
+                <a href="contacts.html">Контакты</a>
+                <a href="tel:+79999999999" class="nav-phone">+7 (999) 999-99-99</a>
+            </nav>
+            <div class="header-right">
+                <a class="header-phone" href="tel:+79999999999">+7 (999) 999-99-99</a>
+                <button class="cart-btn" onclick="cartToggle(true)" aria-label="Открыть корзину">
+                    <img src="img/icon-cart.webp" alt="">
+                    <span class="cart-badge" id="cartBadge"></span>
+                </button>
+                <button class="btn btn-primary" onclick="openModal()">Заказать торт</button>
+                <button class="burger" aria-label="Открыть меню"><span></span><span></span><span></span></button>
+            </div>
+        </div>
+    </header>
+    <main>
+        <section class="page-head">
+            <img class="deco deco-stars dl" src="img/deco-stars.webp" alt="" aria-hidden="true">
+            <img class="deco deco-stars dr" src="img/deco-stars.webp" alt="" aria-hidden="true">
+            <div class="container">
+                <p class="crumbs"><a href="index.html">Главная</a> ✦ <a href="index.html#cats">Каталог</a> ✦ Свадебные</p>
+                <h1>Свадебные и юбилейные торты</h1>
+                <p class="page-sub">От нежной классики до смелых акцентов — торт, который станет центром вашего торжества</p>
+            </div>
+        </section>
+        <section class="page-body">
+            <img class="deco deco-stars pb-l" src="img/deco-stars.webp" alt="" aria-hidden="true">
+            <img class="deco deco-stars pb-r" src="img/deco-stars.webp" alt="" aria-hidden="true">
+            <div class="container">
+                <div class="cakes-flex">
+                    <article class="cake reveal">
+                        <div class="img"><img loading="lazy" src="img/svad-burgundy.webp" alt="Бордовый свадебный торт с драпировкой и сахарными цветами"><span class="tag">Свадебные</span></div>
+                        <div class="body">
+                            <h3>«Бургундский шёлк»</h3>
+                            <p class="desc">Три яруса марсала с тканевыми складками, сахарными магнолиями и далиями, золотыми веточками с ягодами.</p>
+                            <p class="comp"><b>Состав:</b> ванильный бисквит, вишнёвый мусс, вишнёвый конфит, мастика</p>
+                            <div class="foot"><span class="price">от 6 800 ₽</span><button class="btn btn-primary" onclick="openModal('Свадебные и юбилейные','img/svad-burgundy.webp','«Бургундский шёлк»')">Рассчитать</button></div>
+                        </div>
+                    </article>
+                    <article class="cake reveal">
+                        <div class="img"><img loading="lazy" src="img/svad-cherry.webp" alt="Свадебный торт с алым мазком и свежей черешней"><span class="tag">Свадебные</span></div>
+                        <div class="body">
+                            <h3>«Вишнёвый мазок»</h3>
+                            <p class="desc">Два яруса белого с алым «акварельным» мазком, свежая черешня и зелёные ветви по кромкам.</p>
+                            <p class="comp"><b>Состав:</b> ванильный бисквит, вишнёвый мусс, вишнёвый конфит, крем-чиз</p>
+                            <div class="foot"><span class="price">от 5 200 ₽</span><button class="btn btn-primary" onclick="openModal('Свадебные и юбилейные','img/svad-cherry.webp','«Вишнёвый мазок»')">Рассчитать</button></div>
+                        </div>
+                    </article>
+                    <article class="cake reveal">
+                        <div class="img"><img loading="lazy" src="img/svad-pearl.webp" alt="Свадебный торт айвори с жемчугом и атласными бантами"><span class="tag">Свадебные</span></div>
+                        <div class="body">
+                            <h3>«Жемчуг и банты»</h3>
+                            <p class="desc">Айвори три яруса с жемчужными точками, атласными бантами с жемчужной серединкой и нитями.</p>
+                            <p class="comp"><b>Состав:</b> ванильный бисквит, крем-брюле, вишнёвый конфит, мастика, сахарный жемчуг</p>
+                            <div class="foot"><span class="price">от 6 400 ₽</span><button class="btn btn-primary" onclick="openModal('Свадебные и юбилейные','img/svad-pearl.webp','«Жемчуг и банты»')">Рассчитать</button></div>
+                        </div>
+                    </article>
+                    <article class="cake reveal">
+                        <div class="img"><img loading="lazy" src="img/svad-peony.webp" alt="Белый свадебный торт с гигантским пионом и ярусом из цветков"><span class="tag">Свадебные</span></div>
+                        <div class="body">
+                            <h3>«Белый пион»</h3>
+                            <p class="desc">Три яруса: вертикальные линии с гигантским пионом, драпировка с брошью и ярус из мелких цветков.</p>
+                            <p class="comp"><b>Состав:</b> ванильный бисквит, ванильный мусс, малиновый конфит, мастика, сахарные цветы</p>
+                            <div class="foot"><span class="price">от 7 200 ₽</span><button class="btn btn-primary" onclick="openModal('Свадебные и юбилейные','img/svad-peony.webp','«Белый пион»')">Рассчитать</button></div>
+                        </div>
+                    </article>
+                    <article class="cake reveal">
+                        <div class="img"><img loading="lazy" src="img/svad-roses.webp" alt="Классический свадебный торт с бордовыми розами и лентой"><span class="tag">Свадебные</span></div>
+                        <div class="body">
+                            <h3>«Алая лента»</h3>
+                            <p class="desc">Два белых яруса с бордовыми розами, бордовой лентой и зеленью — вне времени.</p>
+                            <p class="comp"><b>Состав:</b> ванильный бисквит, ягодный мусс, ягодный конфит, мастика</p>
+                            <div class="foot"><span class="price">от 4 800 ₽</span><button class="btn btn-primary" onclick="openModal('Свадебные и юбилейные','img/svad-roses.webp','«Алая лента»')">Рассчитать</button></div>
+                        </div>
+                    </article>
+                    <article class="cake reveal">
+                        <div class="img"><img loading="lazy" src="img/svad-heart.webp" alt="Пудровый свадебный торт в форме сердца с ранункулюсами"><span class="tag">Свадебные</span></div>
+                        <div class="body">
+                            <h3>«Пудровое сердце»</h3>
+                            <p class="desc">Два пудровых яруса-сердца с кремовым бордюром-ракушкой и диагональю из ранункулюсов и роз.</p>
+                            <p class="comp"><b>Состав:</b> ванильный бисквит, клубничный мусс, клубничный конфит, крем-чиз, сахарные цветы</p>
+                            <div class="foot"><span class="price">от 5 600 ₽</span><button class="btn btn-primary" onclick="openModal('Свадебные и юбилейные','img/svad-heart.webp','«Пудровое сердце»')">Рассчитать</button></div>
+                        </div>
+                    </article>
+                    <article class="cake reveal">
+                        <div class="img"><img loading="lazy" src="img/svad-gradient.webp" alt="Свадебный торт с красным омбре и каскадом алых роз"><span class="tag">Свадебные</span></div>
+                        <div class="body">
+                            <h3>«Алый градиент»</h3>
+                            <p class="desc">Два белых яруса с красным аэрографным омбре и каскадом алых роз по трём уровням.</p>
+                            <p class="comp"><b>Состав:</b> ванильный бисквит, малиновый мусс, малиновый конфит, крем-чиз, мастичные розы</p>
+                            <div class="foot"><span class="price">от 5 400 ₽</span><button class="btn btn-primary" onclick="openModal('Свадебные и юбилейные','img/svad-gradient.webp','«Алый градиент»')">Рассчитать</button></div>
+                        </div>
+                    </article>
+                    <article class="cake reveal">
+                        <div class="img"><img loading="lazy" src="img/svad-cascade.webp" alt="Свадебный торт с каскадом бордовых и пудровых роз"><span class="tag">Свадебные</span></div>
+                        <div class="body">
+                            <h3>«Бургундский каскад»</h3>
+                            <p class="desc">Три айвори-яруса с диагональным каскадом бордовых и пудровых роз и ягодными веточками.</p>
+                            <p class="comp"><b>Состав:</b> ванильный бисквит, крем-брюле, вишнёвый конфит, мастика</p>
+                            <div class="foot"><span class="price">от 6 600 ₽</span><button class="btn btn-primary" onclick="openModal('Свадебные и юбилейные','img/svad-cascade.webp','«Бургундский каскад»')">Рассчитать</button></div>
+                        </div>
+                    </article>
+                    <article class="cake reveal">
+                        <div class="img"><img loading="lazy" src="img/svad-spiral.webp" alt="Свадебный торт с диагональю из алых и белых роз на золотой подставке"><span class="tag">Свадебные</span></div>
+                        <div class="body">
+                            <h3>«Диагональ любви»</h3>
+                            <p class="desc">Три фактурных яруса с диагональю из алых и белых роз на резной золотой подставке.</p>
+                            <p class="comp"><b>Состав:</b> ванильный бисквит, ягодный мусс, ягодный конфит, крем-чиз, свежие розы</p>
+                            <div class="foot"><span class="price">от 6 200 ₽</span><button class="btn btn-primary" onclick="openModal('Свадебные и юбилейные','img/svad-spiral.webp','«Диагональ любви»')">Рассчитать</button></div>
+                        </div>
+                    </article>
+                    <article class="cake reveal">
+                        <div class="img"><img loading="lazy" src="img/svad-sage.webp" alt="Свадебный торт с зелёной рифлёной волной и белыми анемонами"><span class="tag">Свадебные</span></div>
+                        <div class="body">
+                            <h3>«Шалфейная волна»</h3>
+                            <p class="desc">Белый ярус с зелёной рифлёной «волной», белыми анемонами, гипсофилой, золотом и жемчугом.</p>
+                            <p class="comp"><b>Состав:</b> ванильный бисквит, фисташковый мусс, грушевый конфит, крем-чиз</p>
+                            <div class="foot"><span class="price">от 4 600 ₽</span><button class="btn btn-primary" onclick="openModal('Свадебные и юбилейные','img/svad-sage.webp','«Шалфейная волна»')">Рассчитать</button></div>
+                        </div>
+                    </article>
+                    <article class="cake reveal">
+                        <div class="img"><img loading="lazy" src="img/svad-waltz.webp" alt="Свадебный торт с фигурками танцующей пары и тисненым узором"><span class="tag">Свадебные</span></div>
+                        <div class="body">
+                            <h3>«Первый вальс»</h3>
+                            <p class="desc">Айвори два яруса с тисненым узором, кремовыми розами и фигурками танцующей пары.</p>
+                            <p class="comp"><b>Состав:</b> ванильный бисквит, ванильный мусс, малиновый конфит, мастика, фигурки</p>
+                            <div class="foot"><span class="price">от 5 800 ₽</span><button class="btn btn-primary" onclick="openModal('Свадебные и юбилейные','img/svad-waltz.webp','«Первый вальс»')">Рассчитать</button></div>
+                        </div>
+                    </article>
+                    <article class="cake reveal">
+                        <div class="img"><img loading="lazy" src="img/svad-winter.webp" alt="Зимний свадебный торт с горным пейзажем и елями"><span class="tag">Свадебные</span></div>
+                        <div class="body">
+                            <h3>«Зимняя свадьба»</h3>
+                            <p class="desc">Белые три яруса с зимним пейзажем: горы, ели, заснеженные деревца и серебряные бусины.</p>
+                            <p class="comp"><b>Состав:</b> ванильный бисквит, кокосовый мусс, черничный конфит, крем-чиз, мастика</p>
+                            <div class="foot"><span class="price">от 6 900 ₽</span><button class="btn btn-primary" onclick="openModal('Свадебные и юбилейные','img/svad-winter.webp','«Зимняя свадьба»')">Рассчитать</button></div>
+                        </div>
+                    </article>
+                </div>
+                <div class="cat-cta reveal">
+                    <h3>Хотите торт по вашей истории?</h3>
+                    <p>Расскажите, как познакомились — вплету ваши детали в эскиз: от первого свидания до места предложения.</p>
+                    <button class="btn btn-primary" onclick="openModal('Свадебные и юбилейные','img/two-tier-wedding-cake.webp')">Рассчитать стоимость</button>
+                </div>
+            </div>
+        </section>
+    </main>
+    <!-- ФУТЕР -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <h3>Кондитерская · Vasilisa Prekrasnaya</h3>
+                    <p>Авторские торты на заказ в Городе. Свадьбы, дни рождения, юбилеи, корпоративы и детские праздники.</p>
+                    <div class="socials">
+                        <a href="https://vk.com/" target="_blank" rel="noopener" title="ВКонтакте">VK</a>
+                        <a href="https://ok.ru/" target="_blank" rel="noopener" title="Одноклассники">OK</a>
+                    </div>
+                </div>
+                <div>
+                    <h3>Навигация</h3>
+                    <nav aria-label="Меню в подвале">
+                        <a href="index.html#cats">Каталог</a>
+                        <a href="index.html#cakes">Торты</a>
+                        <a href="index.html#about">О кондитере</a>
+                        <a href="index.html#how">Как заказать</a>
+                        <a href="index.html#reviews">Отзывы</a>
+                    </nav>
+                </div>
+                <div>
+                    <h3>Контакты</h3>
+                    <address>
+                        <a href="tel:+79999999999">+7 (999) 999-99-99</a>
+                        <a href="mailto:example@mail.ru">example@mail.ru</a>
+                        <p>г. Город</p>
+                        <p>Ежедневно с 9:00 до 20:00</p>
+                        <p>Доставка и самовывоз по Городу</p>
+                    </address>
+                </div>
+            </div>
+            <p class="copyright">© 2026 Кондитерская — Торты на заказ в Городе</p>
+        </div>
+        <div class="footer-scene" aria-hidden="true">
+            <div class="fs-stage">
+                <img class="fs-table" src="img/deco-table.webp" alt="">
+                <img class="fs-whisk" src="img/deco-item-whisk.webp" alt="">
+                <img class="fs-cake" src="img/deco-item-cake.webp" alt="">
+                <img class="fs-cup" src="img/deco-item-cup.webp" alt="">
+                <img class="fs-teapot" src="img/deco-item-teapot.webp" alt="">
+            </div>
+        </div>
+    </footer>
+    <!-- МОДАЛКА ЗАКАЗА -->
+    <div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+        <div class="modal-box">
+            <button class="modal-close" onclick="closeModal()" aria-label="Закрыть окно">×</button>
+            <h3 id="modalTitle">Заказать торт</h3>
+            <p>Оставьте заявку — Василиса свяжется с вами и рассчитает стоимость</p>
+            <div class="modal-preview"><img id="fPreview" src="img/two-tier-wedding-cake.webp" alt="Пример свадебного торта"></div>
+            <form id="orderForm">
+                <input type="text" id="fName" placeholder="Ваше имя" aria-label="Ваше имя" autocomplete="name" required>
+                <input type="tel" id="fPhone" placeholder="+7 (___) ___-__-__" aria-label="Телефон" autocomplete="tel" required>
+                <select id="fType" aria-label="Категория торта">
+                    <option>3D торты</option>
+                    <option>Сладкий стол и капкейки</option>
+                    <option>Муссовые торты</option>
+                    <option>Торты к праздникам</option>
+                    <option>Корпоративные торты</option>
+                    <option>Детские торты</option>
+                    <option selected>Свадебные и юбилейные</option>
+                    <option>Пряники</option>
+                    <option>Без мастичного покрытия</option>
+                </select>
+                <input type="text" id="fDate" placeholder="Дата праздника" aria-label="Дата праздника">
+                <textarea id="fComment" rows="2" placeholder="Пожелания к торту" aria-label="Пожелания к торту"></textarea>
+                <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center">Отправить в ВКонтакте</button>
+            </form>
+        </div>
+    </div>
+    <button id="toTop" aria-label="Вернуться наверх">↑</button>
+    <script src="js/scripts.js"></script>
+</body>
+
+</html>
