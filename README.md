@@ -12,31 +12,15 @@
 - Суши-бар — золотой вариант
 - Кондитерская
 
-Каждый шаблон расположен в отдельной папке и имеет собственную главную страницу `index.html`.
-
 ## Онлайн-просмотр
-
-Открыть главную страницу проекта:
-
-```text
-https://USERNAME.github.io/REPO_NAME/
-```
 
 Открыть отдельные шаблоны:
 
 | Шаблон | Ссылка |
 |---|---|
-| Суши-бар — красный вариант | [Открыть](https://USERNAME.github.io/REPO_NAME/sushi-bar-red/) |
-| Суши-бар — золотой вариант | [Открыть](https://USERNAME.github.io/REPO_NAME/sushi-bar-gold/) |
-| Кондитерская | [Открыть](https://USERNAME.github.io/REPO_NAME/cake-shop/) |
-
-Если вариант с папкой не открывается, можно использовать прямую ссылку на `index.html`:
-
-```text
-https://USERNAME.github.io/REPO_NAME/sushi-bar-red/index.html
-https://USERNAME.github.io/REPO_NAME/sushi-bar-gold/index.html
-https://USERNAME.github.io/REPO_NAME/cake-shop/index.html
-```
+| Суши-бар — красный вариант | [Открыть](https://fromthepluto33.github.io/my-website-templates/sushi-bar-red/) |
+| Суши-бар — золотой вариант | [Открыть](https://fromthepluto33.github.io/my-website-templates/sushi-bar-gold/) |
+| Кондитерская | [Открыть](https://fromthepluto33.github.io/my-website-templates/cake-shop/) |
 
 ## Структура проекта
 
